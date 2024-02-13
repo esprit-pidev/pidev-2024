@@ -19,7 +19,6 @@ public class EventComments {
         }
 
     public EventComments() {
-
     }
 
     public int getCommentId() {
