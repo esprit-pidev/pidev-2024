@@ -101,5 +101,6 @@ public class Events {
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
+
     }
 }
