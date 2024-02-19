@@ -7,13 +7,13 @@ public class Events {
     private int adminId;
     private String eventName;
     private String description;
-    private Date eventDate;
+    private java.sql.Date eventDate;
     private Date createdAt;
     private Date updatedAt;
 
     private String photo;
 
-    public Events( int adminId, String eventName, String description,String photo) {
+    public Events(int adminId, String eventName, String description, java.sql.Date eventDate, String photo) {
         this.adminId = adminId;
         this.eventName = eventName;
         this.description = description;
@@ -21,6 +21,12 @@ public class Events {
         this.photo = photo;
 
     }
+
+    public Events(int i, int i1) {
+        this.adminId = i;
+        this.eventId = i1;
+    }
+
 
     public String getPhoto() {
         return photo;
@@ -66,11 +72,11 @@ public class Events {
         this.description = description;
     }
 
-    public Date getEventDate() {
+    public java.sql.Date getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(Date eventDate) {
+    public void setEventDate(java.sql.Date eventDate) {
         this.eventDate = eventDate;
     }
 

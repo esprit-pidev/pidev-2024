@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="container" prefHeight="760.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherEventController">
+   <children>
+      <HBox alignment="CENTER" spacing="5.0">
+         <children>
+            <VBox fx:id="eventParticipated" minWidth="300.0">
+               <children>
+                  <HBox minHeight="34.0" prefHeight="34.0" prefWidth="300.0" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefWidth="650.0">
+                     <children>
+                        <HBox alignment="CENTER" prefWidth="300.0">
+                           <children>
+                              <TextField fx:id="search" onKeyTyped="#search" prefHeight="26.0" prefWidth="300.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <ScrollPane fitToHeight="true" fitToWidth="true">
+                           <content>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <VBox fx:id="feed" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" spacing="10.0">
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

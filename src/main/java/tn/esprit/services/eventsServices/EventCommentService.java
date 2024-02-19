@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import tn.esprit.entities.events.EventComments;
+import tn.esprit.entities.events.Events;
 import tn.esprit.tools.MyDB;
 
 public class EventCommentService {
@@ -67,12 +68,14 @@ public class EventCommentService {
         }
     }
 
-    public List<EventComments> display() {
+    public List<EventComments> display(Events event) {
+
         List<EventComments> comments = new ArrayList<>();
-        String sql = "SELECT * FROM event_comments";
+        String sql = "SELECT * FROM event_comments where event_id = ?";
 
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
+            statement.setInt(1, event.getEventId());
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {

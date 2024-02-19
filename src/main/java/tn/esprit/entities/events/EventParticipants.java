@@ -8,15 +8,12 @@ public class EventParticipants {
         private int participantId;
         private int userId;
         private int eventId;
-        private boolean isAttending;
         private Date participationDate;
 
-        public EventParticipants(int participantId, int userId, int eventId, boolean isAttending, Date participationDate) {
-            this.participantId = participantId;
+        public EventParticipants( int userId, int eventId) {
             this.userId = userId;
             this.eventId = eventId;
-            this.isAttending = isAttending;
-            this.participationDate = participationDate;
+
         }
 
     public EventParticipants() {
@@ -47,13 +44,7 @@ public class EventParticipants {
             this.eventId = eventId;
         }
 
-        public boolean isAttending() {
-            return isAttending;
-        }
 
-        public void setAttending(boolean attending) {
-            isAttending = attending;
-        }
 
         public Date getParticipationDate() {
             return participationDate;
@@ -66,7 +57,6 @@ public class EventParticipants {
         @Override
         public String toString() {
             return "EventParticipant{" +
-                    ", isAttending=" + isAttending +
                     ", participationDate=" + participationDate +
                     '}';
         }
