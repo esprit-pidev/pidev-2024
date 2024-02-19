@@ -17,14 +17,12 @@ public class EventParticipantService {
     }
 
     public void ajouter(EventParticipants participant) {
-        String sql = "INSERT INTO eventparticipants (user_id, event_id, is_attending, participation_date) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO event_participants (user_id, event_id) VALUES (?, ? )";
 
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, participant.getUserId());
             statement.setInt(2, participant.getEventId());
-            statement.setBoolean(3, participant.isAttending());
-            statement.setTimestamp(4, new java.sql.Timestamp(participant.getParticipationDate().getTime()));
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
@@ -37,11 +35,10 @@ public class EventParticipantService {
     }
 
     public void modifier(EventParticipants participant) {
-        String sql = "UPDATE eventparticipants SET is_attending = ?, participation_date = ? WHERE participant_id = ?";
+        String sql = "UPDATE event_participants SET , participation_date = ? WHERE participant_id = ?";
 
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
-            statement.setBoolean(1, participant.isAttending());
             statement.setTimestamp(2, new java.sql.Timestamp(participant.getParticipationDate().getTime()));
             statement.setInt(3, participant.getParticipantId());
             statement.executeUpdate();
@@ -52,7 +49,7 @@ public class EventParticipantService {
     }
 
     public void supprimer(EventParticipants participant) {
-        String sql = "DELETE FROM eventparticipants WHERE participant_id = ?";
+        String sql = "DELETE FROM event_participants WHERE participant_id = ?";
 
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
@@ -66,7 +63,7 @@ public class EventParticipantService {
 
     public List<EventParticipants> display() {
         List<EventParticipants> participants = new ArrayList<>();
-        String sql = "SELECT * FROM eventparticipants";
+        String sql = "SELECT * FROM event_participants";
 
         try {
             Statement statement = this.cnx.createStatement();
@@ -77,7 +74,6 @@ public class EventParticipantService {
                 participant.setParticipantId(rs.getInt("participant_id"));
                 participant.setUserId(rs.getInt("user_id"));
                 participant.setEventId(rs.getInt("event_id"));
-                participant.setAttending(rs.getBoolean("is_attending"));
                 participant.setParticipationDate(rs.getTimestamp("participation_date"));
                 participants.add(participant);
             }

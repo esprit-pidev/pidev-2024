@@ -9,10 +9,10 @@ import tn.esprit.services.eventsServices.EventService;
 
 public class Main {
     public static void main(String[] args) {
-        EventComments eventComments1 = new EventComments(1, 4, "bingo4");
-        EventCommentService eventCommentService = new EventCommentService();
-        eventComments1.setCommentId(3);
-        System.out.println(eventCommentService.display());
+        Events event = new Events();
+        event.setEventId(4);
+        EventService eventService = new EventService();
+        eventService.supprimer(event);
 
     }
 }

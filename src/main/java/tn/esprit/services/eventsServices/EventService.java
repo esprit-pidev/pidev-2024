@@ -18,13 +18,13 @@ import tn.esprit.tools.MyDB;
 
         public void ajouter(Events event) {
             String sql = "INSERT INTO events (admin_id, event_name, description, event_date, created_at,event_photo) VALUES (?, ?, ?, ?, NOW(),?)";
-            long millis=System.currentTimeMillis();
+
             try {
                 PreparedStatement statement = this.cnx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 statement.setInt(1, event.getAdminId());
                 statement.setString(2, event.getEventName());
                 statement.setString(3, event.getDescription());
-                statement.setDate(4, new java.sql.Date(millis));
+                statement.setDate(4, event.getEventDate());
                 statement.setString(5,event.getPhoto());
                 statement.executeUpdate();
                 ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -37,16 +37,15 @@ import tn.esprit.tools.MyDB;
             }
         }
 
-        public void modifier(Events event) {
-            String sql = "UPDATE events SET admin_id = ?, event_name = ?, description = ?, event_date = ? WHERE id = ?";
-            long millis=System.currentTimeMillis();
+        public void modifier(Events event,int id) {
+            String sql = "UPDATE events SET  event_name = ?, description = ?, event_date = ? ,event_photo=?  WHERE id = ?";
             try {
                 PreparedStatement statement = this.cnx.prepareStatement(sql);
-                statement.setInt(1, event.getAdminId());
-                statement.setString(2, event.getEventName());
-                statement.setString(3, event.getDescription());
-                statement.setDate(4, new java.sql.Date(millis));
-                statement.setInt(5, event.getEventId());
+                statement.setString(1, event.getEventName());
+                statement.setString(2, event.getDescription());
+                statement.setDate(3, event.getEventDate());
+                statement.setString(4,event.getPhoto());
+                statement.setInt(5, id);
                 statement.executeUpdate();
                 System.out.println("Event Updated!");
             } catch (SQLException var4) {
@@ -67,12 +66,38 @@ import tn.esprit.tools.MyDB;
             }
         }
 
-        public List<Events> display() {
+        public List<Events> display(String filterOption) {
             List<Events> events = new ArrayList<>();
-            String sql = "SELECT * FROM events";
+            String sql = "SELECT * FROM events ";
 
             try {
-                Statement statement = this.cnx.createStatement();
+                PreparedStatement statement = this.cnx.prepareStatement(sql);
+
+                ResultSet rs = statement.executeQuery(sql);
+
+                while (rs.next()) {
+                    Events event = new Events();
+                    event.setEventId(rs.getInt("id"));
+                    event.setAdminId(rs.getInt("admin_id"));
+                    event.setEventName(rs.getString("event_name"));
+                    event.setDescription(rs.getString("description"));
+                    event.setEventDate(rs.getDate("event_date"));
+                    event.setCreatedAt(rs.getDate("created_at"));
+                    event.setPhoto(rs.getString("event_photo"));
+                    events.add(event);
+                }
+            } catch (SQLException var6) {
+                System.out.println(var6.getMessage());
+            }
+            return events;
+        }
+        public List<Events> display() {
+            List<Events> events = new ArrayList<>();
+            String sql = "SELECT * FROM events ";
+
+            try {
+                PreparedStatement statement = this.cnx.prepareStatement(sql);
+
                 ResultSet rs = statement.executeQuery(sql);
 
                 while (rs.next()) {
