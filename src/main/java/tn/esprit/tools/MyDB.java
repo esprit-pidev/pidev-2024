@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 public class MyDB {
 
-    public static final String url = "jdbc:mysql://localhost:3306/pidev1";
+    public static final String url = "jdbc:mysql://localhost:3306/pidev";
     public static final String user = "root";
     public static final String pwd = "";
     private Connection cnx;
@@ -12,7 +12,7 @@ public class MyDB {
 
     private MyDB() {
         try {
-            this.cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev1", "root", "");
+            this.cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev", "root", "");
             System.out.println("connexion etablie !!");
         } catch (SQLException var2) {
             System.out.println(var2.getMessage());
