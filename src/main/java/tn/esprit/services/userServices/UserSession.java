@@ -4,7 +4,7 @@ public class UserSession {
     public static UserSession CURRENT_USER;
     private static AuthResponseDTO user_LoggedIn;
 
-    private UserSession(AuthResponseDTO user_LoggedIn ) {
+    public UserSession(AuthResponseDTO user_LoggedIn ) {
         this.user_LoggedIn = user_LoggedIn;
     }
 
