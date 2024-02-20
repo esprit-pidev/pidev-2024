@@ -251,7 +251,7 @@ public class SignUpController {
             try {
                 String uniqueFileName = UUID.randomUUID().toString()+ file.getName();
 
-                File destDir = new File("C:\\xampp\\htdocs");
+                File destDir = new File("C:\\xampp\\htdocs\\img");
 
                 File destFile = new File(destDir, uniqueFileName);
 
@@ -291,7 +291,7 @@ public class SignUpController {
             try {
                 String uniqueFileName = UUID.randomUUID().toString()+ file.getName();
 
-                File destDir = new File("C:\\xampp\\htdocs");
+                File destDir = new File("C:\\xampp\\htdocs\\img");
 
                 File destFile = new File(destDir, uniqueFileName);
 
