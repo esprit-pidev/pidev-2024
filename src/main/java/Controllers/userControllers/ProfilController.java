@@ -26,11 +26,11 @@ public class ProfilController {
         String photoFileName="";
         if (userLoggedIn.getRole().equals(RoleName.STUDENT)) {
             Etudiant etudiant =(Etudiant) userService.getById(userLoggedIn.getId());
-            photoFileName = "C:\\xampp\\htdocs\\"+etudiant.getProfil_picture(); // Adjust path and name accordingly
+            photoFileName = "C:\\xampp\\htdocs\\img\\"+etudiant.getProfil_picture(); // Adjust path and name accordingly
         }
         if (userLoggedIn.getRole().equals(RoleName.TEACHER)) {
             Enseignant enseignant =(Enseignant) userService.getById(userLoggedIn.getId());
-            photoFileName = "C:\\xampp\\htdocs\\"+enseignant.getProfil_picture(); // Adjust path and name accordingly
+            photoFileName = "C:\\xampp\\htdocs\\img\\"+enseignant.getProfil_picture(); // Adjust path and name accordingly
         }
 
         loadImage(photoFileName);
