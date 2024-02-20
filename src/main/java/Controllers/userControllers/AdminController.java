@@ -68,6 +68,7 @@ public class AdminController {
     private void setupEtudiantTable() {
 
         TableColumn<User, Void> actionCol = new TableColumn<>("Action");
+        actionCol.setMinWidth(200);
         actionCol.setCellFactory(param -> new TableCell<>() {
             private final HBox actionBox = new HBox(10);
             private final Button deleteBtn = new Button("Delete");
@@ -141,6 +142,7 @@ public class AdminController {
     private void setupClubTable() {
 
         TableColumn<User, Void> actionCol = new TableColumn<>("Action");
+        actionCol.setMinWidth(200);
         actionCol.setCellFactory(param -> new TableCell<>() {
             private final HBox actionBox = new HBox(10);
             private final Button deleteBtn = new Button("Delete");
@@ -213,6 +215,7 @@ public class AdminController {
     private void setupEnseignantTable() {
 
         TableColumn<User, Void> actionCol = new TableColumn<>("Action");
+        actionCol.setMinWidth(200);
         actionCol.setCellFactory(param -> new TableCell<>() {
             private final HBox actionBox = new HBox(10);
             private final Button deleteBtn = new Button("Delete");
@@ -271,6 +274,7 @@ public class AdminController {
     private void setupEntrepriseTable() {
 
         TableColumn<User, Void> actionCol = new TableColumn<>("Action");
+        actionCol.setMinWidth(200);
         actionCol.setCellFactory(param -> new TableCell<>() {
             private final HBox actionBox = new HBox(10);
             private final Button deleteBtn = new Button("Delete");
