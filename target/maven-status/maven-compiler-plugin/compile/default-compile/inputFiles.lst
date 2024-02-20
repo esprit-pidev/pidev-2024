@@ -1,17 +1,41 @@
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\org\example\Main.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventReactionService.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\Controllers\AfficherEventController.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\entities\events\EventComments.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventParticipantService.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\entities\events\Notifications.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventService.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\Controllers\AjouterEventController.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\tools\MyDB.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventCommentService.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\Controllers\EventController.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\entities\events\EventReactions.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\services\eventsServices\NotificationService.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\entities\events\EventParticipants.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\org\example\MainFX.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\Controllers\UpdateEventController.java
-C:\Users\GAMING\Downloads\demo (2)\pidev-2024\src\main\java\tn\esprit\entities\events\Events.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\tools\MyDB.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\EventControllers\AfficherEventController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\User\Entreprise.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\userControllers\AdminController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\userControllers\EtudiantEditFormController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\EventControllers\UpdateEventController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\userControllers\AddUserFormController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\userControllers\LoginController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\events\EventReactions.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventService.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\services\userServices\IUserService.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\userControllers\EntrepriseEditFormController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\stage\Offre.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\User\ResponsableClub.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\User\Enseignant.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\services\eventsServices\NotificationService.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\services\userServices\AuthResponseDTO.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\EventControllers\EventController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\events\EventParticipants.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\EventControllers\AjouterEventController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\services\userServices\UserSession.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\userControllers\EnseignantEditFormController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\events\Events.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\userControllers\AddUserController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventReactionService.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventCommentService.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\extrascolaire\Inscription.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\events\EventComments.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\events\Notifications.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventParticipantService.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\userControllers\EmailVerificationController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\org\example\MainFX.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\User\User.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\User\Admin.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\userControllers\ProfilController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\Controllers\userControllers\SignUpController.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\User\RoleName.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\org\example\Main.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\services\userServices\UserService.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\tools\MailSender.java
+C:\Users\Yassine\Desktop\Pidev\pidev-2024\src\main\java\tn\esprit\entities\User\Etudiant.java
