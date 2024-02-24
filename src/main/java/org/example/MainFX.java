@@ -22,5 +22,16 @@ public class MainFX extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("bingo");
         primaryStage.show();
+
+
+        FXMLLoader Loader3 = new FXMLLoader(getClass().getResource("/AjouterOffre.fxml"));
+        Parent root3 = Loader3.load();
+        Scene scene3 =new Scene(root3);
+        primaryStage.setScene(scene3);
+        primaryStage.setTitle("Ajouter offre");
+        primaryStage.show();
+
+
+
     }
 }

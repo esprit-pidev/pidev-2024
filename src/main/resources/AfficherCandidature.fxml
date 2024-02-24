@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherCandidatureController">
+    <children>
+        <TableView fx:id="candidatureTV" layoutX="56.0" layoutY="32.0" prefHeight="307.0" prefWidth="487.0">
+
+            <columns>
+
+                <TableColumn fx:id="competences" prefWidth="75.0" text="Competences" />
+                <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
+                <TableColumn fx:id="status" prefWidth="75.0" text="Status" />
+                <TableColumn fx:id="cv" prefWidth="261.0" text="CV" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
