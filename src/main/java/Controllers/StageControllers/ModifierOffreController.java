@@ -37,7 +37,7 @@ public class ModifierOffreController {
 
     @FXML
     void modify(ActionEvent event) {
-        Offre O = OS.getById(22);
+        Offre O = OS.getById(18);
         O.setTitre(titre.getText());
         O.setCompetences(competences.getText());
         O.setDescription(description.getText());
@@ -48,7 +48,7 @@ public class ModifierOffreController {
 
     @FXML
     void Delete(ActionEvent event) {
-        Offre O = OS.getById(25);
+        Offre O = OS.getById(18);
         O.setId(Integer.parseInt(id.getText()));
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Êtes-vous sûr de vouloir supprimer cette offre de stage ?", ButtonType.YES, ButtonType.NO);
         confirmation.showAndWait();

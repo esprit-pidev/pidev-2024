@@ -85,11 +85,11 @@ public class CandidatureService {
 
     }
 
-    public Candidature setCandidature(int offre_id) {
+    public Candidature setCandidature(int id) {
         try{
-            String sql= "select * from offre where offre_id = ?";
+            String sql= "select * from offre where id = ?";
             PreparedStatement ps = cnx.prepareStatement(sql);
-            ps.setInt(1,offre_id);
+            ps.setInt(1,id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Candidature C=new Candidature();
@@ -177,8 +177,6 @@ public class CandidatureService {
         }catch (SQLException ex){
             System.out.println("erreur:"+ex.getMessage());
         }
-
-
         return CandidatureList;
 
     }

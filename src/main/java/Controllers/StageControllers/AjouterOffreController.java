@@ -34,7 +34,7 @@ public class AjouterOffreController {
 
     @FXML
     void add(ActionEvent event) throws IOException {
-        OS.ajouter(new Offre(3,titre.getText(),
+        OS.ajouter(new Offre(2,titre.getText(),
                 description.getText(),
                 competences.getText(),
                 (Integer.parseInt(nbr.getText())),new Date()));
@@ -81,19 +81,5 @@ public class AjouterOffreController {
 
 
     }
-        /*FXMLLoader loader= new FXMLLoader(getClass().getResource("/AfficherOffre.fxml"));
-        Parent root = loader.load();
-        AfficherOffreController AC = loader.getController();
-        AC.setId(id);
-        AC.setEntreprise_id(entreprise_id);
-        AC.setTitre(titre);
-        AC.setDescription(description);
-        AC.setCompetences(competences);
-        AC.setCv(cv);
-        AC.setList(OS.afficher().toString());
-         */
-
-
-
 
 }

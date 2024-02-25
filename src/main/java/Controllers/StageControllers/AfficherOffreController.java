@@ -1,5 +1,11 @@
 package Controllers.StageControllers;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import tn.esprit.entities.stage.Offre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import tn.esprit.services.stageServices.OffreService;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -64,6 +71,24 @@ public class AfficherOffreController {
 
             // Afficher les détails de la première offre dans la liste
             afficherDetails(offres.get(0));
+        }
+    }
+    @FXML
+    void naviguezVersModifier(ActionEvent event) {
+        try {
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/ModifierOffre.fxml"));
+            Parent root1 = loader1.load();
+
+            // Passer des données à AfficherOffreController si nécessaire
+            ModifierOffreController AO = loader1.getController();
+            // controller.setXXX(); // Définir les données à afficher
+
+            Scene scene = new Scene(root1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
     }
 
