@@ -7,7 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -45,7 +48,7 @@ public class AjouterEventController implements Initializable {
     private EventService eventService = new EventService();
 
 
-    public void uploadImg(javafx.event.ActionEvent event) {
+    public void uploadImg(ActionEvent event) {
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {
             // Define the destination directory
@@ -95,7 +98,8 @@ public class AjouterEventController implements Initializable {
                 Parent root;
                 try {
                     root = loader.load();
-                    UpdateEventController controller = loader.getController();
+                    UpdateEventController controller;
+                    controller = loader.getController();
                     controller.setEventToBeUpdated(eventt);
                     ((Scene) update.getScene()).setRoot(root);
 
@@ -113,19 +117,23 @@ public class AjouterEventController implements Initializable {
         eventService.supprimer(eventt);
         displayEvents();
     }
-   // private void updateEvent(ActionEvent e, Events eventt) {}
 
+    public void addEventt(ActionEvent event) {
+        java.sql.Date sqlDate = java.sql.Date.valueOf(datePicker.getValue());
+        System.out.println(sqlDate);
+        System.out.println("worked");
+        eventService.ajouter(new Events(1,name.getText(),description.getText(),sqlDate,imgName));
+        displayEvents();
 
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        addEvent.setOnAction(event -> {
-            java.sql.Date sqlDate = java.sql.Date.valueOf(datePicker.getValue());
-            System.out.println(sqlDate);
-            eventService.ajouter(new Events(1,name.getText(),description.getText(),sqlDate,imgName));
-
-        });
+        addEvent.setOnAction(this::addEventt);
         eventsContainer.setSpacing(10);
         displayEvents();
 
     }
+
+
+
 }

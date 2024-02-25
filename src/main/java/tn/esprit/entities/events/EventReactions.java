@@ -11,11 +11,10 @@ public class EventReactions {
         private Date createdAt;
 
         public EventReactions( int userId, int eventId, String reactionType) {
-            this.reactionId = reactionId;
             this.userId = userId;
             this.eventId = eventId;
             this.reactionType = reactionType;
-            this.createdAt = createdAt;
+
         }
 
         public EventReactions() {

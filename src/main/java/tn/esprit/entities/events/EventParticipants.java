@@ -8,6 +8,7 @@ public class EventParticipants {
         private int participantId;
         private int userId;
         private int eventId;
+        private String participant_name;
         private Date participationDate;
 
         public EventParticipants( int userId, int eventId) {
@@ -18,6 +19,14 @@ public class EventParticipants {
 
     public EventParticipants() {
 
+    }
+
+    public String getParticipant_name() {
+        return participant_name;
+    }
+
+    public void setParticipant_name(String participant_name) {
+        this.participant_name = participant_name;
     }
 
     public int getParticipantId() {
@@ -54,12 +63,15 @@ public class EventParticipants {
             this.participationDate = participationDate;
         }
 
-        @Override
-        public String toString() {
-            return "EventParticipant{" +
-                    ", participationDate=" + participationDate +
-                    '}';
-        }
+    @Override
+    public String toString() {
+        return "EventParticipants{" +
+                "userId=" + userId +
+                ", eventId=" + eventId +
+                ", participant_name='" + participant_name + '\'' +
+                ", participationDate=" + participationDate +
+                '}';
     }
+}
 
 

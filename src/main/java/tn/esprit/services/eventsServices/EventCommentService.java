@@ -1,11 +1,12 @@
 package tn.esprit.services.eventsServices;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import tn.esprit.entities.events.EventComments;
 import tn.esprit.entities.events.Events;
 import tn.esprit.tools.MyDB;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventCommentService {
     Connection cnx = MyDB.getInstance().getCnx();

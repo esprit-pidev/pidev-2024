@@ -1,14 +1,11 @@
 package tn.esprit.services.eventsServices;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import tn.esprit.entities.events.EventParticipants;
 import tn.esprit.tools.MyDB;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventParticipantService {
     Connection cnx = MyDB.getInstance().getCnx();
@@ -17,12 +14,16 @@ public class EventParticipantService {
     }
 
     public void ajouter(EventParticipants participant) {
-        String sql = "INSERT INTO event_participants (user_id, event_id) VALUES (?, ? )";
+        String sql = "INSERT INTO event_participants (user_id, event_id, name_participant) VALUES (?, ?, ?)";
 
         try {
+            // Retrieve the name of the participant from the users table based on user_id
+            String nameParticipant = getNameParticipant(participant.getUserId());
+
             PreparedStatement statement = this.cnx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, participant.getUserId());
             statement.setInt(2, participant.getEventId());
+            statement.setString(3, nameParticipant);
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
@@ -34,12 +35,26 @@ public class EventParticipantService {
         }
     }
 
+    private String getNameParticipant(int userId) throws SQLException {
+        String sql = "SELECT nom FROM user WHERE id = ?";
+        try (PreparedStatement statement = this.cnx.prepareStatement(sql)) {
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getString("nom");
+            } else {
+                return null;
+            }
+        }
+    }
+
+
     public void modifier(EventParticipants participant) {
         String sql = "UPDATE event_participants SET , participation_date = ? WHERE participant_id = ?";
 
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
-            statement.setTimestamp(2, new java.sql.Timestamp(participant.getParticipationDate().getTime()));
+            statement.setTimestamp(2, new Timestamp(participant.getParticipationDate().getTime()));
             statement.setInt(3, participant.getParticipantId());
             statement.executeUpdate();
             System.out.println("Participant updated!");
@@ -75,6 +90,8 @@ public class EventParticipantService {
                 participant.setUserId(rs.getInt("user_id"));
                 participant.setEventId(rs.getInt("event_id"));
                 participant.setParticipationDate(rs.getTimestamp("participation_date"));
+                participant.setParticipant_name(rs.getString("name_participant"));
+
                 participants.add(participant);
             }
         } catch (SQLException var6) {
