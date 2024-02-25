@@ -1,14 +1,11 @@
 package tn.esprit.services.eventsServices;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import tn.esprit.entities.events.EventReactions;
 import tn.esprit.tools.MyDB;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 public class EventReactionService {
     Connection cnx = MyDB.getInstance().getCnx();
 

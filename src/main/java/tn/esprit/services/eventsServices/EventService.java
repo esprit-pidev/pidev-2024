@@ -1,17 +1,15 @@
 package tn.esprit.services.eventsServices;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import tn.esprit.entities.events.Events;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import tn.esprit.entities.events.Events;
-import tn.esprit.tools.MyDB;
+
     public class EventService {
-        Connection cnx = MyDB.getInstance().getCnx();
+        Connection cnx = tn.esprit.tools.MyDB.getInstance().getCnx();
+        EventParticipantService eventParticipantService = new EventParticipantService();
 
         public EventService() {
         }
@@ -27,6 +25,7 @@ import tn.esprit.tools.MyDB;
                 statement.setDate(4, event.getEventDate());
                 statement.setString(5,event.getPhoto());
                 statement.executeUpdate();
+
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
                     event.setEventId(generatedKeys.getInt(1));
@@ -72,11 +71,11 @@ import tn.esprit.tools.MyDB;
 
             try {
                 PreparedStatement statement = this.cnx.prepareStatement(sql);
-
                 ResultSet rs = statement.executeQuery(sql);
 
                 while (rs.next()) {
                     Events event = new Events();
+
                     event.setEventId(rs.getInt("id"));
                     event.setAdminId(rs.getInt("admin_id"));
                     event.setEventName(rs.getString("event_name"));
@@ -84,6 +83,7 @@ import tn.esprit.tools.MyDB;
                     event.setEventDate(rs.getDate("event_date"));
                     event.setCreatedAt(rs.getDate("created_at"));
                     event.setPhoto(rs.getString("event_photo"));
+                    event.initializeParticipants(eventParticipantService);
                     events.add(event);
                 }
             } catch (SQLException var6) {

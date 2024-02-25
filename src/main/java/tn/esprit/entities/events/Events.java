@@ -1,6 +1,11 @@
 package tn.esprit.entities.events;
 
+import tn.esprit.services.eventsServices.EventParticipantService;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 
 public class Events {
     private int eventId;
@@ -10,22 +15,38 @@ public class Events {
     private java.sql.Date eventDate;
     private Date createdAt;
     private Date updatedAt;
+    private List<EventParticipants> participants = new ArrayList<>();
 
     private String photo;
-
+    EventParticipantService eventParticipantService = new EventParticipantService();
     public Events(int adminId, String eventName, String description, java.sql.Date eventDate, String photo) {
         this.adminId = adminId;
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
         this.photo = photo;
-
     }
 
     public Events(int i, int i1) {
         this.adminId = i;
         this.eventId = i1;
     }
+
+    public List<EventParticipants> getParticipants() {
+        return participants;
+    }
+
+    public void initializeParticipants(EventParticipantService eventParticipantService) {
+        setParticipants( eventParticipantService.display().stream()
+                .filter(eventParticipants -> eventParticipants.getEventId() == this.getEventId())
+                .toList());
+        System.out.println(participants);
+    }
+
+    public void setParticipants(List<EventParticipants> participants) {
+        this.participants = participants;
+    }
+
 
 
     public String getPhoto() {

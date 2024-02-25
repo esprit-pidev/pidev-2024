@@ -1,5 +1,9 @@
 package Controllers.EventControllers;
 
+import tn.esprit.entities.events.EventComments;
+import tn.esprit.entities.events.EventParticipants;
+import tn.esprit.entities.events.EventReactions;
+import tn.esprit.entities.events.Events;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,16 +20,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import tn.esprit.entities.events.EventComments;
-import tn.esprit.entities.events.EventParticipants;
-import tn.esprit.entities.events.EventReactions;
-import tn.esprit.entities.events.Events;
-
 import tn.esprit.services.eventsServices.EventCommentService;
 import tn.esprit.services.eventsServices.EventParticipantService;
 import tn.esprit.services.eventsServices.EventReactionService;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -46,59 +43,14 @@ public class EventController implements Initializable {
 
     @FXML
     private VBox commentDisplay;
-
-
-
-    @FXML
-    private ImageView imgAngry;
-
-    @FXML
-    private ImageView imgCare;
-
-    @FXML
-    private ImageView imgHaha;
-
-    @FXML
-    private ImageView imgLike;
-
-    @FXML
-    private ImageView imgLove;
-
     @FXML
     private ImageView imgPost;
-
-    @FXML
-    private ImageView imgProfile;
-
     @FXML
     private ImageView imgReaction;
-
-    @FXML
-    private ImageView imgSad;
-
-    @FXML
-    private ImageView imgWow;
-
-    @FXML
-    private HBox likeContainer;
-
-    @FXML
-    private Label nbComments;
-
     @FXML
     private Label nbReactions;
-
-    @FXML
-    private Label nbShares;
-
-    @FXML
-    private Label reactionName;
-
     @FXML
     private HBox reactionsContainer;
-
-
-
     @FXML
     Button participation;
     private long startTime = 0;
@@ -109,13 +61,19 @@ public class EventController implements Initializable {
     EventParticipantService eventParticipantService = new EventParticipantService();
     private Events eventt ;
     EventParticipants participant;
-    private int userId = 1;
-
-    public EventController() {
-    }
+    EventReactions eventReactions;
+    private int userId ;
 
     public void setEventt(Events eventt) {
         this.eventt = eventt;
+    }
+
+    public void setEventReactions(EventReactions eventReactions) {
+        this.eventReactions = eventReactions;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     @FXML
@@ -193,6 +151,8 @@ public class EventController implements Initializable {
             if (currentUserReactionEqualsPressed) {
                 // Perform action to delete the user's reaction
                 eventReactionService.supprimer(new EventReactions(userId, eventt.getEventId(), reactionType));
+                Image imageSad = new Image("/img/ic_like_outline.png");
+                imgReaction.setImage(imageSad);
             } else {
                 // Perform action to modify the user's reaction
                 eventReactionService.modifier(new EventReactions(userId, eventt.getEventId(), reactionType));
@@ -267,27 +227,34 @@ public class EventController implements Initializable {
     private void removeComment(ActionEvent e, EventComments comment) {
         eventCommentService.supprimer(comment);
         commentDisplay.getChildren().clear();
+        participation.setText("Attend");
         displayComments();
 
     }
-    private void removeParticipant(ActionEvent event, int userId) {
+    private void removeParticipant(ActionEvent ee, int userId,Events event) {
         EventParticipants  participant = eventParticipantService.display().stream().filter(e->e.getUserId() == userId).findFirst().get();
         eventParticipantService.supprimer(participant);
         participation.setText("Attend");
         participationLogic();
+        event.initializeParticipants(eventParticipantService);
+
+
     }
 
     private void addParticipant(ActionEvent e, int userId, Events event) {
-        eventParticipantService.ajouter(new EventParticipants(userId,event.getEventId()));
+        EventParticipants participant_object = new EventParticipants(userId,event.getEventId());
+        eventParticipantService.ajouter(participant_object);
         participation.setText("Remove");
         participationLogic();
+        event.initializeParticipants(eventParticipantService);
+
     }
     public void participationLogic() {
         isParticiped = eventParticipantService.display().stream()
                 .anyMatch(e -> e.getUserId() == userId && e.getEventId() == eventt.getEventId());
         if (isParticiped) {
             participation.setText("Remove");
-            participation.setOnAction(e -> removeParticipant(e, userId));
+            participation.setOnAction(e -> removeParticipant(e, userId,eventt));
         } else {
             participation.setText("Attend");
             participation.setOnAction(e -> addParticipant(e, userId, eventt));
@@ -297,6 +264,42 @@ public class EventController implements Initializable {
         Image imgEvent = new Image(path+eventt.getPhoto());
             imgPost.setImage(imgEvent);
     }
+    public void initializeReaction(EventReactions eventReactions) {
+
+        if(eventReactions!= null) {
+
+            if (eventReactions.getReactionType().equals("Love")) {
+                Image imageLove = new Image("/img/ic_love_.png");
+                imgReaction.setImage(imageLove);
+            }
+            if (eventReactions.getReactionType().equals("Care")) {
+                Image imageCare = new Image("/img/ic_care.png");
+                imgReaction.setImage(imageCare);
+            }
+            if (eventReactions.getReactionType().equals("haha")) {
+                Image imageHaha = new Image("/img/ic_haha.png");
+                imgReaction.setImage(imageHaha);
+            }
+            if (eventReactions.getReactionType().equals("Wow")) {
+                Image imageWow = new Image("/img/ic_wow.png");
+                imgReaction.setImage(imageWow);
+            }
+            if (eventReactions.getReactionType().equals("Sad")) {
+                Image imageSad = new Image("/img/ic_sad.png");
+                imgReaction.setImage(imageSad);
+            }
+            if (eventReactions.getReactionType().equals("Angry")) {
+                Image imageAngry = new Image("/img/ic_angry.png");
+                imgReaction.setImage(imageAngry);
+            }
+            if (eventReactions.getReactionType().equals("Like")) {
+                Image imageLike = new Image("/img/ic_like.png");
+                imgReaction.setImage(imageLike);
+            }
+        }
+
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -310,6 +313,7 @@ public class EventController implements Initializable {
             affectPhotos();
             title.setText(eventt.getEventName());
             description.setText(eventt.getDescription());
+            initializeReaction(eventReactions);
 
         });
 
