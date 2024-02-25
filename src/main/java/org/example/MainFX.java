@@ -16,19 +16,11 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayEvent.fxml"));
         Parent root = loader.load();
         Scene scene =new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("bingo");
-        primaryStage.show();
-
-
-        FXMLLoader Loader3 = new FXMLLoader(getClass().getResource("/AjouterOffre.fxml"));
-        Parent root3 = Loader3.load();
-        Scene scene3 =new Scene(root3);
-        primaryStage.setScene(scene3);
-        primaryStage.setTitle("Ajouter offre");
         primaryStage.show();
 
 

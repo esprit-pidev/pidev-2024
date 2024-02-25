@@ -1,6 +1,7 @@
 tn\esprit\services\stageServices\CandidatureService.class
 tn\esprit\entities\User\Etudiant.class
 Controllers\userControllers\AddUserFormController.class
+Controllers\EventControllers\ChatController.class
 tn\esprit\entities\User\Admin.class
 tn\esprit\entities\extrascolaire\Inscription.class
 Controllers\userControllers\AdminController$2.class
@@ -14,12 +15,14 @@ Controllers\EventControllers\EventController.class
 tn\esprit\services\userServices\AuthResponseDTO.class
 tn\esprit\services\stageServices\OffreService.class
 Controllers\userControllers\EntrepriseEditFormController.class
+test\Client\ClientThread.class
 Controllers\EventControllers\AjouterEventController.class
 Controllers\userControllers\AdminController$1.class
 Controllers\StageControllers\ModifierOffreController.class
 Controllers\StageControllers\AfficherCandidatureController.class
 Controllers\StageControllers\AjouterOffreController.class
 tn\esprit\entities\User\Enseignant.class
+test\Client\ChatClient.class
 Controllers\StageControllers\SupprimerCandidatureController.class
 tn\esprit\tools\MailSender$1.class
 tn\esprit\services\userServices\UserSession.class
@@ -29,6 +32,7 @@ tn\esprit\entities\User\ResponsableClub.class
 tn\esprit\tools\MailSender.class
 Controllers\userControllers\EnseignantEditFormController.class
 Controllers\userControllers\EtudiantEditFormController.class
+test\server\ChatServer.class
 Controllers\userControllers\AddUserController.class
 Controllers\userControllers\AdminController$3.class
 tn\esprit\entities\stage\Offre.class
