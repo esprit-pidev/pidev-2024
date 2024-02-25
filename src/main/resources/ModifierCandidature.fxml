@@ -26,7 +26,7 @@
       </MenuButton>
         <TextField fx:id="cv" layoutX="397.0" layoutY="160.0" prefHeight="50.0" prefWidth="179.0" promptText="CV" />
         <TextField fx:id="competences" layoutX="56.0" layoutY="160.0" prefHeight="50.0" prefWidth="179.0" promptText="Competences" />
-        <Button layoutX="272.0" layoutY="319.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="90.0" text="Modifier" textFill="#4a1111" />
+        <Button layoutX="190.0" layoutY="317.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="90.0" text="Modifier" textFill="#4a1111" />
         <Button fx:id="uploawd" contentDisplay="TOP" ellipsisString="" layoutX="397.0" layoutY="233.0" mnemonicParsing="false" onAction="#uploadImg" prefHeight="25.0" prefWidth="179.0" text="cliquer pour déposer votre CV" textAlignment="CENTER" textFill="#4a1111" textOverrun="CLIP" underline="true">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
@@ -47,5 +47,6 @@
             <Image url="@img/entre.png" />
          </image>
       </ImageView>
+        <Button layoutX="359.0" layoutY="317.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="25.0" prefWidth="77.0" text="Afficher" textFill="#4a1111" />
     </children>
 </AnchorPane>

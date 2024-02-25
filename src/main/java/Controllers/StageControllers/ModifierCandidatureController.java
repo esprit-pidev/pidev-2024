@@ -1,5 +1,9 @@
 package Controllers.StageControllers;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tn.esprit.entities.stage.Candidature;
@@ -71,7 +75,24 @@ public class ModifierCandidatureController {
             showAlert("Erreur de saisie", "Veuillez saisir un ID valide pour la candidature.");
         }
     }
+    @FXML
+    void naviguezVersAffichage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidature.fxml"));
+            Parent root = loader.load();
 
+            // Passer des données à AfficherCandidatureController si nécessaire
+            AfficherCandidatureController controller = loader.getController();
+            // controller.setXXX(); // Définir les données à afficher
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

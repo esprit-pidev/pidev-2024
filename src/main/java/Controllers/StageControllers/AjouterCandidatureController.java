@@ -1,5 +1,7 @@
 package Controllers.StageControllers;
 
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import tn.esprit.entities.stage.Candidature;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,12 +53,48 @@ public class AjouterCandidatureController {
             System.out.println("No file selected.");
         }
     }
-
     @FXML
-    void Ajouter(ActionEvent event) {
-        SC.ajouter(new Candidature(18, 2, new Date(), "accepter", competences.getText(), cv.getText()));
+    void naviguezVersAffichage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidature.fxml"));
+            Parent root = loader.load();
+
+            // Passer des données à AfficherCandidatureController si nécessaire
+            AfficherCandidatureController controller = loader.getController();
+            // controller.setXXX(); // Définir les données à afficher
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
+    @FXML
+    void naviguezVersModifier(ActionEvent event) {
+        try {
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/ModifierCandidature.fxml"));
+            Parent root1 = loader1.load();
 
+            ModifierCandidatureController AO = loader1.getController();
 
+            Scene scene = new Scene(root1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    @FXML
+    void Ajouter(ActionEvent event) {
+        try {
+            SC.ajouter(new Candidature(35, 2, new Date(), "en cours", competences.getText(), cv.getText()));
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

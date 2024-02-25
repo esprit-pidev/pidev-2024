@@ -1,9 +1,11 @@
 package tn.esprit.entities.stage;
 
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.util.Date;
-import java.util.Objects;
 
 public class Candidature {
     private int id;
@@ -33,65 +35,26 @@ public class Candidature {
         this.cv = cv;
     }
 
+    public StringProperty competencesProperty() {
+        return new SimpleStringProperty(this.competences);
+    }
+
+    public StringProperty cvProperty() {
+        return new SimpleStringProperty(this.cv);
+    }
+
+    public StringProperty statusProperty() {
+        return new SimpleStringProperty(this.status);
+    }
+
+    public IntegerProperty idProperty() {
+        return new SimpleIntegerProperty(this.id);
+    }
+
     public Candidature() {
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public int getOffre_Id() {
-        return offre_id;
-    }
-
-    public int getUser_Id() {
-        return user_id;
-    }
-
-    public Date getDate() {
-        return this.date;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public String getCompetences() {
-        return competences;
-    }
-
-    public String getCv() {
-        return cv;
-    }
-
-    public void setId(int id) {
-        id = id;
-    }
-
-    public void setOffre_Id(int offre_Id) {
-        this.offre_id = offre_Id;
-    }
-
-    public void setUser_Id(int user_Id) {
-        this.user_id = user_Id;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setCompetences(String competences) {
-        this.competences = competences;
-    }
-
-    public void setCv(String cv) {
-        this.cv = cv;
-    }
+    // Getters et setters
 
     @Override
     public String toString() {
@@ -111,4 +74,59 @@ public class Candidature {
         this.cv = cv;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOffre_id() {
+        return offre_id;
+    }
+
+    public void setOffre_id(int offre_id) {
+        this.offre_id = offre_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCompetences() {
+        return competences;
+    }
+
+    public void setCompetences(String competences) {
+        this.competences = competences;
+    }
+
+    public String getCv() {
+        return cv;
+    }
+
+    public void setCv(String cv) {
+        this.cv = cv;
+    }
 }

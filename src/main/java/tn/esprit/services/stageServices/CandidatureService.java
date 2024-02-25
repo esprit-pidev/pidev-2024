@@ -19,8 +19,8 @@ public class CandidatureService {
         String sql = "insert into candidature (offre_id, user_id, date, status, competences, cv) values(?,?,?,?,?,?)";
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
-            statement.setInt(1, C.getOffre_Id());
-            statement.setInt(2, C.getUser_Id());
+            statement.setInt(1, C.getOffre_id());
+            statement.setInt(2, C.getUser_id());
             statement.setDate(3, new java.sql.Date(C.getDate().getTime()));
             statement.setString(4, C.getStatus());
             statement.setString(5, C.getCompetences());
@@ -35,8 +35,8 @@ public class CandidatureService {
         String sql = "update candidature set offre_id=?, user_id=?, date=?, status=?, competences=?, cv=? where id=?";
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
-            statement.setInt(1, C.getOffre_Id());
-            statement.setInt(2, C.getUser_Id());
+            statement.setInt(1, C.getOffre_id());
+            statement.setInt(2, C.getUser_id());
             statement.setDate(3, new java.sql.Date(C.getDate().getTime()));
             statement.setString(4, C.getStatus());
             statement.setString(5, C.getCompetences());
@@ -68,8 +68,8 @@ public class CandidatureService {
             while (rs.next()) {
                 Candidature C = new Candidature();
                 C.setId(rs.getInt("id"));
-                C.setOffre_Id(rs.getInt("offre_id"));
-                C.setUser_Id(rs.getInt("user_id"));
+                C.setOffre_id(rs.getInt("offre_id"));
+                C.setUser_id(rs.getInt("user_id"));
                 C.setDate(rs.getDate("date"));
                 C.setStatus(rs.getString("status"));
                 C.setCompetences(rs.getString("competences"));
@@ -94,8 +94,8 @@ public class CandidatureService {
             while(rs.next()){
                 Candidature C=new Candidature();
                 C.setId(rs.getInt("id"));
-                C.setOffre_Id(rs.getInt("offre_id"));
-                C.setUser_Id(rs.getInt("user_id"));
+                C.setOffre_id(rs.getInt("offre_id"));
+                C.setUser_id(rs.getInt("user_id"));
                 C.setDate(rs.getDate("date"));
                 C.setStatus(rs.getString("status"));
                 C.setCompetences(rs.getString("competences"));

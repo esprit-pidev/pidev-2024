@@ -20,7 +20,6 @@ Controllers\StageControllers\ModifierOffreController.class
 Controllers\StageControllers\AfficherCandidatureController.class
 Controllers\StageControllers\AjouterOffreController.class
 tn\esprit\entities\User\Enseignant.class
-Controllers\StageControllers\SupprimerCandidatureController.class
 tn\esprit\tools\MailSender$1.class
 tn\esprit\services\userServices\UserSession.class
 Controllers\StageControllers\AfficherOffreController.class
