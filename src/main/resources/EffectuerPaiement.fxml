@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.SubScene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="545.0" prefWidth="799.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.EffectuerPaiementController">
+   <children>
+      <!-- Utilisez la balise fx:include pour inclure la sidebar -->
+      <fx:include source="Navbar.fxml" />
+      <SubScene fx:id="sectionright" height="192.0" layoutX="396.0" layoutY="337.0" width="354.0">
+        <root>
+          <Region />
+        </root>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6470588445663452" green="0.16470588743686676" blue="0.16470588743686676" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </SubScene>
+      <AnchorPane layoutY="79.0" prefHeight="472.0" prefWidth="374.0" style="-fx-background-color: #B9b9b9;">
+         <children>
+            <ImageView fitHeight="380.0" fitWidth="322.0" layoutX="24.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@esprit.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="14.0" layoutY="434.0" mnemonicParsing="false" onAction="#Retour" text="Retour">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="116.0" fitWidth="170.0" layoutX="490.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@carte1.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="349.0" layoutY="199.0" prefHeight="26.0" prefWidth="232.0" text="      Inscription pour :" textFill="#231a1a">
+         <font>
+            <Font name="Tahoma Bold" size="20.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="PayerUnMois" layoutX="576.0" layoutY="202.0" mnemonicParsing="false" onAction="#PayerUnMoisSelected" text="1 mois">
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="PayerDeuxMois" layoutX="674.0" layoutY="202.0" mnemonicParsing="false" onAction="#PayerDeuxMoisSelected" text="2 mois">
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+      </RadioButton>
+      <SplitPane layoutX="381.0" layoutY="253.0" prefHeight="55.0" prefWidth="254.0" style="-fx-background-color: #B9B9B9; -fx-background-radius: 15;">
+         <items>
+            <Label fx:id="montantTotalLabel" prefHeight="39.0" prefWidth="244.0" style="-fx-background-color: #B9b9b9;" text="Montant total à payer :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </items>
+      </SplitPane>
+
+            <Label layoutX="408.0" layoutY="386.0" prefHeight="18.0" prefWidth="130.0" text="Le nom du détenteur">
+         <font>
+            <Font name="Tahoma" size="12.0" />
+         </font>
+      </Label>
+      <TextField layoutX="412.0" layoutY="414.0" prefHeight="26.0" prefWidth="137.0" />
+      <Label layoutX="586.0" layoutY="386.0" prefHeight="18.0" prefWidth="130.0" text="Numéro de la carte " />
+      <TextField layoutX="589.0" layoutY="414.0" prefHeight="26.0" prefWidth="138.0" />
+       <Label layoutX="484.0" layoutY="348.0" prefHeight="26.0" prefWidth="204.0" style="-fx-font-family: serif; -fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #a52a2a;" text="détails de la carte" textFill="BROWN">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="mois" layoutX="547.0" layoutY="478.0" prefHeight="26.0" prefWidth="58.0" />
+      <ChoiceBox fx:id="annee" layoutX="674.0" layoutY="478.0" prefHeight="26.0" prefWidth="58.0" />
+      <ChoiceBox fx:id="jour" layoutX="425.0" layoutY="478.0" prefHeight="26.0" prefWidth="52.0" />
+      <Button fx:id="paiement" layoutX="681.0" layoutY="259.0" mnemonicParsing="false" onAction="#Payer" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #7AA95C;" text="Payer" textFill="WHITE" />
+      <Label layoutX="440.0" layoutY="452.0" text="Jour" />
+      <Label layoutX="564.0" layoutY="452.0" text="Mois" />
+      <Label layoutX="686.0" layoutY="452.0" text="Année" />
+
+   </children>
+</AnchorPane>

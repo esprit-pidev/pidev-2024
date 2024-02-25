@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherPublicationsController">
+   <top>
+       <!-- Utilisez la balise fx:include pour inclure la sidebar -->
+       <fx:include source="Navbar.fxml" />
+       <Label style="-fx-text-fill: black; -fx-font-size: 16px;" text="Votre Fil d'Actualité" />
+   </top>
+    
+
+    <!-- Barre de titre -->
+    <VBox style="-fx-background-color: black;">
+
+        <Label style="-fx-text-fill: black; -fx-font-size: 16px;" text="Votre Fil d'Actualité" />
+    </VBox>
+
+    <!-- Contenu principal -->
+    <center>
+        <ListView fx:id="publicationsListView" prefHeight="405.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black; -fx-padding: 10;" BorderPane.alignment="CENTER" />
+    </center>
+   <bottom>
+      <Button mnemonicParsing="false" onAction="#AjouterPublication" style="-fx-background-color: #7AA95C;" text="Ajouter une publication" textFill="#fffafa" BorderPane.alignment="CENTER" />
+   </bottom>
+
+</BorderPane>

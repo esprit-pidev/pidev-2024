@@ -1,0 +1,25 @@
+
+/* Style pour le conteneur de la barre de navigation */
+.navbar-container {
+    -fx-background-color: #B22222; /* Couleur de fond gris pour toute la barre de navigation */
+}
+
+/* Style pour la barre de navigation */
+.navbar-title {
+    -fx-graphic: url('logo.jpg');
+    -fx-padding: 0 10 0 10;
+}
+
+
+.navbar-button {
+    -fx-text-fill: #FFFFFF ;
+    -fx-font-size: 14px;
+    -fx-padding: 0 10 0 10;
+    -fx-background-color: transparent;
+
+}
+
+.navbar-button:hover {
+    -fx-background-color: #696969; /* Couleur de fond au survol */
+}
+

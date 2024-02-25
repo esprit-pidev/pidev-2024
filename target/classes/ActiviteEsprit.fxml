@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="583.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ActiviteEspritController">
+   <children>
+       <!-- Utilisez la balise fx:include pour inclure la sidebar -->
+       <fx:include source="Navbar.fxml" />
+      <ScrollBar layoutX="788.0" layoutY="194.0" orientation="VERTICAL" prefHeight="386.0" prefWidth="9.0" />
+      <HBox layoutY="79.0" prefHeight="119.0" prefWidth="802.0" style="-fx-background-radius: 25; -fx-background-color: #DCDCDC;">
+         <children>
+            <VBox prefHeight="113.0" prefWidth="426.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="1.0" prefHeight="107.0" prefWidth="367.0" text="           Activités offertes par &#10;          Esprit " textAlignment="CENTER" textFill="#9e0b0b">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <ImageView fitHeight="116.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@act1.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox layoutX="14.0" layoutY="211.0" prefHeight="223.0" prefWidth="770.0">
+         <children>
+            <VBox prefHeight="120.0" prefWidth="248.0">
+               <children>
+                  <ImageView fitHeight="166.0" fitWidth="264.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@sport.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </ImageView>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutY="4.0" lineSpacing="1.0" text="Salle de sport" textFill="#67798c">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="161.0" layoutY="24.0" mnemonicParsing="false" onAction="#NaviguerVersInscription" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #7AA95C;" text="S'inscrire" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <VBox prefHeight="211.0" prefWidth="250.0">
+               <children>
+                  <ImageView fitHeight="176.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@piscine.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane prefHeight="58.0" prefWidth="250.0">
+                     <children>
+                        <Button layoutX="175.0" layoutY="21.0" mnemonicParsing="false" onAction="#NaviguerVersInscription" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #7AA95C;" text="S'inscrire" textFill="WHITE" />
+                        <Label layoutX="14.0" layoutY="6.0" textFill="#67798c">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="6.0" lineSpacing="1.0" text="Piscine" textFill="#67798c">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <HBox prefHeight="164.0" prefWidth="270.0">
+               <children>
+                  <ImageView fitHeight="167.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@co.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <AnchorPane layoutX="513.0" layoutY="378.0" prefHeight="66.0" prefWidth="257.0">
+         <children>
+            <Label layoutX="20.0" layoutY="4.0" lineSpacing="1.0" text="Co-working" textFill="#67798c">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="169.0" layoutY="24.0" mnemonicParsing="false" onAction="#NaviguerVersInscription" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #7AA95C;" text="S'inscrire" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="33.0" layoutY="532.0" mnemonicParsing="false" onAction="#Retour" style="-fx-background-color: #DCDCDC;" text="Retour" />
+   </children>
+</AnchorPane>
