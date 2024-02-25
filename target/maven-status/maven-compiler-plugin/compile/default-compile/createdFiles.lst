@@ -1,0 +1,7 @@
+controllers\ModifierNomController.class
+controllers\ContainerProjectController.class
+controllers\ModifierClasseController.class
+controllers\ModifierProjetController.class
+controllers\AppBarController.class
+controllers\AfficherProjetController.class
+controllers\GerermembresController.class
