@@ -43,7 +43,6 @@ public class AfficherOffreController {
     @FXML
     public void initialize() {
         List<Offre> offres = OS.afficher(); // Récupérer la liste des offres à partir du service
-
         if (offres.isEmpty()) {
             // Afficher un message si la liste est vide
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -57,7 +56,6 @@ public class AfficherOffreController {
             for (Offre offre : offres) {
                 items.add(offre.getTitre());
             }
-
             // Afficher les titres des offres dans la ListView
             offresListView.setItems(items);
 
@@ -68,7 +66,6 @@ public class AfficherOffreController {
                     afficherDetails(offres.get(selectedIndex));
                 }
             });
-
             // Afficher les détails de la première offre dans la liste
             afficherDetails(offres.get(0));
         }
