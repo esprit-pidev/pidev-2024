@@ -1,5 +1,6 @@
 package tn.esprit.services.extrascolaireService;
 
+import tn.esprit.entities.User.User;
 import tn.esprit.entities.extrascolaire.Inscription;
 import tn.esprit.tools.MyDB;
 
@@ -76,7 +77,7 @@ public class InscriptionService {
             if (rs.next()) {
                 Inscription inscription = new Inscription();
                 inscription.setId(rs.getInt("id"));
-                inscription.setEtudiant_id(rs.getInt("etudiant_id"));
+                inscription.setEtudiant_id( rs.getInt("etudiant_id"));
                 inscription.setActivite_id(rs.getInt("activite_id"));
                 inscription.setDate(rs.getDate("date"));
                 inscription.setNom(rs.getString("nom"));

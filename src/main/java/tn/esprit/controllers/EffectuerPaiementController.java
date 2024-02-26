@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import tn.esprit.entities.User.User;
 import tn.esprit.entities.extrascolaire.Inscription;
 import tn.esprit.entities.extrascolaire.Paiement;
 import tn.esprit.services.extrascolaireService.InscriptionService;
@@ -23,6 +24,14 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class EffectuerPaiementController implements Initializable {
+    @FXML
+    private Button buttonActivite1;
+
+    @FXML
+    private Button buttonActivite2;
+
+    @FXML
+    private Button buttonActivite3;
     @FXML
     private DatePicker datePicker;
 
@@ -64,6 +73,13 @@ public class EffectuerPaiementController implements Initializable {
 
     @FXML
     private TextField telTF;
+    private int activiteId;
+
+
+     public void setActiviteId(int activiteID) {
+        this.activiteId = activiteID;
+
+    }
     public void setEmailTF(TextField emailTF) {
         this.emailTF = emailTF;
     }
@@ -86,6 +102,9 @@ public class EffectuerPaiementController implements Initializable {
         try {
             // Récupérer l'ID de l'utilisateur existant (remplacez cela par l'ID réel)
             int existingUserId = 1;
+            // Utiliser l'ID de l'activité déjà passé à cette interface
+            int activiteId = this.activiteId;
+
 
             // Récupérer les valeurs des champs du formulaire
             String email = emailTF.getText();
@@ -99,8 +118,8 @@ public class EffectuerPaiementController implements Initializable {
             nouvelleInscription.setNom(nom);
             nouvelleInscription.setPrenom(prenom);
             nouvelleInscription.setNum_tel(tel);
-            nouvelleInscription.setEtudiant_id(existingUserId);  // Utilisez l'ID de l'utilisateur existant
-            nouvelleInscription.setActivite_id(1);
+            nouvelleInscription.setEtudiant_id(existingUserId);
+            nouvelleInscription.setActivite_id(activiteId);
 
             // Appeler la méthode ajouterInscription du service
             InscriptionService inscriptionService = new InscriptionService();

@@ -48,6 +48,21 @@ public class ActiviteService {
         }
         return null;
     }
+    public int obtenirIdActiviteParId(int activiteID) {
+        String requete = "SELECT id FROM activite WHERE id=?";
+        try {
+            pst = conn.prepareStatement(requete);
+            pst.setInt(1, activiteID);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return -1; // Retourne -1 si l'ID de l'activité n'est pas trouvé
+    }
+
 
 
 }

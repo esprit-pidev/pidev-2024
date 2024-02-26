@@ -1,5 +1,7 @@
 package tn.esprit.entities.extrascolaire;
 
+import tn.esprit.entities.User.User;
+
 import java.util.Date;
 
 public class Inscription {
