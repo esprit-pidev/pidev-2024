@@ -19,7 +19,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser;
-
+import javafx.scene.control.Alert;
 
 public class AjouterCandidatureController {
     private final CandidatureService SC =new CandidatureService();
@@ -90,11 +90,25 @@ public class AjouterCandidatureController {
     }
     @FXML
     void Ajouter(ActionEvent event) {
+        if (competences.getText().isEmpty() || cv.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.showAndWait();
+            return; // Sortir de la méthode si un champ est vide
+        }
+
         try {
             SC.ajouter(new Candidature(35, 2, new Date(), "en cours", competences.getText(), cv.getText()));
-        }
-        catch(Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succès");
+            alert.setHeaderText(null);
+            alert.setContentText("L'ajout a été effectué avec succès.");
+            alert.showAndWait();
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
 }

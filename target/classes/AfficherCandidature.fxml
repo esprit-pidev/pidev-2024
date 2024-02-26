@@ -16,8 +16,8 @@
          </image>
       </ImageView>
       <ListView fx:id="candidatureListView" layoutX="26.0" layoutY="184.0" prefHeight="203.0" prefWidth="546.0" />
-      <Label fx:id="competences" layoutX="30.0" layoutY="104.0" prefHeight="17.0" prefWidth="174.0" />
-      <Label fx:id="cv" layoutX="30.0" layoutY="152.0" prefHeight="17.0" prefWidth="174.0" />
+      <Label fx:id="competences" layoutX="30.0" layoutY="104.0" prefHeight="17.0" prefWidth="324.0" />
+      <Label fx:id="cv" layoutX="30.0" layoutY="152.0" prefHeight="17.0" prefWidth="324.0" />
       <Label layoutX="186.0" layoutY="35.0" text="Afficher Candidature " textFill="#d61525">
          <font>
             <Font name="System Bold" size="20.0" />
