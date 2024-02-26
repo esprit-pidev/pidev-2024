@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="614.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherevaluationController">
+   <children>
+      <Button fx:id="ajoutereval" layoutX="30.0" layoutY="47.0" mnemonicParsing="false" onAction="#navigate" prefHeight="26.0" prefWidth="75.0" text="Ajouter" />
+      <Button fx:id="supprimereval" disable="true" layoutX="338.0" layoutY="46.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="75.0" text="Supprimer" />
+      <Button fx:id="modifiereval" disable="true" layoutX="494.0" layoutY="47.0" mnemonicParsing="false" onAction="#navigateToEdit" prefHeight="26.0" prefWidth="75.0" text="Modifier" />
+      <VBox fx:id="vboxList" layoutX="35.0" layoutY="107.0" prefHeight="200.0" prefWidth="529.0" spacing="20.0" />
+      <Button fx:id="AjouterQuestion" layoutX="162.0" layoutY="47.0" mnemonicParsing="false" onAction="#navigatetoajouterQuestion" text="AjouterQuestion" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="68.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EvaluationCardController">
+   <children>
+      <Rectangle fx:id="card" arcHeight="5.0" arcWidth="5.0" fill="#c5d8ea" height="71.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="344.0">
+         <effect>
+            <Lighting diffuseConstant="1.39" specularConstant="1.2" surfaceScale="5.17">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Rectangle>
+      <Label fx:id="titleLabel" layoutX="27.0" layoutY="16.0" textFill="#c73737">
+         <font>
+            <Font name="Monospaced Bold" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
