@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.Instant;
 import java.util.Date;
-
+import javafx.scene.control.Alert;
 public class AjouterOffreController {
     private final OffreService OS= new OffreService();
 
@@ -34,12 +34,29 @@ public class AjouterOffreController {
 
     @FXML
     void add(ActionEvent event) throws IOException {
-        OS.ajouter(new Offre(2,titre.getText(),
+        if (titre.getText().isEmpty() || competences.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir les champs titre et compétences.");
+            alert.showAndWait();
+            return; // Sortir de la méthode si le titre ou les compétences sont vides
+        }
+
+        OS.ajouter(new Offre(2, titre.getText(),
                 description.getText(),
                 competences.getText(),
-                (Integer.parseInt(nbr.getText())),new Date()));
+                Integer.parseInt(nbr.getText()), new Date()));
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Succès");
+        alert.setHeaderText(null);
+        alert.setContentText("L'offre a été ajoutée avec succès !");
+        alert.showAndWait();
     }
+
+
+
 
     @FXML
     void naviguezVersModifier(ActionEvent event) {

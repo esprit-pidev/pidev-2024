@@ -35,7 +35,7 @@ public class AfficherCandidatureController {
     @FXML
     public void initialize() {
         List<Candidature> candidatures = candidatureService.afficher(); // Récupérer la liste des candidatures à partir du service
-
+        candidatureData.clear();
         if (candidatures.isEmpty()) {
             // Afficher un message si la liste est vide
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -54,9 +54,12 @@ public class AfficherCandidatureController {
             });
 
             // Afficher les détails de la première candidature dans la liste
-            afficherDetails(candidatures.get(0));
+            if (candidatures.get(0) != null) {
+                afficherDetails(candidatures.get(0));
+            }
         }
     }
+
     @FXML
     void naviguezVersModifier(ActionEvent event) {
         try {
