@@ -100,7 +100,7 @@ public class AjouterCandidatureController {
         }
 
         try {
-            SC.ajouter(new Candidature(35, 2, new Date(), "en cours", competences.getText(), cv.getText()));
+            SC.ajouter(new Candidature(22, 2, new Date(), "en cours", competences.getText(), cv.getText()));
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succès");
             alert.setHeaderText(null);

@@ -31,6 +31,22 @@ public class CandidatureService {
         }
     }
 
+    /*public void modifier(Candidature C) {
+        String sql = "update candidature set offre_id=?, user_id=?, date=?, status=?, competences=?, cv=? where id=?";
+        try {
+            PreparedStatement statement = this.cnx.prepareStatement(sql);
+            statement.setInt(1, C.getOffre_id());
+            statement.setInt(2, C.getUser_id());
+            statement.setDate(3, new java.sql.Date(C.getDate().getTime()));
+            statement.setString(4, C.getStatus());
+            statement.setString(5, C.getCompetences());
+            statement.setString(6, C.getCv());
+            statement.setInt(7, C.getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }*/
     public void modifier(Candidature C) {
         String sql = "update candidature set offre_id=?, user_id=?, date=?, status=?, competences=?, cv=? where id=?";
         try {

@@ -43,10 +43,20 @@ public class AjouterOffreController {
             return; // Sortir de la méthode si le titre ou les compétences sont vides
         }
 
+        if (OS.existeOffreAvecTitre(titre.getText())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Une offre avec ce titre existe déjà.");
+            alert.showAndWait();
+            return; // Sortir de la méthode si une offre avec le même titre existe déjà
+        }
+
         OS.ajouter(new Offre(2, titre.getText(),
                 description.getText(),
                 competences.getText(),
-                Integer.parseInt(nbr.getText()), new Date()));
+                0, // On utilise 0 pour le nombre d'offres si le champ nbr n'est pas rempli
+                new Date()));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succès");
@@ -54,8 +64,6 @@ public class AjouterOffreController {
         alert.setContentText("L'offre a été ajoutée avec succès !");
         alert.showAndWait();
     }
-
-
 
 
     @FXML

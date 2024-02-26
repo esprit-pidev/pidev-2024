@@ -99,6 +99,4 @@ public class Offre {
                 ", date=" + date +
                 '}';
     }
-
-
 }

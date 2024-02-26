@@ -11,6 +11,16 @@ import java.util.List;
 
 
 public class OffreService {
+    public boolean existeOffreAvecTitre(String titre) {
+        // Ici, vous devriez implémenter la logique pour vérifier si une offre avec le même titre existe déjà dans votre système
+        List<Offre> offres = getAllOffres(); // Supposons que vous avez une méthode pour obtenir toutes les offres
+        for (Offre offre : offres) {
+            if (offre.getTitre().equalsIgnoreCase(titre)) {
+                return true; // Une offre avec le même titre existe déjà
+            }
+        }
+        return false; // Aucune offre avec le même titre n'a été trouvée
+    }
     Connection cnx ;
     public OffreService(){
         cnx = MyDB.getInstance().getCnx();
@@ -151,6 +161,29 @@ public class OffreService {
         return null;
 
     }
+    public List<Offre> getAllOffres() {
+        List<Offre> offres = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM offre";
+            PreparedStatement ps = cnx.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Offre offre = new Offre(rs.getInt("id"),
+                        rs.getInt("entreprise_id"),
+                        rs.getString("titre"),
+                        rs.getString("description"),
+                        rs.getString("competences"),
+                        rs.getInt("nbr"),
+                        rs.getDate("date")
+                );
+                offres.add(offre);
+            }
+        } catch (SQLException ex) {
+            System.out.println("erreur:" + ex.getMessage());
+        }
+        return offres;
+    }
+
 
 
 
