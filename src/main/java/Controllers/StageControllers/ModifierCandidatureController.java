@@ -53,7 +53,6 @@ public class ModifierCandidatureController {
     }
     private Candidature C = new Candidature();
     private final CandidatureService SC = new CandidatureService();
-
     public void setCandidature(Candidature C) {
 
     }
@@ -84,10 +83,8 @@ public class ModifierCandidatureController {
     }*/
    @FXML
    void modifier(ActionEvent event) {
-
            int candidatureId = Integer.valueOf(id.getText());
            Candidature C = SC.getById(candidatureId);
-
                C.setCompetences(competences.getText());
                C.setCv(cv.getText());
                C.setUser_id(2);
@@ -97,8 +94,6 @@ public class ModifierCandidatureController {
                C.setId(Integer.valueOf(id.getText()));
                SC.modifier(C);
                showAlert("Modification réussie", "La candidature a été modifiée avec succès.");
-
-
    }
 
     @FXML

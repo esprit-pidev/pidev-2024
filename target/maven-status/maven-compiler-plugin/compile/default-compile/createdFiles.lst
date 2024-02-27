@@ -12,6 +12,7 @@ Controllers\StageControllers\AjouterCandidatureController.class
 Controllers\userControllers\LoginController.class
 Controllers\EventControllers\EventController.class
 tn\esprit\services\userServices\AuthResponseDTO.class
+Controllers\StageControllers\AfficherCvController.class
 tn\esprit\services\stageServices\OffreService.class
 Controllers\userControllers\EntrepriseEditFormController.class
 Controllers\EventControllers\AjouterEventController.class

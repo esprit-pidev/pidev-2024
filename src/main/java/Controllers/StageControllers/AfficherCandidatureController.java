@@ -34,30 +34,47 @@ public class AfficherCandidatureController {
 
     @FXML
     public void initialize() {
-        List<Candidature> candidatures = candidatureService.afficher(); // Récupérer la liste des candidatures à partir du service
+        List<Candidature> candidatures = candidatureService.afficher();
         candidatureData.clear();
         if (candidatures.isEmpty()) {
-            // Afficher un message si la liste est vide
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Aucune candidature");
             alert.setHeaderText(null);
             alert.setContentText("Il n'y a aucune candidature à afficher.");
             alert.showAndWait();
         } else {
-            // Afficher les candidatures dans la ListView
             candidatureData.addAll(candidatures);
             candidatureListView.setItems(candidatureData);
 
-            // Définir un gestionnaire d'événements pour afficher les détails de la candidature sélectionnée
-            candidatureListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                afficherDetails(newValue);
+            candidatureListView.setOnMouseClicked(event -> {
+                Candidature selectedCandidature = candidatureListView.getSelectionModel().getSelectedItem();
+                if (selectedCandidature != null) {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCv.fxml"));
+                        Parent root = loader.load();
+
+                        AfficherCvController controller = loader.getController();
+                        controller.loadDetails(selectedCandidature.getCv(), selectedCandidature.getCompetences());
+
+                        Scene scene = new Scene(root);
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             });
 
-            // Afficher les détails de la première candidature dans la liste
             if (candidatures.get(0) != null) {
                 afficherDetails(candidatures.get(0));
             }
         }
+    }
+
+    private void afficherDetails(Candidature candidature) {
+        competences.setText("Compétences : " + candidature.getCompetences());
+        cv.setText("CV : " + candidature.getCv());
     }
 
     @FXML
@@ -75,10 +92,5 @@ public class AfficherCandidatureController {
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-    }
-
-    private void afficherDetails(Candidature candidature) {
-        competences.setText("Compétences : " + candidature.getCompetences());
-        cv.setText("CV : " + candidature.getCv());
     }
 }

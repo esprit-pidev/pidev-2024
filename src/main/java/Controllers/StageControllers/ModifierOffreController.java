@@ -37,7 +37,8 @@ public class ModifierOffreController {
 
     @FXML
     void modify(ActionEvent event) {
-        Offre O = OS.getById(17);
+        Offre O = OS.getByEntreprise_id(2);
+        O.setId(Integer.parseInt(id.getText()));
         O.setTitre(titre.getText());
         O.setCompetences(competences.getText());
         O.setDescription(description.getText());
