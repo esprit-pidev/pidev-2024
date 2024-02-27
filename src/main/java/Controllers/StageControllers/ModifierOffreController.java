@@ -35,12 +35,29 @@ public class ModifierOffreController {
 
     private Offre O =new Offre();
 
-    @FXML
+    /*@FXML
     void modify(ActionEvent event) {
         Offre O = OS.getByEntreprise_id(2);
         O.setId(Integer.parseInt(id.getText()));
         O.setTitre(titre.getText());
         O.setCompetences(competences.getText());
+        O.setDescription(description.getText());
+        O.setNbr(Integer.parseInt(nbr.getText()));
+        OS.modifier(O);
+        showAlert("Modification réussie", "L'offre de stage a été modifiée avec succès.");
+    }*/
+    @FXML
+    void modify(ActionEvent event) {
+        String titreText = titre.getText();
+        String competencesText = competences.getText();
+        if (titreText.isEmpty() || competencesText.isEmpty()) {
+            showAlert("Erreur", "Veuillez remplir les champs titre et compétences.");
+            return;
+        }
+        Offre O = OS.getByEntreprise_id(2);
+        O.setId(Integer.parseInt(id.getText()));
+        O.setTitre(titreText);
+        O.setCompetences(competencesText);
         O.setDescription(description.getText());
         O.setNbr(Integer.parseInt(nbr.getText()));
         OS.modifier(O);
