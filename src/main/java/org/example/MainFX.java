@@ -29,13 +29,13 @@ public class MainFX extends Application {
         primaryStage.setScene(scene3);
         primaryStage.setTitle("Ajouter offre");
         primaryStage.show();
-/*
+
         FXMLLoader Loader2 = new FXMLLoader(getClass().getResource("/AjouterCandidature.fxml"));
         Parent root2 = Loader2.load();
         Scene scene2 =new Scene(root2);
         primaryStage.setScene(scene2);
         primaryStage.setTitle("Ajouter Candidature");
         primaryStage.show();
-*/
+
     }
 }

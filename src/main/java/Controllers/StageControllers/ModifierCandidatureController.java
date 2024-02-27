@@ -83,18 +83,30 @@ public class ModifierCandidatureController {
     }*/
    @FXML
    void modifier(ActionEvent event) {
-           int candidatureId = Integer.valueOf(id.getText());
-           Candidature C = SC.getById(candidatureId);
-               C.setCompetences(competences.getText());
-               C.setCv(cv.getText());
-               C.setUser_id(2);
-               C.setOffre_id(22);
-               C.setStatus("en cours");
-               C.setDate(new Date());
-               C.setId(Integer.valueOf(id.getText()));
-               SC.modifier(C);
-               showAlert("Modification réussie", "La candidature a été modifiée avec succès.");
+       int candidatureId = Integer.valueOf(id.getText());
+       Candidature C = SC.getById(candidatureId);
+       if (C != null) {
+           String newCompetences = competences.getText();
+           String newCv = cv.getText();
+           if (newCompetences.isEmpty() || newCv.isEmpty()) {
+               showAlert("Erreur de modification", "Les compétences et le CV sont obligatoires.");
+               return;
+           }
+
+           C.setCompetences(newCompetences);
+           C.setCv(newCv);
+           C.setUser_id(2);
+           C.setOffre_id(22);
+           C.setStatus("en cours");
+           C.setDate(new Date());
+           C.setId(Integer.valueOf(id.getText()));
+           SC.modifier(C);
+           showAlert("Modification réussie", "La candidature a été modifiée avec succès.");
+       } else {
+           showAlert("Erreur de modification", "La candidature n'existe pas.");
+       }
    }
+
 
     @FXML
     void naviguezVersAffichage(ActionEvent event) {
