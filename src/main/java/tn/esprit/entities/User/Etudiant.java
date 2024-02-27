@@ -43,7 +43,7 @@ public class Etudiant extends User{
         this.adresse = adresse;
         this.date_naissance = date_naissance;
     }
-
+    public Etudiant(){}
     public int getNiveau() {
         return niveau;
     }

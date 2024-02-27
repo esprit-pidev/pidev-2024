@@ -1,16 +1,18 @@
 package tn.esprit.entities.project;
+import tn.esprit.entities.User.Etudiant;
 import java.util.Date;
 
 public class ProjectMembers {
     private int id;
+    private Etudiant etudiant;
     private Project project;
-    private boolean is_owner;
+
     private Date joined_at;
 
-    public ProjectMembers(int id, Project project, boolean is_owner, Date joined_at) {
+    public ProjectMembers(int id, Etudiant etudiant ,Project project, Date joined_at) {
         this.id = id;
+        this.etudiant = etudiant;
         this.project= project;
-        this.is_owner= is_owner;
         this.joined_at = joined_at;
     }
 
@@ -35,6 +37,23 @@ public class ProjectMembers {
         this.project = project;
     }
 
+    public Etudiant getEtudiant() {
+        return etudiant;
+    }
+
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
+    }
+
+    public String getEmail(){
+        return etudiant.getEmail();
+    }
+    public void setEmail(Etudiant etudiant) {
+        if (etudiant == null){
+            etudiant = new Etudiant();
+        }
+        this.etudiant = etudiant;
+    }
     public int getIdProject (){
         return project.getId();
     }
@@ -42,13 +61,6 @@ public class ProjectMembers {
         project.setId(idProject);
     }
 
-    public boolean getIsOwner() {
-        return is_owner;
-    }
-
-    public void setIsOwner(boolean is_owner) {
-        this.is_owner = is_owner;
-    }
 
     public Date getJoinedAt() {
         return joined_at;
@@ -64,7 +76,6 @@ public class ProjectMembers {
         return "Project Members{" +
                 "id=" + id +
                 ", project_id=" + project.getId() +
-                ", is_owner='" + is_owner + '\'' +
                 ", joined_at='" + joined_at + '\'' +
                 '}';
     }

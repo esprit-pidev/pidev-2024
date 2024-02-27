@@ -13,21 +13,21 @@ import java.util.List;
 
 public class ProjectMembersService {
     Connection cnx = MyDB.getInstance().getCnx();
+
     public void ajouterMembre(ProjectMembers projectMembers) {
-        String sql = "INSERT INTO project_members (id,project_id,is_owner,joined_at) VALUES (?, ?,??)";
-        long millis=System.currentTimeMillis();
+        String sql = "INSERT INTO project_members (id,project_id,joined_at) VALUES (?, ??)";
+        long millis = System.currentTimeMillis();
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
-            statement.setInt(1, projectMembers.getId());
-            statement.setInt(2, projectMembers.getIdProject());
-            statement.setBoolean(3, projectMembers.getIsOwner());
-            statement.setDate(4, new java.sql.Date(millis));
+            statement.setInt(1, projectMembers.getIdProject());
+            statement.setDate(2, new java.sql.Date(millis));
             statement.executeUpdate();
-            System.out.println("Project Added : " + projectMembers.getId());
+            System.out.println("Member Added : " + projectMembers.getId());
         } catch (SQLException var4) {
             System.out.println(var4.getMessage());
         }
     }
+
     public void modifierMember(ProjectMembers projectMembers) {
         String sql = "UPDATE project_members SET id = ? WHERE  id = ?";
         try {
@@ -69,7 +69,6 @@ public class ProjectMembersService {
                 ProjectMembers projectMembers = new ProjectMembers();
                 projectMembers.setId(rs.getInt("id"));
                 projectMembers.setIdProject(rs.getInt("project_id"));
-                projectMembers.setIsOwner(rs.getBoolean("is_owner"));
                 projectMembers.setJoinedAt(rs.getDate("joined_at"));
 
                 members.add(projectMembers);
@@ -79,5 +78,10 @@ public class ProjectMembersService {
         }
         return members;
     }
+
+
 }
+
+
+
 

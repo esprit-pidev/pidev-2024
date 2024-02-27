@@ -10,7 +10,7 @@
     <children>
         <ImageView fitHeight="61.0" fitWidth="66.0" layoutX="14.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../../Downloads/Capture-removebg-preview.png" />
+                <Image url="@../resources/images/Capture-removebg-preview.png" />
             </image>
         </ImageView>
         <Text accessibleRole="HYPERLINK" fill="WHITE" layoutX="166.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accueil">
@@ -28,10 +28,6 @@
                 <Font name="Book Antiqua" size="18.0" />
             </font>
         </Text>
-      <ImageView fitHeight="61.0" fitWidth="66.0" layoutX="47.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../image/Capture-removebg-preview.png" />
-         </image>
-      </ImageView>
+
     </children>
 </AnchorPane>

@@ -10,7 +10,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static tn.esprit.tools.MyDB.user;
 
 
 public class ProjectService {
@@ -57,17 +56,17 @@ public class ProjectService {
         }
     }
 
-    public void supprimer(Project project) {
-        String sql = "DELETE FROM project WHERE  nom =?";
+    public void supprimer(int id) {
+        String sql = "DELETE FROM project WHERE  id =?";
 
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
-            statement.setString(1, project.getNom());
+            statement.setInt(1, id);
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("Project deleted successfully");
             } else {
-                System.out.println("No project found for project ID: " + project.getId());
+                System.out.println("No project found for project ID: " + id);
             }
         } catch (SQLException var4) {
             System.out.println(var4.getMessage());
@@ -81,12 +80,13 @@ public class ProjectService {
         try {
             Statement statement = this.cnx.createStatement();
             ResultSet rs = statement.executeQuery(sql);
+            cnx.setAutoCommit(true);
 
             while (rs.next()) {
                 Project project = new Project();
                 project.setId(rs.getInt("id"));
                 project.setUser((new User()));
-                project.setIdUser(rs.getInt("teacher_id")); // Définir l'attribut user avec le nouvel objet User
+                project.setIdUser(rs.getInt("teacher_id"));
                 project.setClasse(rs.getString("classe"));
                 project.setMatiere(rs.getString("matiere"));
                 project.setNom(rs.getString("nom"));
@@ -121,7 +121,7 @@ public class ProjectService {
 
     public List<Project> displayProjectsInfo() {
         List<Project> projects = new ArrayList<>();
-        String sql = "SELECT nom, classe, updated_at FROM project";
+        String sql = "SELECT nom, classe, updated_at , id FROM project";
 
         try {
             Statement statement = this.cnx.createStatement();
@@ -132,6 +132,9 @@ public class ProjectService {
                 project.setNom(rs.getString("nom"));
                 project.setClasse(rs.getString("classe"));
                 project.setUpdated_at(rs.getDate("updated_at"));
+                project.setId(rs.getInt(("id")));
+                System.out.println("ID du projet récupéré : " + project.getId());
+
                 projects.add(project);
             }
         } catch (SQLException e) {
@@ -139,6 +142,7 @@ public class ProjectService {
         }
         return projects;
     }
+
 
     public List<Project> getProjectsByClasse(String classe) {
         List<Project> projects = new ArrayList<>();
@@ -151,10 +155,10 @@ public class ProjectService {
 
             while (rs.next()) {
                 Project project = new Project();
-                // Initialiser les détails du projet à partir du ResultSet
                 project.setClasse(rs.getString("classe"));
                 project.setNom(rs.getString("nom"));
                 project.setUpdated_at(rs.getDate("updated_at"));
+                project.setId(rs.getInt("id"));
                 projects.add(project);
             }
         } catch (SQLException e) {
@@ -163,7 +167,41 @@ public class ProjectService {
         return projects;
     }
 
+    public void modifierNomProjet(Project project) {
 
+        String sql = "UPDATE project SET nom = ? WHERE id = ?";
+        try {
+            PreparedStatement statement = this.cnx.prepareStatement(sql);
+            statement.setString(1, project.getNom());
+            statement.setInt(2, project.getId());
 
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Nom du projet mis à jour avec succès !");
+            } else {
+                System.out.println("Aucun projet trouvé avec l'ID : " + project.getId());
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la mise à jour du nom du projet : " + e.getMessage());
+        }
+    }
 
+    public void modifierClasseProjet(Project project) {
+
+        String sql = "UPDATE project SET classe = ? WHERE id = ?";
+        try {
+            PreparedStatement statement = this.cnx.prepareStatement(sql);
+            statement.setString(1, project.getClasse());
+            statement.setInt(2, project.getId());
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Classe mis à jour avec succès !");
+            } else {
+                System.out.println("Aucune classe trouvé avec l'ID : " + project.getId());
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la mise à jour du classe : " + e.getMessage());
+        }
+    }
 }

@@ -1,7 +1,10 @@
-controllers\ModifierNomController.class
-controllers\ContainerProjectController.class
-controllers\ModifierClasseController.class
-controllers\ModifierProjetController.class
-controllers\AppBarController.class
-controllers\AfficherProjetController.class
-controllers\GerermembresController.class
+controllers\enseignant\MembreController.class
+controllers\enseignant\ModifierProjetController.class
+controllers\enseignant\ContainerProjectController.class
+controllers\enseignant\GerermembresController.class
+controllers\enseignant\ModifierinfoController.class
+controllers\etudiant\AfficherTout.class
+controllers\enseignant\AfficherProjetController.class
+controllers\etudiant\AppBarEtController.class
+controllers\enseignant\AjouterProjetController.class
+controllers\enseignant\AppBarController.class
