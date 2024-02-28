@@ -39,4 +39,5 @@ public interface IUserService<T> {
 
     void updateEtudiant(Etudiant etudiant);
 
+    void updateEnseignant(Enseignant enseignant);
 }

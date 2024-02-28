@@ -7,12 +7,12 @@ import tn.esprit.services.eventsServices.EventCommentService;
 import tn.esprit.services.eventsServices.EventReactionService;
 import tn.esprit.services.eventsServices.EventService;
 
+import java.util.prefs.Preferences;
+
 public class Main {
     public static void main(String[] args) {
-        Events event = new Events();
-        event.setEventId(4);
-        EventService eventService = new EventService();
-        eventService.supprimer(event);
+        Preferences prefs = Preferences.userRoot().node("com/myapp");
+        prefs.remove("rememberMeToken");
 
 
 

@@ -225,6 +225,7 @@ public class SignUpController {
             Parent root = loader.load();
             emailTF.getScene().setRoot(root);
             EmailVerificationController emailVerificationController = loader.getController();
+
             Etudiant etudiant = new Etudiant(nomTF.getText(), emailTF.getText(), pwdTF.getText(), Integer.parseInt(niveauTF.getText()), prenomTF.getText(), genreCB.getSelectionModel().getSelectedItem(), cinTF.getText(), classeTF.getText(), uploadedPhotoName, dateNaissanceTF.getValue());
 
             int verifCode = ThreadLocalRandom.current().nextInt(10000, 100000);
@@ -256,10 +257,14 @@ public class SignUpController {
             Parent root = loader.load();
             emailETF.getScene().setRoot(root);
             EmailVerificationController emailVerificationController = loader.getController();
+
             Enseignant enseignant = new Enseignant(nomETF.getText(), emailETF.getText(), pdwETF.getText(), prenomETF.getText(), cinETF.getText(), genreECB.getSelectionModel().getSelectedItem(), dateNaissanceETF.getValue(), uploadedPhotoName);
+
             int verifCode = ThreadLocalRandom.current().nextInt(10000, 100000);
 
-            emailVerificationController.initData(verifCode, enseignant);
+            int id = passwordResetRequestService.Add(new PasswordResetRequest(verifCode, LocalDateTime.now(), LocalDateTime.now().plusMinutes(10),true,null));
+
+            emailVerificationController.initData(id,enseignant);
 
             MailSender.sendEmail(emailETF.getText(), "Vérification Email", "Votre code de vérification est : " + verifCode);
         }

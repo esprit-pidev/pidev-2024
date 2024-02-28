@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import org.mindrot.jbcrypt.BCrypt;
+import tn.esprit.entities.User.RoleName;
 import tn.esprit.services.userServices.AuthResponseDTO;
 import tn.esprit.services.userServices.UserService;
 import tn.esprit.services.userServices.UserSession;
@@ -30,9 +31,17 @@ public class ProfilChangePasswordController {
 
     @FXML
     void cancel(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
-        Parent root = loader.load();
-        pwdNew.getScene().setRoot(root);
+        if (userLoggedIn.getRole().equals(RoleName.STUDENT)) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+            Parent root = loader.load();
+            pwdNew.getScene().setRoot(root);
+        }
+        else if (userLoggedIn.getRole().equals(RoleName.TEACHER)) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileEnseignant.fxml"));
+            Parent root = loader.load();
+            pwdNew.getScene().setRoot(root);
+        }
+
     }
 
     @FXML
@@ -55,9 +64,16 @@ public class ProfilChangePasswordController {
             alert.showAndWait();
         } else {
             userService.changeMotDePasse(pwdNew.getText(),userService.getById(userLoggedIn.getId()));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
-            Parent root = loader.load();
-            pwdNew.getScene().setRoot(root);
+            if (userLoggedIn.getRole().equals(RoleName.STUDENT)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+                Parent root = loader.load();
+                pwdNew.getScene().setRoot(root);
+            }
+            else if (userLoggedIn.getRole().equals(RoleName.TEACHER)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileEnseignant.fxml"));
+                Parent root = loader.load();
+                pwdNew.getScene().setRoot(root);
+            }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("success");
             alert.setContentText("Mot de passe changé !");
