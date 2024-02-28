@@ -430,10 +430,10 @@ public class UserService implements IUserService<User> {
                 }
 
             }
-    } catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    return users;
+        return users;
     }
 
     @Override
@@ -603,6 +603,26 @@ public class UserService implements IUserService<User> {
     }
 
     @Override
+    public void updateEtudiant(Etudiant etudiant) {
+        String req = "update user set nom=? ,prenom=? ,date_naissance=? ,niveau=? ,classe=? ,profil_picture=? where id = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, etudiant.getNom());
+            ps.setString(2, etudiant.getPrenom());
+            ps.setDate(3, Date.valueOf(etudiant.getDate_naissance()));
+            ps.setInt(4, etudiant.getNiveau());
+            ps.setString(5, etudiant.getClasse());
+            ps.setString(6, etudiant.getProfil_picture());
+            ps.setInt(7, etudiant.getId());
+
+            ps.executeUpdate();
+            System.out.println("Etudiant updated !");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void adminUpdateEnseignant(Enseignant enseignant) {
         String req = "update user set nom=? ,prenom=? ,date_naissance=? ,genre=? ,cin=? ,email=? where id = ?";
         try {
@@ -638,6 +658,19 @@ public class UserService implements IUserService<User> {
             System.out.println("Entreprise updated !");
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void changeMotDePasse(String password,User user) {
+        String req= "update user set password=? where id = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, BCrypt.hashpw(password, BCrypt.gensalt()));
+            ps.setInt(2,user.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 

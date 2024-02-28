@@ -14,8 +14,8 @@ public class User {
     }
 
     public User(int id,RoleName role) {
-     this.id=id;
-     this.role=role;
+        this.id=id;
+        this.role=role;
     }
 
     public User(int id, String nom, String email, String password, RoleName role) {
