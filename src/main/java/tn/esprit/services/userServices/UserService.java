@@ -623,6 +623,24 @@ public class UserService implements IUserService<User> {
     }
 
     @Override
+    public void updateEnseignant(Enseignant enseignant) {
+        String req = "update user set nom=? ,prenom=? ,date_naissance=? ,profil_picture=? where id = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, enseignant.getNom());
+            ps.setString(2, enseignant.getPrenom());
+            ps.setDate(3, Date.valueOf(enseignant.getDate_naissance()));
+            ps.setString(4, enseignant.getProfil_picture());
+            ps.setInt(5, enseignant.getId());
+
+            ps.executeUpdate();
+            System.out.println("Enseignant updated !");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void adminUpdateEnseignant(Enseignant enseignant) {
         String req = "update user set nom=? ,prenom=? ,date_naissance=? ,genre=? ,cin=? ,email=? where id = ?";
         try {
