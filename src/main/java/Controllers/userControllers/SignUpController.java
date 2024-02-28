@@ -9,6 +9,8 @@ import javafx.stage.FileChooser;
 import tn.esprit.entities.User.Enseignant;
 import tn.esprit.entities.User.Entreprise;
 import tn.esprit.entities.User.Etudiant;
+import tn.esprit.entities.User.PasswordResetRequest;
+import tn.esprit.services.userServices.PasswordResetRequestService;
 import tn.esprit.services.userServices.UserService;
 import tn.esprit.tools.MailSender;
 
@@ -18,12 +20,18 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SignUpController {
 
     private  final UserService userService = new UserService();
+
+    private final PasswordResetRequestService passwordResetRequestService = new PasswordResetRequestService();
 
 
     private final MailSender mailSender = new MailSender();
@@ -73,6 +81,18 @@ public class SignUpController {
     private TextField localEnTF;
 
     @FXML
+    private Label errorMailETF;
+
+    @FXML
+    private Label errorPwdETF;
+
+    @FXML
+    private Label errorMailEnTF;
+
+    @FXML
+    private Label errorPwdEnTF;
+
+    @FXML
     private TextField niveauTF;
 
     @FXML
@@ -85,7 +105,7 @@ public class SignUpController {
     private TextField nomTF;
 
     @FXML
-    private TextField pdwETF;
+    private PasswordField pdwETF;
 
     @FXML
     private TextField prenomETF;
@@ -94,10 +114,13 @@ public class SignUpController {
     private TextField prenomTF;
 
     @FXML
-    private TextField pwdEnTF;
+    private PasswordField pwdEnTF;
 
     @FXML
-    private TextField pwdTF;
+    private Label errorPwdTF;
+
+    @FXML
+    private PasswordField pwdTF;
 
     @FXML
     private TextField websiteEnTF;
@@ -188,17 +211,27 @@ public class SignUpController {
 
         if (!emailTF.getText().endsWith("@esprit.tn")) {
             errorMail.setText("L'email doit se terminer par @esprit.tn");
-        } else {
+        }
+        else if (userService.getByEmail(emailTF.getText())!=null) {
+            errorMail.setText("L'email est déja utilisé");
+        }
+        else if (pwdTF.getText().length()<8) {
+            errorPwdTF.setText("Longeur minimum 8");
+        }
+        else {
             errorMail.setText("");
+            errorPwdTF.setText("");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/EmailVerification.fxml"));
             Parent root = loader.load();
             emailTF.getScene().setRoot(root);
             EmailVerificationController emailVerificationController = loader.getController();
             Etudiant etudiant = new Etudiant(nomTF.getText(), emailTF.getText(), pwdTF.getText(), Integer.parseInt(niveauTF.getText()), prenomTF.getText(), genreCB.getSelectionModel().getSelectedItem(), cinTF.getText(), classeTF.getText(), uploadedPhotoName, dateNaissanceTF.getValue());
+
             int verifCode = ThreadLocalRandom.current().nextInt(10000, 100000);
 
-            // Pass the data to the EmailVerificationController
-            emailVerificationController.initData(verifCode, etudiant);
+            int id = passwordResetRequestService.Add(new PasswordResetRequest(verifCode, LocalDateTime.now(), LocalDateTime.now().plusMinutes(10),true,null));
+
+            emailVerificationController.initData(id,etudiant);
 
             MailSender.sendEmail(emailTF.getText(), "Vérification Email", "Votre code de vérification est : " + verifCode);
 
@@ -209,8 +242,16 @@ public class SignUpController {
     void AddT(ActionEvent event) throws IOException {
         if (!emailETF.getText().endsWith("@esprit.tn")) {
             errorMailE.setText("L'email doit se terminer par @esprit.tn");
-        } else {
+        }
+        else if (userService.getByEmail(emailETF.getText())!=null) {
+            errorMailE.setText("L'email est déja utilisé");
+        }
+        else if (pdwETF.getText().length()<8) {
+            errorPwdETF.setText("Longeur minimum 8");
+        }
+        else {
             errorMailE.setText("");
+            errorPwdETF.setText("");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/EmailVerification.fxml"));
             Parent root = loader.load();
             emailETF.getScene().setRoot(root);
@@ -226,14 +267,22 @@ public class SignUpController {
 
     @FXML
     void AddE(ActionEvent event) throws IOException {
-        try {
-            userService.add(new Entreprise(nomEnTF.getText(),emailEnTF.getText(),pwdEnTF.getText(),websiteEnTF.getText(),paysEnTF.getText(),localEnTF.getText()));
-        } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage());
+        if (userService.getByEmail(emailEnTF.getText()) != null) {
+            errorMailEnTF.setText("L'email est déja utilisé");
+        } else if (pwdEnTF.getText().length() < 8) {
+            errorPwdEnTF.setText("Longeur minimum 8");
+        } else {
+            errorMailEnTF.setText("");
+            errorPwdEnTF.setText("");
+            try {
+                userService.add(new Entreprise(nomEnTF.getText(), emailEnTF.getText(), pwdEnTF.getText(), websiteEnTF.getText(), paysEnTF.getText(), localEnTF.getText()));
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+            Parent root = loader.load();
+            nomEnTF.getScene().setRoot(root);
         }
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
-        Parent root = loader.load();
-        nomEnTF.getScene().setRoot(root);
     }
 
     @FXML
@@ -278,7 +327,7 @@ public class SignUpController {
 
     @FXML
     void UploadPhotoE(ActionEvent event) {
-       
+
         FileChooser fileChooser = new FileChooser();
 
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image files (*.png, *.jpg, *.jpeg)", "*.png", "*.jpg", "*.jpeg");
@@ -314,4 +363,13 @@ public class SignUpController {
         }
     }
 
+
+    @FXML
+    void goToLogin(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        Parent root = loader.load();
+        nomEnTF.getScene().setRoot(root);
+    }
+
 }
+

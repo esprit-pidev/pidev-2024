@@ -35,5 +35,8 @@ public interface IUserService<T> {
 
     void adminUpdateEntreprise(Entreprise entreprise);
 
+    void changeMotDePasse(String password,User user);
+
+    void updateEtudiant(Etudiant etudiant);
 
 }
