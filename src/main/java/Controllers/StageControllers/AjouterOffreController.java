@@ -31,17 +31,30 @@ public class AjouterOffreController {
 
     @FXML
     private TextField titre;
-
     @FXML
     void add(ActionEvent event) throws IOException {
-        if (titre.getText().isEmpty() || competences.getText().isEmpty()) {
+        if (titre.getText().isEmpty() || competences.getText().isEmpty() || description.getText().isEmpty() || nbr.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez remplir les champs titre et compétences.");
+            alert.setContentText("Veuillez remplir tous les champs.");
             alert.showAndWait();
-            return; // Sortir de la méthode si le titre ou les compétences sont vides
+            return;
         }
+        int nombreOffres;
+        try {
+            nombreOffres = Integer.parseInt(nbr.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Le nombre d'offres doit être un entier.");
+            alert.showAndWait();
+            return; // Sortir de la méthode si le nombre d'offres n'est pas un entier
+        }
+
+        // Remplacer 2 par l'entreprise_id correspondant à l'entreprise
+        int entreprise_id = 2;
 
         if (OS.existeOffreAvecTitre(titre.getText())) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -52,10 +65,9 @@ public class AjouterOffreController {
             return; // Sortir de la méthode si une offre avec le même titre existe déjà
         }
 
-        OS.ajouter(new Offre(2, titre.getText(),
+        OS.ajouter(new Offre(entreprise_id, titre.getText(),
                 description.getText(),
-                competences.getText(),
-                0, // On utilise 0 pour le nombre d'offres si le champ nbr n'est pas rempli
+                competences.getText(), nombreOffres,
                 new Date()));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -64,7 +76,6 @@ public class AjouterOffreController {
         alert.setContentText("L'offre a été ajoutée avec succès !");
         alert.showAndWait();
     }
-
 
     @FXML
     void naviguezVersModifier(ActionEvent event) {
