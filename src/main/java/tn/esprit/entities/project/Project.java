@@ -55,8 +55,12 @@ public class Project {
         this.user = user;
     }
 
-    public int getIdUser (){
-       return user.getId();
+    public int getIdUser() {
+        if (user != null) {
+            return user.getId();
+        } else {
+            return -1; // Ou une autre valeur par défaut appropriée
+        }
     }
 
     public void setIdUser(int userId){

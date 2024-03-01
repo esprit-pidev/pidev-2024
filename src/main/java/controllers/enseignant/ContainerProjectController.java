@@ -77,15 +77,17 @@ public class ContainerProjectController {
                 // Passer l'ID du projet à ModifierinfoController
                 modifierProjetController.setProjectId(project.getId());
 
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
+                // Récupérer le conteneur parent de la fenêtre actuelle
+                Scene scene = nomLabel.getScene();
+                // Remplacer le contenu de ce conteneur par la page ModifierProjet
+                scene.setRoot(root);
             } else {
                 System.out.println("Aucun projet associé à ce conteneur.");
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }    }
+        }
+    }
 }
 
 

@@ -8,25 +8,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.enseignant.GerermembresController">
+<AnchorPane prefHeight="434.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.enseignant.GererMembresController">
     <fx:include fx:id="appBar" source="AppBar.fxml" />
 
    <fx:include fx:id="affmem" source="AppBar.fxml" />
 
-   <Pane layoutX="206.0" layoutY="70.0" prefHeight="315.0" prefWidth="346.0" style="-fx-background-color: B9B9B9; -fx-border-color: #FFFFFF; -fx-background-radius: 20;" />
+   <Pane fx:id="hi" layoutX="201.0" layoutY="85.0" prefHeight="315.0" prefWidth="346.0" style="-fx-background-color: B9B9B9; -fx-background-radius: 20;" />
    <ImageView fx:id="ajmem" fitHeight="30.0" fitWidth="38.0" layoutX="641.0" layoutY="338.0" onMouseClicked="#toajoutermembre" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@../images/106230_add_icon.png" />
+         <Image url="@../images/add-user.png" />
       </image>
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </ImageView>
-   <Text layoutX="580.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter un nouveau membre">
+   <Text fontSmoothingType="LCD" layoutX="580.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter un nouveau membre">
       <font>
          <Font name="Baskerville Old Face" size="14.0" />
       </font>
    </Text>
+   <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="14.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#goback">
+      <image>
+         <Image url="@../images/back-arrow.png" />
+      </image>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </ImageView>
 
 
 </AnchorPane>

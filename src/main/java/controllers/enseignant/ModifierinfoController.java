@@ -2,10 +2,17 @@ package controllers.enseignant;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import tn.esprit.entities.project.Project;
 import tn.esprit.services.projectService.ProjectService;
+
+import java.io.IOException;
 
 public class ModifierinfoController {
   @FXML
@@ -68,4 +75,14 @@ public class ModifierinfoController {
   }
 
 
+  public void goback(MouseEvent event) {
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/project/enseignant/ModifierProjet.fxml"));
+      Parent root = loader.load();
+      Scene scene = ((Node) event.getSource()).getScene();
+      scene.setRoot(root);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 }

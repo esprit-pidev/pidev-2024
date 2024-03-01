@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="85.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.enseignant.GerermembresController">
+<AnchorPane prefHeight="85.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
     <VBox fx:id="affmem" layoutX="14.0" layoutY="16.0" prefHeight="53.0" prefWidth="329.0">
         <children>
             <Label fx:id="mail" text="Label">
@@ -20,7 +20,7 @@
                     <Font name="Baskerville Old Face" size="14.0" />
                 </font>
             </Label>
-            <ImageView fx:id="delmem" fitHeight="24.0" fitWidth="23.0" onMouseClicked="#supprimermembre" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="delmem" fitHeight="24.0" fitWidth="23.0"  pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../images/delete.png" />
                 </image>

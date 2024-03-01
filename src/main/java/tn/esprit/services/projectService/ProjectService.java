@@ -204,4 +204,62 @@ public class ProjectService {
             System.out.println("Erreur lors de la mise à jour du classe : " + e.getMessage());
         }
     }
+    public boolean matiereExists(String nomMatiere) {
+        String query = "SELECT COUNT(*) FROM matiere WHERE nom = ?";
+        try (PreparedStatement statement = cnx.prepareStatement(query)) {
+            statement.setString(1, nomMatiere);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    public boolean projetExists(String nomProjet) {
+        String query = "SELECT COUNT(*) AS count FROM project WHERE nom = ?";
+        try (PreparedStatement statement = cnx.prepareStatement(query)) {
+            statement.setString(1, nomProjet);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt("count");
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    public int recupererIdParNom(String nomProjet) {
+        String query = "SELECT id FROM project WHERE nom = ?";
+        int idProjet = 0;
+
+        try {
+            PreparedStatement statement = this.cnx.prepareStatement(query);
+            statement.setString(1, nomProjet);
+
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                idProjet = rs.getInt("id");
+            } else {
+                System.out.println("Aucun projet trouvé avec le nom : " + nomProjet);
+            }
+            rs.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return idProjet;
+    }
+
+
 }

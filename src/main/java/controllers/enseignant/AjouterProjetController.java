@@ -2,17 +2,17 @@ package controllers.enseignant;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tn.esprit.entities.User.User;
 import tn.esprit.entities.project.Project;
 import tn.esprit.services.projectService.ProjectService;
-
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class AjouterProjetController {
@@ -29,9 +29,8 @@ public class AjouterProjetController {
     @FXML
     private TextField nom;
 
-    private final ProjectService projectService = new ProjectService();
-
-
+    @FXML
+    private TextField textFieldEmail;
 
     @FXML
     void ajouterProjet() {
@@ -39,34 +38,42 @@ public class AjouterProjetController {
         String descriptionProjet = description.getText();
         String classeProjet = classe.getText();
         String matiereProjet = matiere.getText();
+        ProjectService projectService = new ProjectService();
 
         if (nomProjet.isEmpty() || descriptionProjet.isEmpty() || classeProjet.isEmpty() || matiereProjet.isEmpty()) {
             showAlert("Veuillez remplir tous les champs.");
         } else {
-            User user = new User();
-            user.setId(1);
-            Project nouveauProjet = new Project();
-            nouveauProjet.setUser(user);
-            nouveauProjet.setNom(nomProjet);
-            nouveauProjet.setDescription(descriptionProjet);
-            nouveauProjet.setClasse(classeProjet);
-            nouveauProjet.setMatiere(matiereProjet);
-
-            LocalDateTime maintenant = LocalDateTime.now();
-            nouveauProjet.setCreated_at(java.sql.Timestamp.valueOf(maintenant));
-            nouveauProjet.setUpdated_at(java.sql.Timestamp.valueOf(maintenant));
-
-            projectService.ajouter(nouveauProjet);
-
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/project/enseignant/AfficherProjet.fxml"));
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) nom.getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (!projectService.matiereExists(matiereProjet)) {
+                showAlert("La matière spécifiée n'existe pas.");
+            } else if (projectService.projetExists(nomProjet)) {
+                showAlert("Un projet avec ce nom existe déjà.");
+            } else {
+                User user = new User();
+                user.setId(1);
+                Project nouveauProjet = new Project();
+                nouveauProjet.setUser(user);
+                nouveauProjet.setNom(nom.getText());
+                nouveauProjet.setDescription(description.getText());
+                nouveauProjet.setClasse(classe.getText());
+                nouveauProjet.setMatiere(matiere.getText());
+                nouveauProjet.setCreated_at(new Date());
+                nouveauProjet.setUpdated_at(new Date());
+                // Appel de la méthode ajouter() pour insérer le nouveau projet et récupérer l'objet Project avec l'ID attribué
+                projectService.ajouter(nouveauProjet);
+                int nouveauProjetId = nouveauProjet.getId(); // Récupération de l'ID du nouveau projet ajouté
+                // Après l'insertion réussie, naviguez vers la page AjouterMembre.fxml
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/project/enseignant/AjouterMembre.fxml"));
+                    Parent ajoutMembresParent = loader.load();
+                    AjouterMembreController ajouterMembreController = loader.getController();
+                    ajouterMembreController.setProject(nouveauProjet); // Passer le nouveau projet en paramètre
+                    Scene ajoutMembresScene = new Scene(ajoutMembresParent);
+                    Stage stage = (Stage) nom.getScene().getWindow();
+                    stage.setScene(ajoutMembresScene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -79,5 +86,20 @@ public class AjouterProjetController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    public void goback(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/project/enseignant/AfficherProjet.fxml"));
+            Parent root = loader.load();
+            Scene scene = ((Node) event.getSource()).getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 
 }

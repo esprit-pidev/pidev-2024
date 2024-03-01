@@ -7,6 +7,7 @@ import tn.esprit.entities.User.Entreprise;
 import tn.esprit.entities.User.Etudiant;
 import tn.esprit.entities.User.ResponsableClub;
 import tn.esprit.entities.User.User;
+import tn.esprit.entities.project.Project;
 import tn.esprit.tools.MyDB;
 
 import java.sql.*;
@@ -437,4 +438,54 @@ public class UserService implements IUserService<User> {
         }
     return users;
     }
+
+    public boolean isExist(String email){
+        String sql = "SELECT COUNT(*) FROM user WHERE email = ? AND role = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, "STUDENT"); // Vérifiez que le rôle est "étudiant"
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+    public boolean isStudentByEmail(String email) {
+        try {
+            String sql = "SELECT * FROM user WHERE email = ? AND role = ?";
+            PreparedStatement ps = cnx.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, String.valueOf(RoleName.STUDENT));
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    public int getIdStudent(String email) {
+        try {
+            String sql = "SELECT id FROM user WHERE email = ?";
+            PreparedStatement ps = cnx.prepareStatement(sql);
+            ps.setString(1, email);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération de l'ID de l'utilisateur : " + e.getMessage());
+        }
+        return -1; // Retourne -1 si l'e-mail n'a pas été trouvé ou s'il y a eu une erreur
+    }
+
 }
+
+
+
+

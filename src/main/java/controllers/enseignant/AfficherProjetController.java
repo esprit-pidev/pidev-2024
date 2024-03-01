@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import tn.esprit.entities.project.Project;
 import tn.esprit.services.projectService.ProjectService;
 
@@ -24,6 +23,8 @@ public class AfficherProjetController implements Initializable {
 
     @FXML
     private Pane containerVBox;
+
+
     ProjectService ps = new ProjectService();
     Project p = new Project();
     @Override
@@ -42,7 +43,6 @@ public class AfficherProjetController implements Initializable {
                 }
             }
         });
-        // Afficher tous les projets par défaut
         afficherTousLesProjets();
     }
 
@@ -71,25 +71,25 @@ public class AfficherProjetController implements Initializable {
                 container = loader.load();
                 ContainerProjectController controller = loader.getController();
                 controller.setProject(project);
-                // gestionnaire d'événements pour détecter les clics sur ce projet
                 container.setOnMouseClicked(event -> handleClickOnProject(project.getId()));
                 containerVBox.getChildren().add(container);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+
         }
     }
     @FXML
     public void onAdd(MouseEvent mouseEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/project/enseignant/AjouterProjet.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/project/enseignant/AjouterProjet.fxml"));
+                Parent root = loader.load();
+                Scene scene = containerVBox.getScene();
+                scene.setRoot(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
     }

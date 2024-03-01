@@ -4,6 +4,7 @@ C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\controllers\etudiant\AppBar
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\controllers\enseignant\MembreController.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\events\EventComments.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\services\eventsServices\NotificationService.java
+C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\services\projectService\MatiereService.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\services\userServices\UserService.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\controllers\enseignant\ModifierinfoController.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\MainFX.java
@@ -14,10 +15,11 @@ C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\User\Ens
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\project\Project.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\tools\MyDB.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\controllers\enseignant\ContainerProjectController.java
+C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\controllers\enseignant\AjouterMembreController.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventReactionService.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\services\projectService\ProjectMembersService.java
+C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\project\Matiere.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\User\Etudiant.java
-C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\controllers\enseignant\GerermembresController.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\User\User.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\User\ResponsableClub.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventParticipantService.java
@@ -29,11 +31,14 @@ C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\project\
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\controllers\enseignant\ModifierProjetController.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\User\Entreprise.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\events\EventParticipants.java
+C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\project\Taches.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\services\projectService\ProjectService.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\project\ProjectMemberUser.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\services\eventsServices\EventCommentService.java
+C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\services\projectService\ProjectMemberUserService.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\events\EventReactions.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\entities\events\Events.java
+C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\tn\esprit\services\projectService\TacheService.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\org\example\Main.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\controllers\etudiant\AfficherTout.java
 C:\Users\raahm\IdeaProjects\pidev-2024\src\main\java\controllers\enseignant\AfficherProjetController.java

@@ -4,14 +4,12 @@ import java.util.Date;
 
 public class ProjectMembers {
     private int id;
-    private Etudiant etudiant;
     private Project project;
 
     private Date joined_at;
 
-    public ProjectMembers(int id, Etudiant etudiant ,Project project, Date joined_at) {
+    public ProjectMembers(int id, Project project, Date joined_at) {
         this.id = id;
-        this.etudiant = etudiant;
         this.project= project;
         this.joined_at = joined_at;
     }
@@ -37,29 +35,19 @@ public class ProjectMembers {
         this.project = project;
     }
 
-    public Etudiant getEtudiant() {
-        return etudiant;
-    }
-
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
-    }
-
-    public String getEmail(){
-        return etudiant.getEmail();
-    }
-    public void setEmail(Etudiant etudiant) {
-        if (etudiant == null){
-            etudiant = new Etudiant();
-        }
-        this.etudiant = etudiant;
-    }
     public int getIdProject (){
-        return project.getId();
-    }
-    public  void setIdProject(int idProject){
+            if (project != null) {
+                return project.getId();
+            } else {
+                return -1; // Ou une autre valeur par défaut selon vos besoins
+            }
+        }
+
+
+    public  void setProjectId(int idProject){
         project.setId(idProject);
     }
+
 
 
     public Date getJoinedAt() {

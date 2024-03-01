@@ -3,23 +3,26 @@ package tn.esprit.entities.project;
 import tn.esprit.entities.User.User;
 
 public class ProjectMemberUser {
-    private int projet_member_id;
+    private ProjectMembers projectMembers;
     private User user;
 
-    public ProjectMemberUser(int projet_member_id, User user) {
-        this.projet_member_id = projet_member_id;
+    public ProjectMemberUser(ProjectMembers projetMembers, User user) {
+        this.projectMembers = projetMembers;
         this.user = user;
     }
 
     public ProjectMemberUser() {
     }
 
-    public int getProjet_member_id() {
-        return projet_member_id;
+    public ProjectMembers getProjectMembers() {
+        return projectMembers;
     }
 
-    public void setProjet_member_id(int projet_member_id) {
-        this.projet_member_id = projet_member_id;
+    public void setProjectMembers(ProjectMembers projectMembers) {
+        if (projectMembers == null){
+            projectMembers = new ProjectMembers();
+        }
+        this.projectMembers = projectMembers;
     }
 
     public User getUser() {
@@ -33,6 +36,13 @@ public class ProjectMemberUser {
         this.user = user;
     }
 
+    public void setIdMember(int idmember){
+        projectMembers.setId(idmember);
+    }
+    public int getIdMember(){
+        return projectMembers.getId();
+    }
+
     public int getIdUser (){
         return user.getId();
     }
@@ -41,12 +51,11 @@ public class ProjectMemberUser {
         user.setId(userId);
     }
 
-
     @Override
     public String toString() {
         return "ProjectMemberUser{" +
-                "projet_member_id=" + projet_member_id +
-                ", user=" + user +
+                "Member Id=" + (projectMembers != null ? projectMembers.getId() :"null") +
+                ", Id user=" +  (user != null ? user.getId() :"null") +
                 '}';
     }
 }
