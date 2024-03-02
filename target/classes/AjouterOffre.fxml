@@ -33,8 +33,7 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <Button fx:id="affcher" layoutX="243.0" layoutY="325.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="25.0" prefWidth="79.0" text="Afficher" textFill="#4a1111" />
-        <Button fx:id="modifier" layoutX="399.0" layoutY="325.0" mnemonicParsing="false" onAction="#naviguezVersModifier" text="déplacer pour modifier" textFill="#4a1111" />
+        <Button fx:id="afficher" layoutX="243.0" layoutY="325.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="25.0" prefWidth="79.0" text="Afficher" textFill="#4a1111" />
         <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@img/logo.png" />
@@ -51,5 +50,7 @@
                 <MenuItem mnemonicParsing="false" text="Action 2" />
             </items>
         </SplitMenuButton>
+        <Button fx:id="btnAfficherStatistique" layoutX="424.0" layoutY="325.0" onAction="#afficherStatistique" text="Afficher Statistique" />
+
     </children>
 </AnchorPane>

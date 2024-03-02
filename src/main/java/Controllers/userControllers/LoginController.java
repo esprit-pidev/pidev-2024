@@ -35,7 +35,7 @@ public class LoginController {
             if (BCrypt.checkpw(pwdTF.getText(), user.getPassword())) {
                 userLoggedIn = new AuthResponseDTO(user.getId(), user.getRole());
                 UserSession.getSameInstance(userLoggedIn);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddUser.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterOffre.fxml"));
                 Parent root = loader.load();
                 emailTF.getScene().setRoot(root);
             } else
@@ -44,8 +44,8 @@ public class LoginController {
                 alert.setTitle("Error");
                 alert.setContentText("password error !");
                 alert.showAndWait();
+            }
         }
-    }
         else
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);

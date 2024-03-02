@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,13 +16,13 @@
             <Image url="@img/esprit.jpg" />
          </image>
       </ImageView>
-      <ListView fx:id="candidatureListView" layoutX="22.0" layoutY="186.0" prefHeight="193.0" prefWidth="546.0" />
+      <ListView fx:id="candidatureListView" layoutX="274.0" layoutY="91.0" onMouseClicked="#fillforum" prefHeight="290.0" prefWidth="301.0" />
       <Label layoutX="186.0" layoutY="35.0" text="Afficher Candidature " textFill="#d61525">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="413.0" layoutY="143.0" mnemonicParsing="false" onAction="#naviguezVersModifier" prefHeight="25.0" prefWidth="155.0" text="déplacer pour modifier" textFill="#4a1111" />
+      <Button layoutX="77.0" layoutY="313.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="88.0" text="modifier" textFill="#4a1111" />
       <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/logo.png" />
@@ -32,7 +33,9 @@
             <Image url="@img/entre.png" />
          </image>
       </ImageView>
-      <Label fx:id="competences" layoutX="22.0" layoutY="91.0" prefHeight="17.0" prefWidth="163.0" />
-      <Label fx:id="cv" layoutX="22.0" layoutY="135.0" prefHeight="17.0" prefWidth="176.0" />
+      <TextField fx:id="competences" layoutX="36.0" layoutY="152.0" prefHeight="25.0" prefWidth="202.0" promptText="Competences" />
+      <TextField fx:id="cv" layoutX="36.0" layoutY="217.0" prefHeight="25.0" prefWidth="202.0" promptText="CV" />
+      <Button layoutX="36.0" layoutY="268.0" mnemonicParsing="false" onAction="#uploadPdf" text="cliquer pour ajouter votre CV" />
+      <Button layoutX="53.0" layoutY="356.0" mnemonicParsing="false" onAction="#naviguezVersAjouter" text="ajouter un autre candidature" />
    </children>
 </AnchorPane>

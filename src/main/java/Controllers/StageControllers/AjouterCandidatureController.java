@@ -1,27 +1,41 @@
 package Controllers.StageControllers;
 
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import tn.esprit.entities.stage.Candidature;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import tn.esprit.entities.User.Etudiant;
+import tn.esprit.entities.stage.Candidature;
+import tn.esprit.entities.stage.Offre;
 import tn.esprit.services.stageServices.CandidatureService;
-
+import tn.esprit.services.userServices.AuthResponseDTO;
+import tn.esprit.services.userServices.UserService;
+import tn.esprit.services.userServices.UserSession;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Date;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser;
-import javafx.scene.control.Alert;
+import java.util.UUID;
 
 public class AjouterCandidatureController {
+    private Offre offre;
+    private final UserService us = new UserService();
+
+    AuthResponseDTO userLoggedIn= UserSession.getUser_LoggedIn();
+
+    Etudiant etudiant = (Etudiant) us.getById(userLoggedIn.getId());
+
+    public void initData(Offre offre) {
+        this.offre = offre;
+    }
     private final CandidatureService SC =new CandidatureService();
 
     @FXML
@@ -31,21 +45,25 @@ public class AjouterCandidatureController {
     private TextField cv;
     private final FileChooser fileChooser = new FileChooser();
 
-
-    public void uploadImg(javafx.event.ActionEvent event) {
+    public void uploadPdf(javafx.event.ActionEvent event) {
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {
-            // Define the destination directory
-            String destinationDirectory = "C:\\xampp\\htdocs\\img";
             // Get the name of the selected file
-            String fileName = file.getName();
+            String originalFileName = file.getName();
+            String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+            String safeFileName = originalFileName.replaceAll("[^a-zA-Z0-9.-]", "_");
+            String randomFileName = System.currentTimeMillis() + "-" + UUID.randomUUID().toString() + fileExtension;
+
+            // Define the destination directory
+            String destinationDirectory = "C:\\xampp\\htdocs\\pdf";
             // Create a Path for the destination file
-            Path destinationPath = new File(destinationDirectory, fileName).toPath();
+            Path destinationPath = new File(destinationDirectory, randomFileName).toPath();
             try {
                 // Copy the selected file to the destination directory
                 Files.copy(file.toPath(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("File uploaded successfully to: " + destinationPath);
-                cv.setText(fileName); // Update the TextField with the file name
+                // Update the TextField with the file path
+                cv.setText(destinationPath.toString());
             } catch (IOException e) {
                 System.out.println("Error uploading file: " + e.getMessage());
             }
@@ -59,28 +77,9 @@ public class AjouterCandidatureController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidature.fxml"));
             Parent root = loader.load();
 
-            // Passer des données à AfficherCandidatureController si nécessaire
             AfficherCandidatureController controller = loader.getController();
-            // controller.setXXX(); // Définir les données à afficher
 
             Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
-    @FXML
-    void naviguezVersModifier(ActionEvent event) {
-        try {
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/ModifierCandidature.fxml"));
-            Parent root1 = loader1.load();
-
-            ModifierCandidatureController AO = loader1.getController();
-
-            Scene scene = new Scene(root1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
@@ -96,11 +95,12 @@ public class AjouterCandidatureController {
             alert.setHeaderText(null);
             alert.setContentText("Veuillez remplir tous les champs.");
             alert.showAndWait();
-            return; // Sortir de la méthode si un champ est vide
+            return;
         }
-
+        // Récupérer la date actuelle
+        Date currentDate = new Date();
         try {
-            SC.ajouter(new Candidature(22, 2, new Date(), "en cours", competences.getText(), cv.getText()));
+            SC.ajouter(offre.getId(), etudiant, new java.sql.Date(currentDate.getTime()), "En attente", competences.getText(), cv.getText());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succès");
             alert.setHeaderText(null);
@@ -110,5 +110,4 @@ public class AjouterCandidatureController {
             System.out.println(e.getMessage());
         }
     }
-
 }

@@ -11,32 +11,31 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AjouterCandidatureController">
     <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.52" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@img/esprit.jpg" />
-         </image>
-      </ImageView>
+        <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.52" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/esprit.jpg" />
+            </image>
+        </ImageView>
         <TextField fx:id="competences" layoutX="73.0" layoutY="161.0" prefHeight="79.0" prefWidth="178.0" promptText="Competences" />
         <TextField fx:id="cv" layoutX="350.0" layoutY="161.0" prefHeight="79.0" prefWidth="178.0" promptText="Déposer ici votre CV" />
         <Button layoutX="350.0" layoutY="317.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="25.0" prefWidth="77.0" text="ajouter" textFill="#4a1111" />
-      <Button fx:id="uploawd" layoutX="350.0" layoutY="250.0" mnemonicParsing="false" onAction="#uploadImg" prefHeight="25.0" prefWidth="178.0" text="cliquer pour déposer votre CV" textFill="#4a1111" underline="true" />
-      <Label layoutX="206.0" layoutY="66.0" text="Ajouter Candidature " textFill="#d61525">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="44.0" fitWidth="54.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@img/logo.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="549.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@img/entre.png" />
-         </image>
-      </ImageView>
-      <ComboBox layoutX="451.0" layoutY="21.0" prefHeight="25.0" prefWidth="77.0" promptText="Stage" />
-        <Button layoutX="73.0" layoutY="317.0" mnemonicParsing="false" onAction="#naviguezVersModifier" prefHeight="25.0" prefWidth="155.0" text="déplacer pour modifier" textFill="#4a1111" />
+        <Button fx:id="uploawd" layoutX="350.0" layoutY="250.0" mnemonicParsing="false" onAction="#uploadPdf" prefHeight="25.0" prefWidth="178.0" text="cliquer pour déposer votre CV" textFill="#4a1111" underline="true" />
+        <Label layoutX="206.0" layoutY="66.0" text="Ajouter Candidature " textFill="#d61525">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="44.0" fitWidth="54.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/logo.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="549.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/entre.png" />
+            </image>
+        </ImageView>
+        <ComboBox layoutX="451.0" layoutY="21.0" prefHeight="25.0" prefWidth="77.0" promptText="Stage" />
         <Button layoutX="455.0" layoutY="317.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="25.0" prefWidth="77.0" text="Afficher" textFill="#4a1111" />
     </children>
 </AnchorPane>

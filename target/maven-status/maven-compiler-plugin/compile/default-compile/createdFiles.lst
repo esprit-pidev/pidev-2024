@@ -1,3 +1,4 @@
+Controllers\StageControllers\LesOffresDEStageController.class
 tn\esprit\services\stageServices\CandidatureService.class
 tn\esprit\entities\User\Etudiant.class
 Controllers\userControllers\AddUserFormController.class
@@ -9,15 +10,15 @@ tn\esprit\entities\User\RoleName.class
 Controllers\EventControllers\UpdateEventController.class
 Controllers\userControllers\SignUpController.class
 Controllers\StageControllers\AjouterCandidatureController.class
+Controllers\StageControllers\Statistique.class
+Controllers\StageControllers\AfficherCandidatureDetailsController.class
 Controllers\userControllers\LoginController.class
 Controllers\EventControllers\EventController.class
 tn\esprit\services\userServices\AuthResponseDTO.class
-Controllers\StageControllers\AfficherCvController.class
 tn\esprit\services\stageServices\OffreService.class
 Controllers\userControllers\EntrepriseEditFormController.class
 Controllers\EventControllers\AjouterEventController.class
 Controllers\userControllers\AdminController$1.class
-Controllers\StageControllers\ModifierOffreController.class
 Controllers\StageControllers\AfficherCandidatureController.class
 Controllers\StageControllers\AjouterOffreController.class
 tn\esprit\entities\User\Enseignant.class
@@ -31,10 +32,10 @@ Controllers\userControllers\EnseignantEditFormController.class
 Controllers\userControllers\EtudiantEditFormController.class
 Controllers\userControllers\AddUserController.class
 Controllers\userControllers\AdminController$3.class
+Controllers\StageControllers\AfficherListeDesCandidaturesController.class
 tn\esprit\entities\stage\Offre.class
 tn\esprit\services\userServices\IUserService.class
 Controllers\userControllers\AdminController$4.class
-Controllers\StageControllers\ModifierCandidatureController.class
 tn\esprit\services\userServices\UserService.class
 Controllers\EventControllers\AfficherEventController.class
 Controllers\userControllers\AdminController.class

@@ -23,19 +23,27 @@ public class MainFX extends Application {
         primaryStage.setTitle("bingo");
         primaryStage.show();
 
-        FXMLLoader Loader3 = new FXMLLoader(getClass().getResource("/AjouterOffre.fxml"));
+        FXMLLoader Loader3 = new FXMLLoader(getClass().getResource("/Login.fxml"));
         Parent root3 = Loader3.load();
         Scene scene3 =new Scene(root3);
         primaryStage.setScene(scene3);
-        primaryStage.setTitle("Ajouter offre");
+        primaryStage.setTitle("login");
         primaryStage.show();
 
-      /* FXMLLoader Loader2 = new FXMLLoader(getClass().getResource("/AjouterCandidature.fxml"));
+      /*FXMLLoader Loader2 = new FXMLLoader(getClass().getResource("/Statistique.fxml"));
         Parent root2 = Loader2.load();
         Scene scene2 =new Scene(root2);
         primaryStage.setScene(scene2);
-        primaryStage.setTitle("Ajouter Candidature");
+        primaryStage.setTitle("Statistique");
         primaryStage.show();
-*/
+
+        FXMLLoader Loader4 = new FXMLLoader(getClass().getResource("/LesOffresDEStage.fxml"));
+        Parent root4 = Loader4.load();
+        Scene scene4 =new Scene(root4);
+        primaryStage.setScene(scene4);
+        primaryStage.setTitle("Les Offres De Stage");
+        primaryStage.show();
+
+ */
     }
 }
