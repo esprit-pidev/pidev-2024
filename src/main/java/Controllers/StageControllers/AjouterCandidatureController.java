@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import tn.esprit.entities.User.Etudiant;
-import tn.esprit.entities.stage.Candidature;
 import tn.esprit.entities.stage.Offre;
 import tn.esprit.services.stageServices.CandidatureService;
 import tn.esprit.services.userServices.AuthResponseDTO;
@@ -29,7 +28,7 @@ public class AjouterCandidatureController {
     private Offre offre;
     private final UserService us = new UserService();
 
-    AuthResponseDTO userLoggedIn= UserSession.getUser_LoggedIn();
+    AuthResponseDTO userLoggedIn = UserSession.getUser_LoggedIn();
 
     Etudiant etudiant = (Etudiant) us.getById(userLoggedIn.getId());
 
@@ -110,4 +109,21 @@ public class AjouterCandidatureController {
             System.out.println(e.getMessage());
         }
     }
+    @FXML
+    void naviguerVersCaptcha(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CaptchaController.fxml"));
+            Parent root = loader.load();
+
+            CaptchaController captchaController = loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
 }

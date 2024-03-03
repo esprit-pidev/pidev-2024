@@ -16,10 +16,10 @@
                 <Image url="@img/esprit.jpg" />
             </image>
         </ImageView>
-        <TextField fx:id="competences" layoutX="73.0" layoutY="161.0" prefHeight="79.0" prefWidth="178.0" promptText="Competences" />
-        <TextField fx:id="cv" layoutX="350.0" layoutY="161.0" prefHeight="79.0" prefWidth="178.0" promptText="Déposer ici votre CV" />
-        <Button layoutX="350.0" layoutY="317.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="25.0" prefWidth="77.0" text="ajouter" textFill="#4a1111" />
-        <Button fx:id="uploawd" layoutX="350.0" layoutY="250.0" mnemonicParsing="false" onAction="#uploadPdf" prefHeight="25.0" prefWidth="178.0" text="cliquer pour déposer votre CV" textFill="#4a1111" underline="true" />
+        <TextField fx:id="competences" layoutX="65.0" layoutY="196.0" prefHeight="44.0" prefWidth="178.0" promptText="Competences" />
+        <TextField fx:id="cv" layoutX="350.0" layoutY="196.0" prefHeight="44.0" prefWidth="178.0" promptText="Déposer ici votre CV" />
+        <Button layoutX="65.0" layoutY="312.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="25.0" prefWidth="77.0" text="ajouter" textFill="#4a1111" />
+        <Button fx:id="uploawd" layoutX="350.0" layoutY="312.0" mnemonicParsing="false" onAction="#uploadPdf" prefHeight="25.0" prefWidth="178.0" text="cliquer pour déposer votre CV" textFill="#4a1111" underline="true" />
         <Label layoutX="206.0" layoutY="66.0" text="Ajouter Candidature " textFill="#d61525">
             <font>
                 <Font name="System Bold" size="20.0" />
@@ -36,6 +36,7 @@
             </image>
         </ImageView>
         <ComboBox layoutX="451.0" layoutY="21.0" prefHeight="25.0" prefWidth="77.0" promptText="Stage" />
-        <Button layoutX="455.0" layoutY="317.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="25.0" prefWidth="77.0" text="Afficher" textFill="#4a1111" />
+        <Button layoutX="228.0" layoutY="312.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="25.0" prefWidth="77.0" text="Afficher" textFill="#4a1111" />
+        <Button layoutX="65.0" layoutY="350.0" mnemonicParsing="false" onAction="#naviguerVersCaptcha" text="Captcha" />
     </children>
 </AnchorPane>
