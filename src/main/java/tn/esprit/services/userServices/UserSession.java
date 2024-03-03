@@ -1,6 +1,9 @@
 package tn.esprit.services.userServices;
 
+import java.util.prefs.Preferences;
+
 public class UserSession {
+    public static final RememberMeTokenService tokenService = new RememberMeTokenService();
     public static UserSession CURRENT_USER;
     private static AuthResponseDTO user_LoggedIn;
 
@@ -19,9 +22,13 @@ public class UserSession {
         return user_LoggedIn;
     }
 
-    public void Logout() {
-        this.user_LoggedIn = null;
+    public static void Logout() {
+        Preferences prefs = Preferences.userRoot().node("com/myapp");
+        prefs.remove("rememberMeToken");
+        tokenService.deleteByUser(user_LoggedIn);
+        user_LoggedIn = null;
         CURRENT_USER = null;
+
     }
 
     @Override

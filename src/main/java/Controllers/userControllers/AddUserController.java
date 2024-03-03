@@ -132,7 +132,7 @@ public class AddUserController {
 
     @FXML
     void profil(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/profil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
         Parent root = loader.load();
         emailTF.getScene().setRoot(root);
     }

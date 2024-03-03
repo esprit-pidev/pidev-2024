@@ -10,175 +10,175 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="691.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userControllers.AdminController">
-   <children>
-      <TabPane layoutX="48.0" layoutY="128.0" prefHeight="366.0" prefWidth="897.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Enseignants">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="enseignantsTV" layoutX="10.0" layoutY="52.0" prefHeight="200.0" prefWidth="748.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="ID">
-                                <cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" text="Nom">
-                                <cellValueFactory><PropertyValueFactory property="nom" /></cellValueFactory>
-                            </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Prenom">
-                                  <cellValueFactory><PropertyValueFactory property="prenom" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="CIN">
-                                  <cellValueFactory><PropertyValueFactory property="cin" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Genre">
-                                  <cellValueFactory><PropertyValueFactory property="genre" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Date Naissance">
-                                  <cellValueFactory><PropertyValueFactory property="date_naissance" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Email">
-                                  <cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory>
-                              </TableColumn>
-                          </columns>
-                        </TableView>
-                        <TextField fx:id="SearchTTF" layoutX="10.0" layoutY="14.0" />
-                        <Button layoutX="171.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchT" text="Rechercher" />
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Etudiants">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="274.0">
-                     <children>
-                        <TableView fx:id="etudiantsTV" layoutX="10.0" layoutY="52.0" prefHeight="235.0" prefWidth="871.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="ID">
-                                <cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" text="Nom">
-                                <cellValueFactory><PropertyValueFactory property="nom" /></cellValueFactory>
-                            </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Prenom">
-                                  <cellValueFactory><PropertyValueFactory property="prenom" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Niveau">
-                                  <cellValueFactory><PropertyValueFactory property="niveau" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Classe">
-                                  <cellValueFactory><PropertyValueFactory property="classe" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="CIN">
-                                  <cellValueFactory><PropertyValueFactory property="cin" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Genre">
-                                  <cellValueFactory><PropertyValueFactory property="genre" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Date_Naissance">
-                                  <cellValueFactory><PropertyValueFactory property="date_naissance" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Email">
-                                  <cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory>
-                              </TableColumn>
-                          </columns>
-                        </TableView>
-                        <TextField fx:id="SearchETF" layoutX="10.0" layoutY="14.0" />
-                        <Button layoutX="171.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchE" text="Rechercher" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Club_RHs">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="clubsTV" layoutX="10.0" layoutY="52.0" prefHeight="270.0" prefWidth="856.0">
-                           <columns>
-                              <TableColumn prefWidth="75.0" text="ID">
-                                 <cellValueFactory>
-                                    <PropertyValueFactory property="id" />
-                                 </cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Nom">
-                                 <cellValueFactory>
-                                    <PropertyValueFactory property="nom" />
-                                 </cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Prenom">
-                                 <cellValueFactory>
-                                    <PropertyValueFactory property="prenom" />
-                                 </cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Niveau">
-                                 <cellValueFactory>
-                                    <PropertyValueFactory property="niveau" />
-                                 </cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Classe">
-                                 <cellValueFactory>
-                                    <PropertyValueFactory property="classe" />
-                                 </cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="CIN">
-                                 <cellValueFactory>
-                                    <PropertyValueFactory property="cin" />
-                                 </cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Genre">
-                                 <cellValueFactory>
-                                    <PropertyValueFactory property="genre" />
-                                 </cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Date_Naissance">
-                                 <cellValueFactory>
-                                    <PropertyValueFactory property="date_naissance" />
-                                 </cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Email">
-                                 <cellValueFactory>
-                                    <PropertyValueFactory property="email" />
-                                 </cellValueFactory>
-                              </TableColumn>
-                           </columns>
-                        </TableView>
-                        <Button layoutX="171.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchClub" text="Rechercher" />
-                        <TextField fx:id="SearchClubTF" layoutX="10.0" layoutY="14.0" />
-                     </children></AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="Entreprises">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="entreprisesTV" layoutX="10.0" layoutY="52.0" prefHeight="200.0" prefWidth="751.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="ID">
-                                <cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" text="Nom">
-                                <cellValueFactory><PropertyValueFactory property="nom" /></cellValueFactory>
-                            </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Pays">
-                                  <cellValueFactory><PropertyValueFactory property="pays" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Localisation">
-                                  <cellValueFactory><PropertyValueFactory property="localisation" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Website">
-                                  <cellValueFactory><PropertyValueFactory property="website" /></cellValueFactory>
-                              </TableColumn>
-                              <TableColumn prefWidth="75.0" text="Email">
-                                  <cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory>
-                              </TableColumn>
-                          </columns>
-                        </TableView>
-                        <TextField fx:id="SearchEnTF" layoutX="10.0" layoutY="14.0" />
-                        <Button layoutX="171.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchEn" text="Rechercher" />
-                     </children></AnchorPane>
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-      <Button layoutX="47.0" layoutY="95.0" mnemonicParsing="false" onAction="#AddUser" text="Ajouter" />
-   </children>
+    <children>
+        <TabPane layoutX="48.0" layoutY="128.0" prefHeight="366.0" prefWidth="897.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Enseignants">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="enseignantsTV" layoutX="10.0" layoutY="52.0" prefHeight="200.0" prefWidth="735.0">
+                                    <columns>
+                                        <TableColumn prefWidth="75.0" text="ID">
+                                            <cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Nom">
+                                            <cellValueFactory><PropertyValueFactory property="nom" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Prenom">
+                                            <cellValueFactory><PropertyValueFactory property="prenom" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="CIN">
+                                            <cellValueFactory><PropertyValueFactory property="cin" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Genre">
+                                            <cellValueFactory><PropertyValueFactory property="genre" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Date Naissance">
+                                            <cellValueFactory><PropertyValueFactory property="date_naissance" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Email">
+                                            <cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                </TableView>
+                                <TextField fx:id="SearchTTF" layoutX="10.0" layoutY="14.0" />
+                                <Button layoutX="171.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchT" text="Rechercher" />
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Etudiants">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="274.0">
+                            <children>
+                                <TableView fx:id="etudiantsTV" layoutX="10.0" layoutY="52.0" prefHeight="235.0" prefWidth="868.0">
+                                    <columns>
+                                        <TableColumn prefWidth="75.0" text="ID">
+                                            <cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Nom">
+                                            <cellValueFactory><PropertyValueFactory property="nom" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Prenom">
+                                            <cellValueFactory><PropertyValueFactory property="prenom" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Niveau">
+                                            <cellValueFactory><PropertyValueFactory property="niveau" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Classe">
+                                            <cellValueFactory><PropertyValueFactory property="classe" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="CIN">
+                                            <cellValueFactory><PropertyValueFactory property="cin" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Genre">
+                                            <cellValueFactory><PropertyValueFactory property="genre" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Date_Naissance">
+                                            <cellValueFactory><PropertyValueFactory property="date_naissance" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Email">
+                                            <cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                </TableView>
+                                <TextField fx:id="SearchETF" layoutX="10.0" layoutY="14.0" />
+                                <Button layoutX="171.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchE" text="Rechercher" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Club_RHs">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="clubsTV" layoutX="10.0" layoutY="52.0" prefHeight="270.0" prefWidth="856.0">
+                                    <columns>
+                                        <TableColumn prefWidth="75.0" text="ID">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="id" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Nom">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="nom" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Prenom">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="prenom" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Niveau">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="niveau" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Classe">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="classe" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="CIN">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="cin" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Genre">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="genre" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Date_Naissance">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="date_naissance" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Email">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="email" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                </TableView>
+                                <Button layoutX="171.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchClub" text="Rechercher" />
+                                <TextField fx:id="SearchClubTF" layoutX="10.0" layoutY="14.0" />
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Entreprises">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="entreprisesTV" layoutX="10.0" layoutY="52.0" prefHeight="200.0" prefWidth="751.0">
+                                    <columns>
+                                        <TableColumn prefWidth="75.0" text="ID">
+                                            <cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Nom">
+                                            <cellValueFactory><PropertyValueFactory property="nom" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Pays">
+                                            <cellValueFactory><PropertyValueFactory property="pays" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Localisation">
+                                            <cellValueFactory><PropertyValueFactory property="localisation" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Website">
+                                            <cellValueFactory><PropertyValueFactory property="website" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Email">
+                                            <cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                </TableView>
+                                <TextField fx:id="SearchEnTF" layoutX="10.0" layoutY="14.0" />
+                                <Button layoutX="171.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchEn" text="Rechercher" />
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Button layoutX="47.0" layoutY="95.0" mnemonicParsing="false" onAction="#AddUser" text="Ajouter" />
+    </children>
 </AnchorPane>

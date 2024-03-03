@@ -1,0 +1,42 @@
+.post-background{
+    -fx-background-color: #fff;
+    -fx-background-radius: 15;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1) , 5.0, 0.0, 0.0, 5.0);
+}
+
+.reactions-container{
+     -fx-background-color: #fff;
+     -fx-background-radius: 50;
+     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1) , 5.0, 0.0, 0.0, 5.0);
+     -fx-border-width: 1;
+     -fx-border-color:#B8B9BB;
+     -fx-border-radius: 50;
+}
+
+.top-border{
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #606266;
+}
+/* Style pour le conteneur de la barre de navigation */
+.navbar-container {
+    -fx-background-color: #B22222; /* Couleur de fond gris pour toute la barre de navigation */
+}
+
+/* Style pour la barre de navigation */
+.navbar-title {
+    -fx-graphic: url('logo.jpg.jpg');
+    -fx-padding: 0 10 0 10;
+}
+
+
+.navbar-button {
+    -fx-text-fill: #FFFFFF ;
+    -fx-font-size: 14px;
+    -fx-padding: 0 10 0 10;
+    -fx-background-color: transparent;
+
+}
+
+.navbar-button:hover {
+    -fx-background-color: #696969; /* Couleur de fond au survol */
+}
