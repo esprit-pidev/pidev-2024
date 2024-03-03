@@ -20,8 +20,9 @@
             <Font name="Arial Black" size="13.0" />
          </font>
       </Text>
-      <Button layoutX="510.0" layoutY="333.0" mnemonicParsing="false" onAction="#Ajouter" text="Ajouter" />
+      <Button layoutX="510.0" layoutY="333.0" mnemonicParsing="false" onAction="#Ajouter" styleClass="login-btn" stylesheets="@style.css" text="Ajouter" />
       <ComboBox fx:id="listCours" layoutX="290.0" layoutY="152.0" prefWidth="150.0" />
-      <Text fill="#e41313" layoutX="510.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajouter un titre" visible="false" />
+      <Text fill="#e41313" layoutX="510.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0"  text="ajouter un titre" visible="false" />
+      <Button layoutX="398.0" layoutY="333.0" mnemonicParsing="false" onAction="#navigeuzVersAffichercours"  styleClass="login-btn" stylesheets="@style.css" text="Annuler" />
    </children>
 </AnchorPane>

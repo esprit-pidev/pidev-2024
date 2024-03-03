@@ -1,5 +1,10 @@
 package Controllers.CoursControllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import tn.esprit.entities.Cours.Evaluation;
 import tn.esprit.entities.Cours.Option;
 import tn.esprit.entities.Cours.Questions;
@@ -10,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import tn.esprit.services.coursServices.OptionService;
 import tn.esprit.services.coursServices.QuestionService;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +30,10 @@ public class AjouterQuestionController implements Initializable {
     private Label evaluationLabel;
     @javafx.fxml.FXML
     private TextField option;
+    @javafx.fxml.FXML
+    private ListView<String> listviexquestion;
+    ObservableList<String> items = FXCollections.observableArrayList();
+
     private Evaluation evaluation;
     private Questions question_data = new Questions();
     private List<Option> listeOption=new ArrayList<>();
@@ -73,6 +83,9 @@ public class AjouterQuestionController implements Initializable {
                 listeOption.add(op);
                 option.setText("");
                 isTrueOption.setSelected(false);
+                items.add(optionValue);
+                // Create a ListView and set its items
+                listviexquestion.setItems(items);
             }
         }
     }
@@ -99,6 +112,8 @@ public class AjouterQuestionController implements Initializable {
             }
             listeOption.clear();
             question.setText("");
+            items.clear();
+            listviexquestion.setItems(items);
         }
 
 
@@ -117,6 +132,10 @@ public class AjouterQuestionController implements Initializable {
             // Showing the alert
             alert.showAndWait();
         }else{
+            items.clear();
+             items.add(questionValue);
+            // Create a ListView and set its items
+            listviexquestion.setItems(items);
             question_data.setValeur(questionValue);
             System.out.println("Im here");
             openAddOptionButton.setDisable(false);
@@ -130,5 +149,14 @@ public class AjouterQuestionController implements Initializable {
     public void openAddOption(ActionEvent actionEvent) {
         optionForm.setDisable(false);
 
+    }
+    @FXML
+    public void navigeuzVersAfficherevaluation(){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Afficherevaluation.fxml"));
+            option.getScene().setRoot(root);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

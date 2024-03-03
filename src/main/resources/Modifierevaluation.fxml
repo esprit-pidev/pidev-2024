@@ -19,7 +19,7 @@
             <Font name="Arial Black" size="13.0" />
          </font>
       </Text>
-      <Button layoutX="497.0" layoutY="332.0" mnemonicParsing="false" onAction="#modifiereval" text="Modifier" />
+      <Button layoutX="497.0" layoutY="332.0" mnemonicParsing="false" onAction="#modifiereval" styleClass="login-btn" stylesheets="@style.css" text="Modifier" />
       <TextField fx:id="nomCour" disable="true" layoutX="292.0" layoutY="175.0" />
    </children>
 </AnchorPane>

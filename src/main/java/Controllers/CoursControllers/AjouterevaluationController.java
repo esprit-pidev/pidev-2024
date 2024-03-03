@@ -67,15 +67,21 @@ public class AjouterevaluationController implements Initializable {
             } catch (IOException e) {
                 System.err.println(e.getMessage());
             }
-
-
-
-    }
+               }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        System.out.print("Im here ");
         listCours.getItems().addAll(cs.obtenirToutesLesCours());
     }
-
+   @FXML
+    public void navigeuzVersAffichercours(){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Affichercour.fxml"));
+            listCours.getScene().setRoot(root);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 }
+

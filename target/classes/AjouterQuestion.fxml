@@ -3,23 +3,26 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.AjouterQuestionController">
    <children>
-      <TextField fx:id="question" layoutX="76.0" layoutY="98.0" prefHeight="26.0" prefWidth="263.0" />
+      <TextField fx:id="question" layoutX="66.0" layoutY="30.0" prefHeight="26.0" prefWidth="263.0" />
       <AnchorPane fx:id="optionForm" disable="true" layoutX="66.0" layoutY="171.0" prefHeight="98.0" prefWidth="396.0">
          <children>
-            <TextField fx:id="option" layoutX="38.0" layoutY="37.0" prefHeight="26.0" prefWidth="137.0" />
-            <CheckBox fx:id="isTrueOption" layoutX="197.0" layoutY="42.0" mnemonicParsing="false" text="Vrai ?" />
-            <Button fx:id="addOptionButton" layoutX="264.0" layoutY="38.0" mnemonicParsing="false" onAction="#addOption" text="+" />
+            <ListView fx:id="listviexquestion" layoutX="-1.0" prefHeight="168.0" prefWidth="397.0" />
          </children>
       </AnchorPane>
-      <Button layoutX="370.0" layoutY="98.0" mnemonicParsing="false" onAction="#addQuestion" prefHeight="26.0" prefWidth="100.0" text="Ajouter" />
-      <Button fx:id="openAddOptionButton" disable="true" layoutX="445.0" layoutY="137.0" mnemonicParsing="false" onAction="#openAddOption" text="+" />
-      <Label layoutX="354.0" layoutY="141.0" text="Ajouter Option" />
+      <Button layoutX="383.0" layoutY="30.0" mnemonicParsing="false" onAction="#addQuestion" prefHeight="26.0" prefWidth="100.0" styleClass="login-btn" stylesheets="@style.css" text="Ajouter" />
+      <Button fx:id="openAddOptionButton" disable="true" layoutX="483.0" layoutY="67.0" mnemonicParsing="false" onAction="#openAddOption"  styleClass="login-btn" stylesheets="@style.css" text="+" />
+      <Label layoutX="380.0" layoutY="71.0" text="Ajouter Option" />
       <Label fx:id="evaluationLabel" layoutX="76.0" layoutY="80.0" />
-      <Button layoutX="370.0" layoutY="297.0" mnemonicParsing="false" onAction="#saveData" prefHeight="26.0" prefWidth="100.0" text="Save" />
+      <Button layoutX="395.0" layoutY="351.0" mnemonicParsing="false" onAction="#saveData" prefHeight="26.0" prefWidth="100.0" styleClass="login-btn" stylesheets="@style.css" text="Save" />
+      <Button layoutX="229.0" layoutY="351.0" mnemonicParsing="false" onAction="#navigeuzVersAfficherevaluation" prefHeight="26.0" prefWidth="100.0" styleClass="login-btn" stylesheets="@style.css" text="Annuler" />
+      <TextField fx:id="option" layoutX="94.0" layoutY="98.0" prefHeight="26.0" prefWidth="137.0" />
+      <CheckBox fx:id="isTrueOption" layoutX="255.0" layoutY="102.0" mnemonicParsing="false" text="Vrai ?" />
+      <Button fx:id="addOptionButton" layoutX="317.0" layoutY="98.0" mnemonicParsing="false" onAction="#addOption" styleClass="login-btn" stylesheets="@style.css" text="+" />
    </children>
 </AnchorPane>
