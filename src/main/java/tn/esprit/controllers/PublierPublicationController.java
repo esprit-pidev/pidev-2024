@@ -14,6 +14,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import tn.esprit.services.userServices.AuthResponseDTO;
+import tn.esprit.services.userServices.UserSession;
 import tn.esprit.tools.MyDB;
 
 import java.io.ByteArrayOutputStream;
@@ -24,6 +26,7 @@ import java.util.Date;
 
 
 public class PublierPublicationController {
+    AuthResponseDTO userLoggedIn = UserSession.getUser_LoggedIn();
 
 
     @FXML
@@ -44,10 +47,24 @@ public class PublierPublicationController {
 
             // Récupérer le contenu de la TextArea
             String contenu = contenuArea.getText();
+            // Vérifier la redondance du contenu
+            if (estContenuRedondant(contenu)) {
+                afficherAlerte("Contenu redondant", "Le contenu est déjà publié en avant. Veuillez saisir un contenu différent.");
+                return;
+            }
+
+            // Vérifier les mots spécifiques
+            if (contenuContientMotsInterdits(contenu)) {
+                afficherAlerte("Contenu invalide", "Le contenu contient des mots interdits. Veuillez modifier le contenu.");
+                return;
+            }
 
             // Créer une nouvelle instance de la classe Publication
             Publication publication = new Publication();
-            publication.setClub_rh_id(1); // Remplacez par l'ID du club réel
+
+            // Modification ici : passer l'ID de l'utilisateur connecté au champ club_rh_id
+            publication.setClub_rh_id(userLoggedIn.getId());
+
             publication.setDate(new Date());
             publication.setContenu(contenu);
 
@@ -72,6 +89,7 @@ public class PublierPublicationController {
         }
     }
 
+
     private Publication ajouterPublication(Publication publication) throws SQLException {
         // Utiliser votre méthode existante pour ajouter la publication à la base de données
         String requete = "INSERT INTO publication (club_rh_id, date, contenu) VALUES (?, ?, ?)";
@@ -87,6 +105,34 @@ public class PublierPublicationController {
             }
         }
         return publication;
+    }
+    private boolean estContenuRedondant(String contenu) {
+        // Assurez-vous d'avoir une instance de PublicationService accessible ici
+        PublicationService publicationService = new PublicationService();
+
+        // Utilisez la méthode du service pour vérifier si le contenu est déjà publié en avant
+        return publicationService.estContenuDejaPublieEnAvant(contenu);
+    }
+
+    private boolean contenuContientMotsInterdits(String contenu) {
+        // Liste des mots interdits
+        String[] motsInterdits = {"fuck", "bitch", "kill"};
+
+        // Vérifiez si le contenu contient l'un des mots interdits
+        for (String mot : motsInterdits) {
+            if (contenu.toLowerCase().contains(mot.toLowerCase())) {
+                return true; // Le contenu contient un mot interdit
+            }
+        }
+        return false; // Le contenu ne contient aucun mot interdit
+    }
+
+    private void afficherAlerte(String titre, String contenu) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(contenu);
+        alert.showAndWait();
     }
 
 

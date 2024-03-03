@@ -4,6 +4,7 @@ import tn.esprit.entities.extrascolaire.Publication;
 import tn.esprit.tools.MyDB;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +34,23 @@ public class PublicationService {
             throw new RuntimeException(e);
         }
         return list;
+    }
+
+    // Dans PublicationService.java
+    static public int obtenirIdUtilisateurParPublication(int idPublication) {
+        String requete = "SELECT club_rh_id FROM publication WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(requete);
+            preparedStatement.setInt(1, idPublication);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("club_rh_id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return -1; // Retournez une valeur par défaut si l'ID n'est pas trouvé (par exemple, -1)
     }
 
 
@@ -86,6 +104,43 @@ public class PublicationService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public boolean estContenuDejaPublieEnAvant(String contenu) {
+        String requete = "SELECT COUNT(*) FROM publication WHERE contenu = ?";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(requete)) {
+            preparedStatement.setString(1, contenu);
+
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return false;
+    }
+    public static String obtenirDateAjoutParContenu(String contenu) {
+        String requete = "SELECT date FROM publication WHERE contenu = ?";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(requete);
+            preparedStatement.setString(1, contenu);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                Date dateAjout = rs.getDate("date");
+
+                // Utilisez SimpleDateFormat pour formater la date selon vos besoins
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                return dateFormat.format(dateAjout);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return "Date d'ajout non disponible";
     }
 
 

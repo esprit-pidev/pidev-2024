@@ -1,12 +1,10 @@
 package tn.esprit.services.extrascolaireService;
 
-import tn.esprit.entities.User.User;
 import tn.esprit.entities.extrascolaire.Inscription;
 import tn.esprit.tools.MyDB;
 
 
 import java.sql.*;
-import java.util.Date;
 
 public class InscriptionService {
 

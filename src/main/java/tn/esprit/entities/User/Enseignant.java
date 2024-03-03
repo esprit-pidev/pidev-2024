@@ -1,29 +1,40 @@
 package tn.esprit.entities.User;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Enseignant extends User{
 
-    private String prenom,cin,genre;
-    private Date date_naissance;
+    private String prenom,cin,genre,profil_picture;
+    private LocalDate date_naissance;
 
-    public Enseignant(int id, String nom, String email, String password, RoleName role, String prenom, String cin, String genre, Date date_naissance) {
+    public Enseignant(int id, String nom, String email, String password, RoleName role, String prenom, String cin, String genre, LocalDate date_naissance,String profil_picture) {
         super(id, nom, email, password, role);
         this.prenom = prenom;
         this.cin = cin;
         this.genre = genre;
         this.date_naissance = date_naissance;
+        this.profil_picture=profil_picture;
     }
 
-    public Enseignant(String nom, String email, String password,String prenom, String cin, String genre, Date date_naissance) {
+    public Enseignant(String nom, String email, String password,String prenom, String cin, String genre, LocalDate date_naissance,String profil_picture) {
         super(nom, email, password);
         this.prenom = prenom;
         this.cin = cin;
         this.genre = genre;
         this.date_naissance = date_naissance;
+        this.profil_picture=profil_picture;
     }
 
-    public Enseignant(String nom, String email, String password, RoleName role, String prenom, String cin, String genre, Date date_naissance) {
+    public Enseignant(String nom, String email, String password, RoleName role, String prenom, String cin, String genre, LocalDate date_naissance,String profil_picture) {
+        super(nom, email, password, role);
+        this.prenom = prenom;
+        this.cin = cin;
+        this.genre = genre;
+        this.date_naissance = date_naissance;
+        this.profil_picture=profil_picture;
+    }
+
+    public Enseignant(String nom, String email, String password, RoleName role, String prenom, String cin, String genre, LocalDate date_naissance) {
         super(nom, email, password, role);
         this.prenom = prenom;
         this.cin = cin;
@@ -55,12 +66,20 @@ public class Enseignant extends User{
         this.genre = genre;
     }
 
-    public Date getDate_naissance() {
+    public LocalDate getDate_naissance() {
         return date_naissance;
     }
 
-    public void setDate_naissance(Date date_naissance) {
+    public void setDate_naissance(LocalDate date_naissance) {
         this.date_naissance = date_naissance;
+    }
+
+    public String getProfil_picture() {
+        return profil_picture;
+    }
+
+    public void setProfil_picture(String profil_picture) {
+        this.profil_picture = profil_picture;
     }
 
     @Override
@@ -75,6 +94,7 @@ public class Enseignant extends User{
                 ", email='" + this.getEmail() + '\'' +
                 ", password='" + this.getPassword() + '\'' +
                 ", role=" + this.getRole() +
+                ", profil_picture='" + profil_picture + '\'' +
                 '}';
     }
 }

@@ -1,19 +1,19 @@
 package tn.esprit.entities.User;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class ResponsableClub extends Etudiant {
 
-    public ResponsableClub(int id, String nom, String email, String password, RoleName role, int niveau, String prenom, String genre, String cin, String classe, String profil_picture, String adresse, Date date_naissance) {
-        super(id, nom, email, password, role, niveau, prenom, genre, cin, classe, profil_picture, adresse, date_naissance);
+    public ResponsableClub(int id, String nom, String email, String password, RoleName role, int niveau, String prenom, String genre, String cin, String classe, String profil_picture, LocalDate date_naissance) {
+        super(id, nom, email, password, role, niveau, prenom, genre, cin, classe, profil_picture, date_naissance);
     }
 
-    public ResponsableClub(String nom, String email, String password, RoleName role, int niveau, String prenom, String genre, String cin, String classe, String profil_picture, String adresse, Date date_naissance) {
-        super(nom, email, password, role, niveau, prenom, genre, cin, classe, profil_picture, adresse, date_naissance);
+    public ResponsableClub(String nom, String email, String password, RoleName role, int niveau, String prenom, String genre, String cin, String classe, String profil_picture, LocalDate date_naissance) {
+        super(nom, email, password, role, niveau, prenom, genre, cin, classe, profil_picture, date_naissance);
     }
 
-    public ResponsableClub(String nom, String email, String password, int niveau, String prenom, String genre, String cin, String classe, String profil_picture, String adresse, Date date_naissance) {
-        super(nom, email, password, niveau, prenom, genre, cin, classe, profil_picture, adresse, date_naissance);
+    public ResponsableClub(String nom, String email, String password, int niveau, String prenom, String genre, String cin, String classe, String profil_picture, LocalDate date_naissance) {
+        super(nom, email, password, niveau, prenom, genre, cin, classe, profil_picture, date_naissance);
     }
 
     @Override
@@ -27,7 +27,6 @@ public class ResponsableClub extends Etudiant {
                 ", cin='" + this.getCin() + '\'' +
                 ", classe='" + this.getClasse() + '\'' +
                 ", profil_picture='" + this.getProfil_picture() + '\'' +
-                ", adresse='" + this.getAdresse() + '\'' +
                 ", date_naissance=" + this.getDate_naissance() +
                 ", email='" + this.getEmail() + '\'' +
                 ", password='" + this.getPassword() + '\'' +

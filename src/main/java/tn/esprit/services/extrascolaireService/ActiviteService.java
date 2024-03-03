@@ -62,6 +62,20 @@ public class ActiviteService {
         }
         return -1; // Retourne -1 si l'ID de l'activité n'est pas trouvé
     }
+    public String obtenirNomActivite(int activiteID) {
+        String requete = "SELECT nom FROM activite WHERE id=?";
+        try {
+            pst = conn.prepareStatement(requete);
+            pst.setInt(1, activiteID);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return rs.getString("nom");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null; // Retourne null si l'ID de l'activité n'est pas trouvé
+    }
 
 
 

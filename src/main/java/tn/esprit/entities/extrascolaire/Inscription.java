@@ -1,7 +1,7 @@
 package tn.esprit.entities.extrascolaire;
 
-import tn.esprit.entities.User.User;
-
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Inscription {
@@ -13,6 +13,7 @@ public class Inscription {
     private String prenom;
     private String num_tel;
     private String email ;
+    private String dateInscription;
 
 
     public Inscription() {
@@ -29,6 +30,21 @@ public class Inscription {
         this.num_tel = num_tel;
         this.email = email;
 
+
+    }
+
+
+
+    public String getDateInscription() {
+        // Obtenez la date actuelle
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+
+        // Formatez la date dans le format souhaité (par exemple, "yyyy-MM-dd HH:mm:ss")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = dateFormat.format(currentDate);
+
+        return formattedDate;
     }
 
     public int getId() {

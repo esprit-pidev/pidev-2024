@@ -55,7 +55,7 @@ public class ActiviteEspritController {
             Etudiant etudiant = (Etudiant) us.getById(userLoggedIn.getId());
             ajouterInscriptionController.setNomTF(etudiant.getNom());
             ajouterInscriptionController.setPrenomTF(etudiant.getPrenom());
-            ajouterInscriptionController.setPrenomTF(etudiant.getEmail());
+            ajouterInscriptionController.setEmailTF(etudiant.getEmail());
 
             // Obtenir le contrôleur de l'interface d'ajout d'inscription
             AjouterInscriptionController AjouterInscriptionController = loader.getController(); // Correction du nom de la classe
