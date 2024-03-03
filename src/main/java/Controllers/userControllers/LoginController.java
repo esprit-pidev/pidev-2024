@@ -46,13 +46,15 @@ public class LoginController {
             if (BCrypt.checkpw(pwdTF.getText(), user.getPassword())) {
                 userLoggedIn = new AuthResponseDTO(user.getId(), user.getRole());
                 UserSession.getSameInstance(userLoggedIn);
+
+
                 if (rememberMeCHB.isSelected()) {
                     String token = UUID.randomUUID().toString();
                     Preferences prefs = Preferences.userRoot().node("com/myapp");
                     prefs.put("rememberMeToken", token);
                     tokenService.add(new RememberMeToken(user,token,LocalDateTime.now().plusDays(10)));
                 }
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayEvent.fxml"));
                 Parent root = loader.load();
                 emailTF.getScene().setRoot(root);
             } else

@@ -3,6 +3,7 @@ package test.Client;
 
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -41,14 +42,15 @@ public class ChatClient extends Application {
 
     private static final TextArea messageArea = new TextArea();
 
-    private static final TextField inputBox = new TextField();
+    private  final TextField inputBox = new TextField();
 
-
+    private static String roomId = "event2";
     public static void main(String[] args) throws IOException {
 
-        // thread for receiving messages
-        ClientThread clientThread = new ClientThread(socket, messageArea);
+
+        ClientThread clientThread = new ClientThread(socket, messageArea,roomId);
         clientThread.start();
+
 
         // send initialization message to the server
         byte[] uuid = ("init;" + identifier).getBytes();
@@ -64,12 +66,12 @@ public class ChatClient extends Application {
 
         messageArea.setMaxWidth(500);
         messageArea.setEditable(false);
-
+        messageArea.setId(roomId);
 
         inputBox.setMaxWidth(500);
         inputBox.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                String temp = identifier + ";" + inputBox.getText(); // message to send
+                String temp =roomId +";"+ identifier + ";" + inputBox.getText(); // message to send
                 messageArea.setText(messageArea.getText() + inputBox.getText() + "\n"); // update messages on screen
                 byte[] msg = temp.getBytes(); // convert to bytes
                 inputBox.setText(""); // remove text from input box

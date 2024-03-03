@@ -14,13 +14,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EventControllers.EventController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="500.0" spacing="10.0" style="-fx-border-color: #262428; -fx-border-radius: 10;" styleClass="post-background" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EventControllers.EventController">
     <children>
         <HBox alignment="CENTER" prefHeight="150.0" spacing="10.0">
             <children>
-            <VBox prefHeight="150.0" prefWidth="542.0">
+            <VBox fx:id="firstborder" alignment="TOP_CENTER" prefHeight="150.0" prefWidth="542.0">
+
                <children>
-                  <HBox alignment="TOP_RIGHT">
+                  <HBox accessibleRole="PARENT" alignment="TOP_RIGHT" maxWidth="500.0" prefHeight="46.0" prefWidth="450.0">
                      <children>
                             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -31,8 +32,14 @@
                            </HBox.margin>
                             </ImageView>
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="5.0" top="5.0" />
+                     </padding>
                   </HBox>
-                  <HBox prefHeight="26.0" prefWidth="526.0">
+                  <HBox prefHeight="26.0" prefWidth="500.0">
                      <children>
                         <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <font>
@@ -41,18 +48,22 @@
                         </Text>
                      </children>
                      <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <HBox>
+                  <HBox maxWidth="500.0" minHeight="50.0" prefWidth="500.0">
                      <children>
-                        <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="502.80506134033203">
+                        <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="479.60511016845703">
                            <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                              <Insets left="15.0" />
                            </HBox.margin>
                         </Text>
                      </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
                   </HBox>
+                  <Pane maxHeight="1.0" maxWidth="300.0" minWidth="450.0" prefHeight="1.0" prefWidth="300.0" style="-fx-border-color: #262428; -fx-border-width: 0.5;" />
                </children>
             </VBox>
             </children>
@@ -63,7 +74,7 @@
         <ImageView fx:id="imgPost" fitHeight="350.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" />
       <HBox alignment="TOP_RIGHT">
          <children>
-            <Button fx:id="participation" mnemonicParsing="false" text="Participate" />
+            <Button fx:id="participation" mnemonicParsing="false" style="-fx-background-color: #781c10; -fx-background-radius: 10;" text="Participate" textFill="WHITE" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="30.0" top="5.0" />
@@ -117,7 +128,7 @@
                         <Insets left="10.0" right="10.0" />
                     </padding>
                 </HBox>
-                <HBox fx:id="reactionsContainer" maxWidth="-Infinity" styleClass="reactions-container" stylesheets="@../resources/styles.css" visible="false">
+                <HBox fx:id="reactionsContainer" maxWidth="-Infinity" styleClass="reactions-container" visible="false">
                     <children>
                         <ImageView fx:id="imgLike" fitHeight="50.0" fitWidth="50.0" onMousePressed="#onReactionImgPressed" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -164,7 +175,8 @@
                 </HBox>
             </children>
         </StackPane>
-        <HBox maxWidth="1.7976931348623157E308" styleClass="top-border" stylesheets="@../resources/styles.css">
+      <Pane maxHeight="1.0" maxWidth="300.0" minWidth="450.0" prefHeight="1.0" prefWidth="300.0" style="-fx-border-color: #262428; -fx-border-width: 0.5;" />
+        <HBox maxWidth="1.7976931348623157E308" styleClass="top-border">
             <children>
                 <HBox fx:id="likeContainer" alignment="CENTER" onMousePressed="#onLikeContainerPressed" onMouseReleased="#onLikeContainerMouseReleased" spacing="10.0" HBox.hgrow="ALWAYS">
                     <children>
@@ -173,7 +185,7 @@
                                 <Image url="@/img/ic_like_outline.png" />
                             </image>
                         </ImageView>
-                        <Label fx:id="reactionName" text="Like" textFill="#606266">
+                        <Label fx:id="reactionName" text="Like" textFill="#b9b9b9">
                             <font>
                                 <Font name="Segoe UI Semibold" size="18.0" />
                             </font>
@@ -187,7 +199,7 @@
                                 <Image url="@/img/ic_comment.png" />
                             </image>
                         </ImageView>
-                        <Label text="Comment" textFill="#606266">
+                        <Label text="Comment" textFill="#b9b9b9">
                             <font>
                                 <Font name="Segoe UI Semibold" size="18.0" />
                             </font>
@@ -201,7 +213,7 @@
                                 <Image url="@/img/ic_share.png" />
                             </image>
                         </ImageView>
-                        <Label text="Share" textFill="#606266">
+                        <Label text="Share" textFill="#b9b9b9">
                             <font>
                                 <Font name="Segoe UI Semibold" size="18.0" />
                             </font>
@@ -238,4 +250,7 @@
          </children>
       </VBox>
     </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </VBox>

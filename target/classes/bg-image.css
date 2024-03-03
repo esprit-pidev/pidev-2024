@@ -1,0 +1,5 @@
+.background-image {
+    -fx-background-image: url('./img/v915-techi-051-k.jpg');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}

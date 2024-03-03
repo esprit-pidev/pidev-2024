@@ -27,44 +27,18 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Preferences prefs = Preferences.userRoot().node("com/myapp");
-        String token = prefs.get("rememberMeToken", null);
-        if (token!=null) {
-            RememberMeToken rememberMeToken = tokenService.getByToken(token);
-            if (rememberMeToken.getExpiresAt().isAfter(LocalDateTime.now())) {
-                userLoggedIn = new AuthResponseDTO(rememberMeToken.getUser().getId(), rememberMeToken.getUser().getRole());
-                UserSession.getSameInstance(userLoggedIn);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                primaryStage.setScene(scene);
-                primaryStage.setTitle("Profile");
-                primaryStage.show();
-            }
-            else {
-                tokenService.deleteById(rememberMeToken.getId());
-                prefs.remove("rememberMeToken");
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                primaryStage.setScene(scene);
-                primaryStage.setTitle("Login");
-                primaryStage.show();
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Login Error");
-                alert.setContentText("token expired !");
-                alert.showAndWait();
-            }
 
-        }
-        else {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Login");
-            primaryStage.show();
-        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 1024, 720);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("bingo");
+        primaryStage.show();
+
+
+
+
+
 
     }
 }

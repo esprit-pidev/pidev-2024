@@ -1,5 +1,6 @@
 package tn.esprit.entities.events;
 
+import tn.esprit.entities.User.User;
 import tn.esprit.services.eventsServices.EventParticipantService;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class Events {
     private int eventId;
-    private int adminId;
+    private User admin;
     private String eventName;
     private String description;
     private java.sql.Date eventDate;
@@ -19,19 +20,13 @@ public class Events {
 
     private String photo;
     EventParticipantService eventParticipantService = new EventParticipantService();
-    public Events(int adminId, String eventName, String description, java.sql.Date eventDate, String photo) {
-        this.adminId = adminId;
+    public Events(User  admin, String eventName, String description, java.sql.Date eventDate, String photo) {
+        this.admin = admin;
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
         this.photo = photo;
     }
-
-    public Events(int i, int i1) {
-        this.adminId = i;
-        this.eventId = i1;
-    }
-
     public List<EventParticipants> getParticipants() {
         return participants;
     }
@@ -69,12 +64,12 @@ public class Events {
         this.eventId = eventId;
     }
 
-    public int getAdminId() {
-        return adminId;
+    public User getAdminId() {
+        return admin;
     }
 
-    public void setAdminId(int adminId) {
-        this.adminId = adminId;
+    public void setAdminId(User admin) {
+        this.admin = admin;
     }
 
     public String getEventName() {
@@ -121,7 +116,7 @@ public class Events {
     public String toString() {
         return "Event{" +
                 "eventId=" + eventId +
-                ", adminId=" + adminId +
+                ", adminId=" + admin +
                 ", eventName='" + eventName + '\'' +
                 ", description='" + description + '\'' +
                 ", eventDate=" + eventDate +
