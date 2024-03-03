@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import tn.esprit.entities.User.User;
 import tn.esprit.entities.events.EventComments;
 import tn.esprit.entities.events.EventParticipants;
 import tn.esprit.entities.events.EventReactions;
@@ -62,7 +64,7 @@ public class EventController implements Initializable {
     private Events eventt ;
     EventParticipants participant;
     EventReactions eventReactions;
-    private int userId ;
+    private User user ;
 
     public void setEventt(Events eventt) {
         this.eventt = eventt;
@@ -72,8 +74,12 @@ public class EventController implements Initializable {
         this.eventReactions = eventReactions;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserId(User user) {
+        this.user = user;
+    }
+
+    public Button getParticipation() {
+        return participation;
     }
 
     @FXML
@@ -138,24 +144,24 @@ public class EventController implements Initializable {
         }
         boolean userExists = eventReactionService.display()
                 .stream()
-                .anyMatch(e -> e.getUserId() == userId && e.getEventId() == eventt.getEventId());
+                .anyMatch(e -> e.getUserId().getId() == user.getId() && e.getEventId() == eventt.getEventId());
         if (!userExists) {
-            eventReactionService.ajouter(new EventReactions(userId, eventt.getEventId(), reactionType));
+            eventReactionService.ajouter(new EventReactions(user, eventt.getEventId(), reactionType));
         } else {
             // Check if the user's current reaction is equal to the one being pressed
 
             String finalReactionType = reactionType;
             boolean currentUserReactionEqualsPressed = eventReactionService.display().stream()
-                    .anyMatch(e -> e.getUserId() == userId && e.getEventId() == eventt.getEventId() && e.getReactionType().equals(finalReactionType));
+                    .anyMatch(e -> e.getUserId().getId() == user.getId() && e.getEventId() == eventt.getEventId() && e.getReactionType().equals(finalReactionType));
 
             if (currentUserReactionEqualsPressed) {
                 // Perform action to delete the user's reaction
-                eventReactionService.supprimer(new EventReactions(userId, eventt.getEventId(), reactionType));
+                eventReactionService.supprimer(new EventReactions(user, eventt.getEventId(), reactionType));
                 Image imageSad = new Image("/img/ic_like_outline.png");
                 imgReaction.setImage(imageSad);
             } else {
                 // Perform action to modify the user's reaction
-                eventReactionService.modifier(new EventReactions(userId, eventt.getEventId(), reactionType));
+                eventReactionService.modifier(new EventReactions(user, eventt.getEventId(), reactionType));
             }
         }
 
@@ -184,14 +190,25 @@ public class EventController implements Initializable {
     }
 
     private void addComment(ActionEvent e, int eventId, String comment) {
-        eventCommentService.ajouter(new EventComments(1,eventId,comment));
+        // Check if the comment is empty
+        if (comment.isEmpty()) {
+            // Display an alert for an empty comment
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Empty Comment");
+            alert.setContentText("Comment cannot be empty!");
+            alert.showAndWait();
+            return;
+        }
+
+        // Add the comment if it's not empty
+        eventCommentService.ajouter(new EventComments(user, eventId, comment));
         commentField.setText("");
         commentDisplay.getChildren().clear();
         displayComments();
     }
 
     public void displayComments(){
-        ObservableList<String> commentsList = FXCollections.observableArrayList();
         List<EventComments> comments = eventCommentService.display(eventt);
         for(EventComments comment : comments ){
             HBox commentContainer = new HBox();
@@ -202,8 +219,9 @@ public class EventController implements Initializable {
             commentContainer.setStyle("-fx-border-color: grey; -fx-border-width: 0 0 0.5 0;");
             commentContainer.setPadding(new Insets(5));
             commentContainer.getChildren().add(text);
-            if(comment.getUserId() == userId){
-                Button removeButton = new Button("Delete");
+
+            if(comment.getUserId().getId() == user.getId()){
+                Button removeButton = new Button("Del");
                 removeButton.setPrefWidth(60);
                 removeButton.setPrefHeight(15);
                 removeButton.setStyle(
@@ -219,6 +237,7 @@ public class EventController implements Initializable {
             }
 
             commentDisplay.getChildren().add(commentContainer);
+
         }
 
 
@@ -231,33 +250,37 @@ public class EventController implements Initializable {
         displayComments();
 
     }
-    private void removeParticipant(ActionEvent ee, int userId,Events event) {
-        EventParticipants  participant = eventParticipantService.display().stream().filter(e->e.getUserId() == userId).findFirst().get();
+    private void removeParticipant(ActionEvent ee, User user,Events event) {
+        EventParticipants  participant = eventParticipantService.display().stream().filter(e->e.getUserId().getId() == user.getId()).findFirst().get();
         eventParticipantService.supprimer(participant);
         participation.setText("Attend");
         participationLogic();
         event.initializeParticipants(eventParticipantService);
 
 
+
+
     }
 
-    private void addParticipant(ActionEvent e, int userId, Events event) {
-        EventParticipants participant_object = new EventParticipants(userId,event.getEventId());
+    private void addParticipant(ActionEvent e, User user, Events event) {
+        EventParticipants participant_object = new EventParticipants(user,event.getEventId());
         eventParticipantService.ajouter(participant_object);
         participation.setText("Remove");
         participationLogic();
         event.initializeParticipants(eventParticipantService);
 
+
+
     }
     public void participationLogic() {
         isParticiped = eventParticipantService.display().stream()
-                .anyMatch(e -> e.getUserId() == userId && e.getEventId() == eventt.getEventId());
+                .anyMatch(e -> e.getUserId().getId() == user.getId() && e.getEventId() == eventt.getEventId());
         if (isParticiped) {
             participation.setText("Remove");
-            participation.setOnAction(e -> removeParticipant(e, userId,eventt));
+            participation.setOnAction(e -> removeParticipant(e, user,eventt));
         } else {
             participation.setText("Attend");
-            participation.setOnAction(e -> addParticipant(e, userId, eventt));
+            participation.setOnAction(e -> addParticipant(e, user, eventt));
         }
     }
     public void affectPhotos(){

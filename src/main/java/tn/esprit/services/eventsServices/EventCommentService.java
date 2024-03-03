@@ -2,6 +2,7 @@ package tn.esprit.services.eventsServices;
 
 import tn.esprit.entities.events.EventComments;
 import tn.esprit.entities.events.Events;
+import tn.esprit.services.userServices.UserService;
 import tn.esprit.tools.MyDB;
 
 import java.sql.*;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class EventCommentService {
     Connection cnx = MyDB.getInstance().getCnx();
-
+    UserService userService = new UserService();
     public EventCommentService() {
     }
 
@@ -19,7 +20,7 @@ public class EventCommentService {
 
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, comment.getUserId());
+            statement.setInt(1, comment.getUserId().getId());
             statement.setInt(2, comment.getEventId());
             statement.setString(3, comment.getCommentText());
             statement.executeUpdate();
@@ -82,7 +83,9 @@ public class EventCommentService {
             while (rs.next()) {
                 EventComments comment = new EventComments();
                 comment.setCommentId(rs.getInt("id"));
-                comment.setUserId(rs.getInt("user_id"));
+                int userId = rs.getInt("user_id");
+                comment.setUserId(userService.getAll().stream().filter(e->e.getId() ==userId ).findFirst().orElse(null));
+
                 comment.setEventId(rs.getInt("event_id"));
                 comment.setCommentText(rs.getString("comment_text"));
                 comment.setCreatedAt(rs.getTimestamp("created_at"));

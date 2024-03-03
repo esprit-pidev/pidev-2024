@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EventControllers.ChatController">
+<VBox fx:id="container" alignment="TOP_CENTER" maxWidth="380.0" prefWidth="380.0" spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EventControllers.ChatController">
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
    <children>
-      <TextArea fx:id="messageArea" layoutX="14.0" layoutY="14.0" prefHeight="321.0" prefWidth="571.0" />
-      <TextField fx:id="inputBox" layoutX="14.0" layoutY="361.0" prefHeight="26.0" prefWidth="579.0" />
+      <HBox fx:id="showCommets" alignment="CENTER" onMousePressed="#ExpendOrCollapse" spacing="10.0" style="-fx-border-color: #781c10; -fx-border-radius: 10;">
+         <children>
+            <Label fx:id="expand" text="Expand" textFill="#918785">
+               <font>
+                  <Font name="Segoe UI Semibold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox fx:id="CommentsContainer" prefWidth="380.0" spacing="5.0">
+         <children>
+            <TextArea fx:id="messageArea" maxWidth="380.0" minHeight="300.0" minWidth="380.0" prefHeight="300.0" prefWidth="380.0" style="-fx-border-color: #781c60; -fx-background-color: transparent; -fx-background-radius: 5; -fx-border-radius: 5;" stylesheets="@TextFillColor.css" />
+            <TextField fx:id="inputBox" maxWidth="380.0" prefHeight="26.0" prefWidth="380.0" style="-fx-border-color: #781c10; -fx-background-radius: 7; -fx-border-radius: 7;" />
+         </children>
+      </VBox>
    </children>
-</AnchorPane>
+</VBox>

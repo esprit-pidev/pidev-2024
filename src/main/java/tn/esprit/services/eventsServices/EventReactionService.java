@@ -1,6 +1,7 @@
 package tn.esprit.services.eventsServices;
 
 import tn.esprit.entities.events.EventReactions;
+import tn.esprit.services.userServices.UserService;
 import tn.esprit.tools.MyDB;
 
 import java.sql.*;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class EventReactionService {
     Connection cnx = MyDB.getInstance().getCnx();
-
+    UserService userService = new UserService();
     public EventReactionService() {
     }
 
@@ -17,7 +18,7 @@ public class EventReactionService {
 
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
-            statement.setInt(1, reaction.getUserId());
+            statement.setInt(1, reaction.getUserId().getId());
             statement.setInt(2, reaction.getEventId());
             statement.setString(3, reaction.getReactionType());
             statement.executeUpdate();
@@ -33,7 +34,7 @@ public class EventReactionService {
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
             statement.setString(1, reaction.getReactionType());
-            statement.setInt(2, reaction.getUserId());
+            statement.setInt(2, reaction.getUserId().getId());
             statement.setInt(3, reaction.getEventId());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
@@ -51,7 +52,7 @@ public class EventReactionService {
 
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
-            statement.setInt(1, reaction.getUserId());
+            statement.setInt(1, reaction.getUserId().getId());
             statement.setInt(2, reaction.getEventId());
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -74,7 +75,9 @@ public class EventReactionService {
 
             while (rs.next()) {
                 EventReactions reaction = new EventReactions();
-                reaction.setUserId(rs.getInt("user_id"));
+
+                int  userId = rs.getInt("user_id");
+                reaction.setUserId(userService.getAll().stream().filter(e->e.getId() ==userId ).findFirst().orElse(null));
                 reaction.setEventId(rs.getInt("event_id"));
                 reaction.setReactionType(rs.getString("reaction_type"));
                 reaction.setCreatedAt(rs.getTimestamp("created_at"));

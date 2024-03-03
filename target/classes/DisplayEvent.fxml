@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="container" prefHeight="760.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EventControllers.AfficherEventController">
+<VBox fx:id="container" alignment="TOP_CENTER" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1280.0" styleClass="background-image" stylesheets="@bg-image.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EventControllers.AfficherEventController">
    <children>
-      <HBox alignment="CENTER" spacing="5.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <HBox fx:id="containerGlobal" alignment="TOP_CENTER" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" spacing="3.0">
          <children>
-            <HBox alignment="CENTER">
+            <HBox fx:id="container1" alignment="CENTER" minWidth="400.0" prefWidth="600.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefWidth="650.0">
+                  <VBox alignment="TOP_CENTER" prefWidth="580.0">
                      <children>
-                        <HBox alignment="CENTER" prefWidth="300.0">
+                        <HBox alignment="CENTER">
                            <children>
                               <TextField fx:id="search" onKeyTyped="#search" prefHeight="26.0" prefWidth="300.0" />
                            </children>
@@ -22,11 +24,11 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </HBox>
-                        <ScrollPane fitToHeight="true" fitToWidth="true">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="650.0" minHeight="-Infinity" prefHeight="650.0" style="-fx-background-color: transparent;" stylesheets="@removeScroll.css">
                            <content>
-                              <HBox alignment="CENTER">
+                              <HBox alignment="CENTER" prefHeight="658.0">
                                  <children>
-                                    <VBox fx:id="feed" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" spacing="10.0">
+                                    <VBox fx:id="feed" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0">
                                        <padding>
                                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                        </padding>
@@ -39,9 +41,28 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox fx:id="chatContainer" prefHeight="100.0" prefWidth="200.0" />
+            <ScrollPane maxHeight="685.0" minWidth="400.0" prefHeight="650.0" prefWidth="440.0" style="-fx-background-color: transparent;" stylesheets="@removeScroll.css">
+               <content>
+                  <VBox minWidth="420.0" prefWidth="420.0" spacing="10.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <HBox alignment="CENTER" prefWidth="390.0" style="-fx-background-color: transparent;">
+                           <children>
+                              <Button fx:id="reload" mnemonicParsing="false" style="-fx-background-color: #781c10; -fx-background-radius: 10;" text="Refresh" textFill="WHITE" />
+                           </children>
+                        </HBox>
+                        <VBox fx:id="chatContainer" alignment="TOP_CENTER" prefWidth="420.0" style="-fx-background-color: rgba(0, 0, 0, 0);" />
+                     </children>
+                     <padding>
+                        <Insets top="3.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
             
          </children>
+         <padding>
+            <Insets right="7.0" top="5.0" />
+         </padding>
       </HBox>
    </children>
 </VBox>

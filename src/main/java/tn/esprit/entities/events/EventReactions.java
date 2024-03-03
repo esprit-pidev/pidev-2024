@@ -1,17 +1,19 @@
 package tn.esprit.entities.events;
 
+import tn.esprit.entities.User.User;
+
 import java.util.Date;
 
 public class EventReactions {
 
         private int reactionId;
-        private int userId;
+        private User user;
         private int eventId;
         private String reactionType;
         private Date createdAt;
 
-        public EventReactions( int userId, int eventId, String reactionType) {
-            this.userId = userId;
+        public EventReactions( User user, int eventId, String reactionType) {
+            this.user = user;
             this.eventId = eventId;
             this.reactionType = reactionType;
 
@@ -29,12 +31,12 @@ public class EventReactions {
             this.reactionId = reactionId;
         }
 
-        public int getUserId() {
-            return userId;
+        public User getUserId() {
+            return user;
         }
 
-        public void setUserId(int userId) {
-            this.userId = userId;
+        public void setUserId(User user) {
+            this.user = user;
         }
 
         public int getEventId() {

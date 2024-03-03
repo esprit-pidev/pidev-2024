@@ -6,14 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import tn.esprit.entities.User.User;
 import tn.esprit.entities.events.Events;
 import tn.esprit.services.eventsServices.EventService;
+import tn.esprit.services.userServices.AuthResponseDTO;
+import tn.esprit.services.userServices.UserSession;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,7 +46,8 @@ public class UpdateEventController implements Initializable {
     private EventService eventService = new EventService();
     private String imgName ;
     private Events eventToBeUpdated;
-
+    AuthResponseDTO userLoggedIn= UserSession.getUser_LoggedIn();
+    private User admin =userLoggedIn;
     public void setEventToBeUpdated(Events eventToBeUpdated) {
         this.eventToBeUpdated = eventToBeUpdated;
     }
@@ -81,10 +82,19 @@ public class UpdateEventController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateEvent.setOnAction(event -> {
+
+            if (name.getText().isEmpty() || description.getText().isEmpty() || datePicker.getValue() == null|| imgName==null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Empty Fields");
+                alert.setContentText("Please fill in all fields.");
+                alert.showAndWait();
+                return ; // Exit the method if any field is empty
+            }
             java.sql.Date sqlDate = java.sql.Date.valueOf(datePicker.getValue());
             System.out.println(sqlDate);
-            eventService.modifier(new Events(1,name.getText(),description.getText(),sqlDate,imgName),eventToBeUpdated.getEventId());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterEvent.fxml"));
+            eventService.modifier(new Events(admin,name.getText(),description.getText(),sqlDate,imgName),eventToBeUpdated.getEventId());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayEvent.fxml"));
 
             try {
                 Parent componentRoot = loader.load();

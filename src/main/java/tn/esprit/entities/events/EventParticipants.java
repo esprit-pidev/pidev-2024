@@ -1,18 +1,20 @@
 package tn.esprit.entities.events;
 
+import tn.esprit.entities.User.User;
+
 import java.util.Date;
 
 public class EventParticipants {
 
 
         private int participantId;
-        private int userId;
+        private User user;
         private int eventId;
         private String participant_name;
         private Date participationDate;
 
-        public EventParticipants( int userId, int eventId) {
-            this.userId = userId;
+        public EventParticipants( User user, int eventId) {
+            this.user = user;
             this.eventId = eventId;
 
         }
@@ -37,12 +39,12 @@ public class EventParticipants {
             this.participantId = participantId;
         }
 
-        public int getUserId() {
-            return userId;
+        public User getUserId() {
+            return user;
         }
 
-        public void setUserId(int userId) {
-            this.userId = userId;
+        public void setUserId(User userId) {
+            this.user = userId;
         }
 
         public int getEventId() {
@@ -66,7 +68,7 @@ public class EventParticipants {
     @Override
     public String toString() {
         return "EventParticipants{" +
-                "userId=" + userId +
+                "userId=" + user +
                 ", eventId=" + eventId +
                 ", participant_name='" + participant_name + '\'' +
                 ", participationDate=" + participationDate +

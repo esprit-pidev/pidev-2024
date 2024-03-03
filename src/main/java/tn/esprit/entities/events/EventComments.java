@@ -1,18 +1,20 @@
 package tn.esprit.entities.events;
 
+import tn.esprit.entities.User.User;
+
 import java.util.Date;
 
 public class EventComments {
 
         private int commentId;
-        private int userId;
+        private User user;
         private int eventId;
         private String commentText;
         private Date createdAt;
 
-        public EventComments( int userId, int eventId, String commentText ) {
+        public EventComments( User user, int eventId, String commentText ) {
 
-            this.userId = userId;
+            this.user = user;
             this.eventId = eventId;
             this.commentText = commentText;
             this.createdAt = createdAt;
@@ -29,12 +31,12 @@ public class EventComments {
             this.commentId = commentId;
         }
 
-        public int getUserId() {
-            return userId;
+        public User getUserId() {
+            return user;
         }
 
-        public void setUserId(int userId) {
-            this.userId = userId;
+        public void setUserId(User userId) {
+            this.user = userId;
         }
 
         public int getEventId() {

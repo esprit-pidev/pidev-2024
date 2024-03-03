@@ -13,10 +13,12 @@ public class ClientThread extends Thread {
     private byte[] incoming = new byte[256];
 
     private TextArea textArea;
+    private String roomId;
 
-    public ClientThread(DatagramSocket socket, TextArea textArea) {
+    public ClientThread(DatagramSocket socket, TextArea textArea,String roomId) {
         this.socket = socket;
         this.textArea = textArea;
+        this.roomId  = roomId;
     }
 
     @Override
@@ -31,8 +33,26 @@ public class ClientThread extends Thread {
             }
             String message = new String(packet.getData(), 0, packet.getLength()) + "\n";
             String current = textArea.getText();
-            textArea.setText(current + message);
+            String firstWord = message.split(";")[0];
+
+            if (textArea.getUserData().equals(firstWord)) {
+                // Remove the first word from the incoming message
+                message = removeFirstWord(message);
+
+                // Append the modified message to the textArea
+                textArea.setText(current + message);
+            }
         }
     }
+
+    public static String removeFirstWord(String phrase) {
+        int index = phrase.indexOf(';');
+        if (index != -1) { // If there is at least one semicolon
+            return phrase.substring(index + 1);
+        } else { // If there is no semicolon (only one word)
+            return "";
+        }
+    }
+
 }
 

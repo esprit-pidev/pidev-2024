@@ -2,6 +2,7 @@ package tn.esprit.services.eventsServices;
 
 
 import tn.esprit.entities.events.Events;
+import tn.esprit.services.userServices.UserService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
     public class EventService {
         Connection cnx = tn.esprit.tools.MyDB.getInstance().getCnx();
         EventParticipantService eventParticipantService = new EventParticipantService();
+        UserService userService = new UserService();
 
         public EventService() {
         }
@@ -19,7 +21,7 @@ import java.util.List;
 
             try {
                 PreparedStatement statement = this.cnx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                statement.setInt(1, event.getAdminId());
+                statement.setInt(1, event.getAdminId().getId());
                 statement.setString(2, event.getEventName());
                 statement.setString(3, event.getDescription());
                 statement.setDate(4, event.getEventDate());
@@ -77,7 +79,8 @@ import java.util.List;
                     Events event = new Events();
 
                     event.setEventId(rs.getInt("id"));
-                    event.setAdminId(rs.getInt("admin_id"));
+                    int admin_id = rs.getInt("admin_id");
+                    event.setAdminId(userService.getAll().stream().filter(e->e.getId() ==admin_id ).findFirst().orElse(null));
                     event.setEventName(rs.getString("event_name"));
                     event.setDescription(rs.getString("description"));
                     event.setEventDate(rs.getDate("event_date"));
@@ -103,7 +106,8 @@ import java.util.List;
                 while (rs.next()) {
                     Events event = new Events();
                     event.setEventId(rs.getInt("id"));
-                    event.setAdminId(rs.getInt("admin_id"));
+                    int admin_id = rs.getInt("admin_id");
+                    event.setAdminId(userService.getAll().stream().filter(e->e.getId() ==admin_id ).findFirst().orElse(null));
                     event.setEventName(rs.getString("event_name"));
                     event.setDescription(rs.getString("description"));
                     event.setEventDate(rs.getDate("event_date"));

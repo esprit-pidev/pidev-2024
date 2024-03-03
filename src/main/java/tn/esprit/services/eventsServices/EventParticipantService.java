@@ -1,6 +1,7 @@
 package tn.esprit.services.eventsServices;
 
 import tn.esprit.entities.events.EventParticipants;
+import tn.esprit.services.userServices.UserService;
 import tn.esprit.tools.MyDB;
 
 import java.sql.*;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class EventParticipantService {
     Connection cnx = MyDB.getInstance().getCnx();
-
+    UserService userService = new UserService();
     public EventParticipantService() {
     }
 
@@ -18,10 +19,10 @@ public class EventParticipantService {
 
         try {
             // Retrieve the name of the participant from the users table based on user_id
-            String nameParticipant = getNameParticipant(participant.getUserId());
+            String nameParticipant = getNameParticipant(participant.getUserId().getId());
 
             PreparedStatement statement = this.cnx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, participant.getUserId());
+            statement.setInt(1, participant.getUserId().getId());
             statement.setInt(2, participant.getEventId());
             statement.setString(3, nameParticipant);
             statement.executeUpdate();
@@ -87,7 +88,9 @@ public class EventParticipantService {
             while (rs.next()) {
                 EventParticipants participant = new EventParticipants();
                 participant.setParticipantId(rs.getInt("participant_id"));
-                participant.setUserId(rs.getInt("user_id"));
+                int userId = rs.getInt("user_id");
+                participant.setUserId(userService.getAll().stream().filter(e->e.getId() ==userId ).findFirst().orElse(null));
+
                 participant.setEventId(rs.getInt("event_id"));
                 participant.setParticipationDate(rs.getTimestamp("participation_date"));
                 participant.setParticipant_name(rs.getString("name_participant"));
