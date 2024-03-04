@@ -69,12 +69,8 @@ public class ProfilChangePasswordController {
             alert.showAndWait();
         } else {
             userService.changeMotDePasse(pwdNew.getText(),userService.getById(userLoggedIn.getId()));
-            if (userLoggedIn.getRole().equals(RoleName.STUDENT)) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
-                Parent root = loader.load();
-                pwdNew.getScene().setRoot(root);
-            }
-            else if (userLoggedIn.getRole().equals(RoleName.TEACHER)) {
+
+            if (userLoggedIn.getRole().equals(RoleName.TEACHER)) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileEnseignant.fxml"));
                 Parent root = loader.load();
                 pwdNew.getScene().setRoot(root);
@@ -86,6 +82,11 @@ public class ProfilChangePasswordController {
             }
             else if (userLoggedIn.getRole().equals(RoleName.ADMIN)) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminPage.fxml"));
+                Parent root = loader.load();
+                pwdNew.getScene().setRoot(root);
+            }
+            else {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
                 Parent root = loader.load();
                 pwdNew.getScene().setRoot(root);
             }
