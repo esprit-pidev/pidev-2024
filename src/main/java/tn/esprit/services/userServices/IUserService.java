@@ -4,6 +4,7 @@ import tn.esprit.entities.User.*;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface IUserService<T> {
 
@@ -34,6 +35,8 @@ public interface IUserService<T> {
     void adminUpdateEnseignant(Enseignant enseignant);
 
     void adminUpdateEntreprise(Entreprise entreprise);
+
+    Map<RoleName, Integer> getUserCountByRole();
 
     void changeMotDePasse(String password,User user);
 

@@ -8,6 +8,11 @@ public class ResponsableClub extends Etudiant {
         super(id, nom, email, password, role, niveau, prenom, genre, cin, classe, profil_picture, date_naissance);
     }
 
+    public ResponsableClub(int id, String nom, String email, String password, RoleName role, int niveau, String prenom, String genre, String cin, String classe, String profil_picture, LocalDate date_naissance, boolean is_enabled) {
+        super(id, nom, email, password, role, niveau, prenom, genre, cin, classe, profil_picture, date_naissance);
+        this.setIsEnabled(is_enabled);
+    }
+
     public ResponsableClub(String nom, String email, String password, RoleName role, int niveau, String prenom, String genre, String cin, String classe, String profil_picture, LocalDate date_naissance) {
         super(nom, email, password, role, niveau, prenom, genre, cin, classe, profil_picture, date_naissance);
     }

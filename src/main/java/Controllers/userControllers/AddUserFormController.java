@@ -16,6 +16,12 @@ import java.sql.SQLException;
 
 public class AddUserFormController {
 
+    private AdminController adminController;
+
+    public void setAdminController(AdminController adminController) {
+        this.adminController=adminController;
+    }
+
     private final UserService userService = new UserService();
 
     @FXML
@@ -106,6 +112,7 @@ public class AddUserFormController {
     void AddE(ActionEvent event) {
         try {
             userService.add(new Entreprise(nomEnTF.getText(),emailEnTF.getText(),pwdEnTF.getText(),websiteEnTF.getText(),paysEnTF.getText(),localEnTF.getText()));
+            adminController.reloadLoginScene(3);
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -116,7 +123,7 @@ public class AddUserFormController {
     void AddS(ActionEvent event) {
         try {
             userService.add(new Etudiant(nomTF.getText(), emailTF.getText(), pwdTF.getText(), Integer.parseInt(niveauTF.getText()), prenomTF.getText(), genreCB.getSelectionModel().getSelectedItem(), cinTF.getText(), classeTF.getText(), null, dateNaissanceTF.getValue()));
-
+            adminController.reloadLoginScene(1);
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -127,6 +134,7 @@ public class AddUserFormController {
     void AddT(ActionEvent event) {
         try {
             userService.add(new Enseignant(nomETF.getText(), emailETF.getText(), pdwETF.getText(), prenomETF.getText(), cinETF.getText(), genreECB.getSelectionModel().getSelectedItem(), dateNaissanceETF.getValue(), null));
+            adminController.reloadLoginScene(0);
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }

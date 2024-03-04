@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import tn.esprit.entities.User.Etudiant;
 import tn.esprit.services.userServices.AuthResponseDTO;
@@ -30,18 +32,61 @@ public class EditProfilStudentController {
 
     AuthResponseDTO userLoggedIn= UserSession.getUser_LoggedIn();
 
+
+    @FXML
+    private TextField classeTF;
+
+    @FXML
+    private DatePicker dateNaissance;
+
+    @FXML
+    private TextField niveauTF;
+
+    @FXML
+    private AnchorPane ap;
+
+    @FXML
+    private TextField nomTF;
+
+    @FXML
+    private TextField prenomTF;
+
+    @FXML
+    private ImageView profilPhoto;
+
     public void initialize() {
         String photoFileName="";
-            Etudiant etudiant =(Etudiant) userService.getById(userLoggedIn.getId());
-            photoFileName = "C:\\xampp\\htdocs\\img\\"+etudiant.getProfil_picture();
-        loadImage(photoFileName);
-
-
+        Etudiant etudiant =(Etudiant) userService.getById(userLoggedIn.getId());
         setNomTF(etudiant.getNom());
         setPrenomTF(etudiant.getPrenom());
         setDateNaissance(etudiant.getDate_naissance());
         setClasseTF(etudiant.getClasse());
         setNiveauTF(etudiant.getNiveau());
+        if (etudiant.getProfil_picture()!=null) {
+            photoFileName = "C:\\xampp\\htdocs\\img\\" + etudiant.getProfil_picture();
+            loadImage(photoFileName);
+            Button btn = new Button();
+            btn.setText("Supprimer");
+            btn.setLayoutX(388);
+            btn.setLayoutY(92);
+            btn.setOnAction(event -> {
+                        etudiant.setProfil_picture(null);
+                        userService.updateEtudiant(etudiant);
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+                            Parent root = loader.load();
+                            nomTF.getScene().setRoot(root);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+            );
+            ap.getChildren().add(btn);
+        } else {
+            profilPhoto.setImage(new Image ("\\images\\default-profile.png"));
+        }
+
     }
 
     private void loadImage(String filePath) {
@@ -55,23 +100,7 @@ public class EditProfilStudentController {
         }
     }
 
-    @FXML
-    private TextField classeTF;
 
-    @FXML
-    private DatePicker dateNaissance;
-
-    @FXML
-    private TextField niveauTF;
-
-    @FXML
-    private TextField nomTF;
-
-    @FXML
-    private TextField prenomTF;
-
-    @FXML
-    private ImageView profilPhoto;
 
     public void setClasseTF(String classeTF) {
         this.classeTF.setText(classeTF);

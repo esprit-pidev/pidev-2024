@@ -20,6 +20,18 @@ public class Etudiant extends User{
         this.date_naissance = date_naissance;
     }
 
+    public Etudiant(int id, String nom, String email, String password, RoleName role, int niveau, String prenom, String genre, String cin, String classe, String profil_picture, LocalDate date_naissance, boolean is_enabled) {
+        super(id, nom, email, password, role);
+        this.niveau = niveau;
+        this.prenom = prenom;
+        this.genre = genre;
+        this.cin = cin;
+        this.classe = classe;
+        this.profil_picture = profil_picture;
+        this.date_naissance = date_naissance;
+        this.setIsEnabled(is_enabled);
+    }
+
     public Etudiant(String nom, String email, String password, RoleName role, int niveau, String prenom, String genre, String cin, String classe, String profil_picture, LocalDate date_naissance) {
         super(nom, email, password, role);
         this.niveau = niveau;

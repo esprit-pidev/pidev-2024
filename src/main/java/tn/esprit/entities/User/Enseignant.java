@@ -16,6 +16,16 @@ public class Enseignant extends User{
         this.profil_picture=profil_picture;
     }
 
+    public Enseignant(int id, String nom, String email, String password, RoleName role, String prenom, String cin, String genre, LocalDate date_naissance,String profil_picture, boolean is_enabled) {
+        super(id, nom, email, password, role);
+        this.prenom = prenom;
+        this.cin = cin;
+        this.genre = genre;
+        this.date_naissance = date_naissance;
+        this.profil_picture=profil_picture;
+        this.setIsEnabled(is_enabled);
+    }
+
     public Enseignant(String nom, String email, String password,String prenom, String cin, String genre, LocalDate date_naissance,String profil_picture) {
         super(nom, email, password);
         this.prenom = prenom;
