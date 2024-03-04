@@ -1,0 +1,5 @@
+.background-image {
+    -fx-background-image: url('./img/red_and_white_grunge_background.jpg');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}

@@ -5,12 +5,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.JSONArray;
@@ -58,7 +62,7 @@ public class AjouterEventController implements Initializable {
     AuthResponseDTO userLoggedIn= UserSession.getUser_LoggedIn();
     private User admin =userLoggedIn;
 
-    private static final String OPENAI_API_KEY = "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";
+    private static final String OPENAI_API_KEY = "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";
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
      EventCommentService eventCommentService = new EventCommentService();
 
@@ -77,7 +81,7 @@ public class AjouterEventController implements Initializable {
         }
 
         String prompt = "Perform sentiment analysis on these comments to gauge public opinion " +
-                "about an event in one or two phrases and tell what to improve if you get hint from comments else dont suggest anything from your own if there is no comments just tell 'there is no comments': " + concatenatedText.toString();
+                "about an event in one or two phrases ,give suggestions for improvement based on negative comments only , dont suggest anything from your own, if the list of comments is empty just tell 'there is no comments': " + concatenatedText.toString();
 
         RequestBody body = RequestBody.create(mediaType, "{\"model\": \"gpt-3.5-turbo-0125\", \"messages\": [{\"role\": \"user\", \"content\": \"" + prompt + "\"}]}");
 
@@ -141,16 +145,27 @@ public class AjouterEventController implements Initializable {
     public void displayEvents(){
         List<Events> events = eventService.display();
         eventsContainer.getChildren().clear();
+        analysisContainer.getChildren().clear();
         for (Events eventt : events){
             Text eventName = new Text(eventt.getEventName());
-            eventName.setWrappingWidth(150);
+            eventName.setWrappingWidth(200);
+            eventName.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+            eventName.setTextAlignment(TextAlignment.CENTER);
+            eventName.setFill(javafx.scene.paint.Color.web("#262428"));
             Button delete = new Button("Delete");
             Button update = new Button("Update");
-            delete.setPrefHeight(20);
-            update.setPrefHeight(20);
+            delete.setMaxHeight(15);
+            update.setMaxHeight(15);
+            delete.setMaxWidth(60);
+            update.setMaxWidth(60);
+            delete.setStyle("-fx-background-color: #711c10; -fx-text-fill: white;");
+            update.setStyle("-fx-background-color: #2f4558; -fx-text-fill: white;");
             HBox container1 =new HBox();
             HBox container2 =new HBox();
-            container1.setSpacing(100);
+            container1.setStyle("-fx-background-color: white;-fx-background-radius: 10; -fx-border-color: white; -fx-border-width: 1;-fx-border-radius: 10;");
+            container1.setSpacing(30);
+            container1.setAlignment(Pos.CENTER_LEFT);
+            container1.setPadding(new Insets(5,5,5,5));
             container2.setSpacing(10);
             container2.getChildren().addAll(delete,update);
             container1.getChildren().addAll(eventName,container2);
@@ -167,7 +182,9 @@ public class AjouterEventController implements Initializable {
                     UpdateEventController controller;
                     controller = loader.getController();
                     controller.setEventToBeUpdated(eventt);
-                    ((Scene) update.getScene()).setRoot(root);
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root, 600, 626));
+                    stage.show();
 
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -175,11 +192,26 @@ public class AjouterEventController implements Initializable {
 
             });
             eventsContainer.getChildren().add(container1);
-            eventsContainer.setPadding(new Insets(5,0,0,5));
-            TextArea analyse = new TextArea( analyzeEmotions(eventt));
-            analysisContainer.setPrefWidth(300);
-            analyse.setWrapText(true);
-            analysisContainer.getChildren().add(analyse);
+            eventsContainer.setPadding(new Insets(5,5,5,5));
+            Text analyse = new Text( analyzeEmotions(eventt));
+
+            HBox textPane = new HBox(analyse);
+
+            textPane.setStyle("-fx-border-color: black; " +
+                    "-fx-border-width: 1px; " +
+                    "-fx-background-color: transparent; " +  // Background color
+                    "-fx-background-radius: 10px; " +      // Background radius
+                    "-fx-border-radius: 10px;");
+            textPane.setPadding(new Insets(5,5,5,5));
+            analyse.setWrappingWidth(340);
+            analyse.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+            analysisContainer.setPrefWidth(360);
+            analysisContainer.setAlignment(Pos.CENTER);
+            analysisContainer.setSpacing(10);
+            analysisContainer.setPadding(new Insets(5,5,5,5));
+
+
+            analysisContainer.getChildren().add(textPane);
         }
     }
 

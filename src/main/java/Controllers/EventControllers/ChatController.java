@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -78,11 +80,17 @@ public class ChatController implements Initializable {
     public TextArea getMessageArea() {
         return messageArea;
     }
-
+    @FXML
+    private ImageView expandIcon;
 
     @Override
         public void initialize(URL location, ResourceBundle resources) {
 
+        Image expand1 = new Image("/img/arrowDown.png");
+        expandIcon.setImage(expand1);
+
+        messageArea.setMinHeight(0);
+        inputBox.setMinHeight(0);
         CommentsContainer.setVisible(false);
         CommentsContainer.setMaxHeight(0);
 
@@ -90,6 +98,7 @@ public class ChatController implements Initializable {
             ClientThread clientThread = new ClientThread(socket, messageArea,roomId);
             clientThread.start();
             System.out.println(messageArea.getUserData());
+            expand.setText(roomId);
             });
 
             // send initialization message to the server
@@ -131,12 +140,20 @@ public class ChatController implements Initializable {
         if(!isCollapsed){
             CommentsContainer.setVisible(false);
             CommentsContainer.setMaxHeight(0);
-            expand.setText("Expand");
+            messageArea.setMinHeight(0);
+            inputBox.setMinHeight(0);
+            Image expand1 = new Image("/img/arrowDown.png");
+            expandIcon.setImage(expand1);
+            expand.setText(roomId);
 
         }
         else {CommentsContainer.setVisible(true);
             CommentsContainer.setMaxHeight(300);
-            expand.setText("Collapse");
+            messageArea.setMinHeight(300);
+            inputBox.setMinHeight(26);
+            Image expand1 = new Image("/img/arrowUP.png");
+            expandIcon.setImage(expand1);
+            expand.setText(roomId);
 
         }
     }

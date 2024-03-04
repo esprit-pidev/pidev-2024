@@ -110,8 +110,11 @@ public class LoginController {
                         captchaContainer.getChildren().add(captcha);
                     }
                 }
+
+
             }
             else {
+
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setContentText("Votre compte est bloquer pour le moment ! ");

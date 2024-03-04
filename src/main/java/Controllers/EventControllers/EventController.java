@@ -246,7 +246,7 @@ public class EventController implements Initializable {
     private void removeComment(ActionEvent e, EventComments comment) {
         eventCommentService.supprimer(comment);
         commentDisplay.getChildren().clear();
-        participation.setText("Attend");
+        participation.setText("del");
         displayComments();
 
     }
@@ -254,6 +254,7 @@ public class EventController implements Initializable {
         EventParticipants  participant = eventParticipantService.display().stream().filter(e->e.getUserId().getId() == user.getId()).findFirst().get();
         eventParticipantService.supprimer(participant);
         participation.setText("Attend");
+        participation.setStyle("-fx-background-color:#781c10;");
         participationLogic();
         event.initializeParticipants(eventParticipantService);
 
@@ -266,6 +267,7 @@ public class EventController implements Initializable {
         EventParticipants participant_object = new EventParticipants(user,event.getEventId());
         eventParticipantService.ajouter(participant_object);
         participation.setText("Remove");
+        participation.setStyle("-fx-background-color:#7AA95C;");
         participationLogic();
         event.initializeParticipants(eventParticipantService);
 
@@ -330,6 +332,7 @@ public class EventController implements Initializable {
         CommentsContainer.setVisible(false);
         CommentsContainer.setMaxHeight(0);
         addComment.setOnAction(e -> addComment(e, eventt.getEventId(), commentField.getText()));
+
         Platform.runLater(() -> {
             displayComments();
             participationLogic();
@@ -337,7 +340,12 @@ public class EventController implements Initializable {
             title.setText(eventt.getEventName());
             description.setText(eventt.getDescription());
             initializeReaction(eventReactions);
-
+            if (participation.getText().equals("Remove")){
+                participation.setStyle("-fx-background-color:#781c10;");
+            }
+            else{
+                participation.setStyle("-fx-background-color:#7AA95C;");
+            }
         });
 
 
