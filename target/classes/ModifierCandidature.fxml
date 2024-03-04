@@ -15,7 +15,7 @@
     <children>
       <ImageView fitHeight="409.0" fitWidth="600.0" layoutY="-4.0" opacity="0.52" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/esprit.jpg" />
+            <Image url="@img/image/esprit.jpg" />
          </image>
       </ImageView>
       <MenuButton layoutX="440.0" layoutY="18.0" mnemonicParsing="false" text="Stage ">
@@ -39,12 +39,12 @@
       </Label>
       <ImageView fitHeight="50.0" fitWidth="64.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/logo.png" />
+            <Image url="@img/image/logo.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="41.0" fitWidth="47.0" layoutX="545.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/entre.png" />
+            <Image url="@img/image/entre.png" />
          </image>
       </ImageView>
         <Button layoutX="359.0" layoutY="317.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="25.0" prefWidth="77.0" text="Afficher" textFill="#4a1111" />

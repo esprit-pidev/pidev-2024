@@ -343,8 +343,8 @@
 /*----------------------------------------------------------------------------------------------------------*/
 #ipad{
     -fx-background-color:
-            linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
-            linear-gradient(#020b02, #3a3a3a),
+            linear-gradient(#781C10 0%, #9F1C00 25%, #781C10 75%, #9F1C00 100%),
+            linear-gradient(#781C10, #781C10),
             linear-gradient(#b9b9b9 0%, #c2c2c2 20%, #afafaf 80%, #c8c8c8 100%),
             linear-gradient(#f5f5f5 0%, #dbdbdb 50%, #cacaca 51%, #d7d7d7 100%);
     -fx-background-insets: 0,1,4,5;
@@ -460,7 +460,7 @@
     -fx-text-fill: white;
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-background-color: linear-gradient(#9F1C00, #9F1C00);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 

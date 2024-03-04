@@ -15,7 +15,7 @@
     <children>
         <ImageView fitHeight="439.0" fitWidth="601.0" layoutY="-5.0" opacity="0.52" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@img/esprit.jpg" />
+                <Image url="@img/image/esprit.jpg" />
             </image>
         </ImageView>
         <HBox layoutY="1.0" prefHeight="55.0" prefWidth="601.0" style="-fx-background-color: #B5B5B5;" />
@@ -36,12 +36,12 @@
         <Button fx:id="afficher" layoutX="243.0" layoutY="325.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="25.0" prefWidth="79.0" text="Afficher" textFill="#4a1111" />
         <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@img/logo.png" />
+                <Image url="@img/image/logo.png" />
             </image>
         </ImageView>
         <ImageView fitHeight="35.0" fitWidth="42.0" layoutX="550.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@img/entre.png" />
+                <Image url="@img/image/entre.png" />
             </image>
         </ImageView>
         <SplitMenuButton layoutX="465.0" layoutY="19.0" mnemonicParsing="false" text="Stage">

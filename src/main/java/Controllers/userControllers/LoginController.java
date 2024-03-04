@@ -35,7 +35,7 @@ public class LoginController {
             if (BCrypt.checkpw(pwdTF.getText(), user.getPassword())) {
                 userLoggedIn = new AuthResponseDTO(user.getId(), user.getRole());
                 UserSession.getSameInstance(userLoggedIn);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LesOffresDEStage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterOffre.fxml"));
                 Parent root = loader.load();
                 emailTF.getScene().setRoot(root);
             } else

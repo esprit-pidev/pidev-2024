@@ -13,7 +13,7 @@
     <children>
         <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.52" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@img/esprit.jpg" />
+                <Image url="@img/image/esprit.jpg" />
             </image>
         </ImageView>
         <TextField fx:id="competences" layoutX="65.0" layoutY="196.0" prefHeight="44.0" prefWidth="178.0" promptText="Competences" />
@@ -27,12 +27,12 @@
         </Label>
         <ImageView fitHeight="44.0" fitWidth="54.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@img/logo.png" />
+                <Image url="@img/image/logo.png" />
             </image>
         </ImageView>
         <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="549.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@img/entre.png" />
+                <Image url="@img/image/entre.png" />
             </image>
         </ImageView>
         <ComboBox layoutX="451.0" layoutY="21.0" prefHeight="25.0" prefWidth="77.0" promptText="Stage" />

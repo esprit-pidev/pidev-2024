@@ -9,33 +9,47 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="402.0" prefWidth="589.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherCandidatureController">
+<AnchorPane prefHeight="768" prefWidth="1280" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherCandidatureController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" layoutY="2.0" opacity="0.52" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="768.0" fitWidth="1280.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/esprit.jpg" />
+            <Image url="@img/image/grisclair.png" />
          </image>
       </ImageView>
-      <ListView fx:id="candidatureListView" layoutX="274.0" layoutY="91.0" onMouseClicked="#fillforum" prefHeight="290.0" prefWidth="301.0" />
-      <Label layoutX="186.0" layoutY="35.0" text="Afficher Candidature " textFill="#d61525">
+      <ListView fx:id="candidatureListView" layoutX="61.0" layoutY="379.0" onMouseClicked="#fillforum" prefHeight="343.0" prefWidth="1159.0" />
+      <Label layoutX="449.0" layoutY="90.0" prefHeight="74.0" prefWidth="383.0" text="Afficher Candidature " textFill="#9f1c00" AnchorPane.bottomAnchor="610.0" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="448.0" AnchorPane.topAnchor="90.0">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Button layoutX="77.0" layoutY="313.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="88.0" text="modifier" textFill="#4a1111" />
-      <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+      <Button id="but" layoutX="1110.0" layoutY="247.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="110.0" stylesheets="@css/stylesheet.css" text="modifier" textFill="#4a1111">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <ImageView fitHeight="110.0" fitWidth="110.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/logo.png" />
+            <Image url="@img/image/logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="41.0" layoutX="545.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="74.0" fitWidth="70.0" layoutX="1186.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/entre.png" />
+            <Image url="@img/image/entre.png" />
          </image>
       </ImageView>
-      <TextField fx:id="competences" layoutX="36.0" layoutY="152.0" prefHeight="25.0" prefWidth="202.0" promptText="Competences" />
-      <TextField fx:id="cv" layoutX="36.0" layoutY="217.0" prefHeight="25.0" prefWidth="202.0" promptText="CV" />
-      <Button layoutX="36.0" layoutY="268.0" mnemonicParsing="false" onAction="#uploadPdf" text="cliquer pour ajouter votre CV" />
-      <Button layoutX="53.0" layoutY="356.0" mnemonicParsing="false" onAction="#naviguezVersAjouter" text="ajouter un autre candidature" />
+      <TextField fx:id="competences" layoutX="91.0" layoutY="247.0" prefHeight="87.0" prefWidth="383.0" promptText="Competences" />
+      <TextField fx:id="cv" layoutX="593.0" layoutY="246.0" prefHeight="53.0" prefWidth="335.0" promptText="CV" />
+      <Button id="but" layoutX="1046.0" layoutY="309.0" mnemonicParsing="false" onAction="#naviguezVersAjouter" stylesheets="@css/stylesheet.css" text="ajouter un autre candidature">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button id="but" layoutX="593.0" layoutY="309.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="335.0" stylesheets="@css/stylesheet.css" text="cliquer pour ajouter votre CV">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <ImageView fitHeight="165.0" fitWidth="199.0" layoutX="8.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/image/7-removebg-preview.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

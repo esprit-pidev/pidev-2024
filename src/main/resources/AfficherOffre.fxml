@@ -4,25 +4,51 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="458.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherOffreController">
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherOffreController">
     <children>
-        <ListView fx:id="offresListView" layoutX="428.0" layoutY="89.0" onMouseClicked="#fillforum" prefHeight="282.0" prefWidth="267.0" />
-        <TextField fx:id="titre" layoutX="37.0" layoutY="175.0" promptText="Titre" />
-        <TextField fx:id="competences" layoutX="247.0" layoutY="175.0" promptText="Competences" />
-        <TextField fx:id="description" layoutX="37.0" layoutY="249.0" prefHeight="25.0" prefWidth="149.0" promptText="Description" />
-        <TextField fx:id="nbr" layoutX="247.0" layoutY="249.0" promptText="Nombres " />
-        <TextField fx:id="date" layoutX="37.0" layoutY="327.0" promptText="Date" />
-        <Button layoutX="66.0" layoutY="396.0" mnemonicParsing="false" onAction="#modifierOffre" text="Modifier" />
-        <Button layoutX="271.0" layoutY="396.0" mnemonicParsing="false" onAction="#supprimerOffre" text="Supprimer" />
-        <Button id="sale" layoutX="247.0" layoutY="327.0" mnemonicParsing="false" onAction="#naviguerversAjouter" prefHeight="25.0" prefWidth="149.0" stylesheets="@css/stylesheet.css" text="Ajouter Un Autre Offre" textFill="#262428" />
-        <Label layoutX="127.0" layoutY="76.0" prefHeight="45.0" prefWidth="158.0" text="Bienvenue" textFill="#9f1c00">
+      <ImageView fitHeight="768.0" fitWidth="1280.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/image/grisclair.png" />
+         </image>
+      </ImageView>
+        <ListView fx:id="offresListView" layoutX="778.0" layoutY="203.0" onMouseClicked="#fillforum" prefHeight="520.0" prefWidth="455.0" />
+        <TextField fx:id="titre" layoutX="102.0" layoutY="359.0" prefHeight="32.0" prefWidth="248.0" promptText="Titre" />
+        <TextField fx:id="competences" layoutX="477.0" layoutY="359.0" prefHeight="32.0" prefWidth="248.0" promptText="Competences" />
+        <TextField fx:id="description" layoutX="102.0" layoutY="467.0" prefHeight="32.0" prefWidth="248.0" promptText="Description" />
+        <TextField fx:id="nbr" layoutX="477.0" layoutY="467.0" prefHeight="32.0" prefWidth="248.0" promptText="Nombres " />
+        <TextField fx:id="date" layoutX="102.0" layoutY="568.0" prefHeight="32.0" prefWidth="248.0" promptText="Date" />
+        <Button id="but" layoutX="102.0" layoutY="669.0" mnemonicParsing="false" onAction="#modifierOffre" prefHeight="32.0" prefWidth="93.0" stylesheets="@css/stylesheet.css" text="Modifier" />
+        <Button id="but" layoutX="267.0" layoutY="669.0" mnemonicParsing="false" onAction="#supprimerOffre" prefHeight="32.0" prefWidth="93.0" stylesheets="@css/stylesheet.css" text="Supprimer" />
+        <Button id="but" layoutX="477.0" layoutY="568.0" mnemonicParsing="false" onAction="#naviguerversAjouter" prefHeight="32.0" prefWidth="248.0" stylesheets="@css/stylesheet.css" text="Ajouter Un Autre Offre" textFill="#262428" />
+        <Label layoutX="381.0" layoutY="159.0" prefHeight="53.0" prefWidth="180.0" text="Bienvenue" textFill="#9f1c00">
             <font>
-                <Font name="System Bold" size="30.0" />
+                <Font name="System Bold" size="36.0" />
             </font>
         </Label>
-        <Button layoutX="447.0" layoutY="396.0" mnemonicParsing="false" onAction="#naviguerversAfficherListeDesCandidatures" text="naviguerveAfficherListeDesCandidatures" />
+        <Button id="but" layoutX="477.0" layoutY="669.0" mnemonicParsing="false" onAction="#naviguerversAfficherListeDesCandidatures" prefHeight="32.0" prefWidth="248.0" stylesheets="@css/stylesheet.css" text="naviguerveAfficherListeDesCandidatures" />
+      <ImageView fitHeight="93.0" fitWidth="130.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/image/logo.png" />
+         </image></ImageView>
+      <ImageView fitHeight="127.0" fitWidth="106.0" layoutX="1160.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/image/entre.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="192.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/image/offre.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="317.0" layoutY="572.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/image/date.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
