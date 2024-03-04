@@ -10,6 +10,12 @@ import tn.esprit.services.userServices.UserService;
 
 public class EntrepriseEditFormController {
 
+    private AdminController adminController;
+
+    public void setAdminController(AdminController controller) {
+        this.adminController=controller;
+    }
+
     private final UserService userService = new UserService();
 
     private Entreprise entreprise;
@@ -62,6 +68,7 @@ public class EntrepriseEditFormController {
         entreprise.setWebsite(websiteTF.getText());
         entreprise.setEmail(emailTF.getText());
         userService.adminUpdateEntreprise(entreprise);
+        adminController.reloadLoginScene(3);
         closeStage();
     }
 

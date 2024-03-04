@@ -7,20 +7,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userControllers.EnseignantEditFormController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@tabPaneStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userControllers.EnseignantEditFormController">
    <children>
-      <TextField fx:id="nomTF" layoutX="43.0" layoutY="47.0" />
-      <TextField fx:id="prenomTF" layoutX="310.0" layoutY="47.0" />
-      <TextField fx:id="emailTF" layoutX="43.0" layoutY="126.0" />
+      <TextField fx:id="nomTF" layoutX="43.0" layoutY="47.0" styleClass="text-field-style" />
+      <TextField fx:id="prenomTF" layoutX="310.0" layoutY="47.0" styleClass="text-field-style" />
+      <TextField fx:id="emailTF" layoutX="43.0" layoutY="126.0" styleClass="text-field-style" />
       <Label layoutX="43.0" layoutY="29.0" text="Nom : " />
       <Label layoutX="310.0" layoutY="29.0" text="Prenom :" />
       <Label layoutX="44.0" layoutY="105.0" text="Email :" />
-      <TextField fx:id="cinTF" layoutX="310.0" layoutY="126.0" />
+      <TextField fx:id="cinTF" layoutX="310.0" layoutY="126.0" styleClass="text-field-style" />
       <Label layoutX="310.0" layoutY="105.0" text="CIN :" />
-      <DatePicker fx:id="dateNaissanceTF" layoutX="312.0" layoutY="186.0" />
+      <DatePicker fx:id="dateNaissanceTF" layoutX="312.0" layoutY="186.0" prefHeight="26.0" prefWidth="150.0" styleClass="text-field-style" />
       <Label layoutX="312.0" layoutY="163.0" text="Date de naissance :" />
       <Label layoutX="42.0" layoutY="163.0" text="Genre :" />
-      <ComboBox fx:id="genreCB" layoutX="42.0" layoutY="187.0" prefWidth="150.0" />
-      <Button layoutX="406.0" layoutY="268.0" mnemonicParsing="false" onAction="#SaveTeacher" text="Save" />
+      <ComboBox fx:id="genreCB" layoutX="42.0" layoutY="187.0" prefWidth="150.0" style="-fx-background-color: white;" styleClass="text-field-style" />
+      <Button layoutX="391.0" layoutY="243.0" mnemonicParsing="false" onAction="#SaveTeacher" style="-fx-background-color: #9f1c00;" text="Enregistrer" textFill="WHITE" />
    </children>
 </AnchorPane>

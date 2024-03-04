@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -13,63 +14,68 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userControllers.SignUpController">
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userControllers.SignUpController">
     <children>
-        <TabPane layoutX="299.0" layoutY="74.0" prefHeight="392.0" prefWidth="484.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
+        <TabPane layoutX="582.0" layoutY="154.0" prefHeight="392.0" prefWidth="559.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab text="Etudiant">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="505.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="505.0" style="-fx-border-color: #9f1c00; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-width: 1.5;">
                             <children>
-                                <TextField fx:id="nomTF" layoutX="32.0" layoutY="36.0" />
-                                <TextField fx:id="prenomTF" layoutX="302.0" layoutY="31.0" />
-                                <TextField fx:id="emailTF" layoutX="32.0" layoutY="90.0" />
-                                <Label layoutX="32.0" layoutY="19.0" text="Nom : " />
-                                <Label layoutX="303.0" layoutY="16.0" text="Prenom :" />
-                                <Label layoutX="303.0" layoutY="72.0" text="Mot de passe :" />
-                                <Label layoutX="33.0" layoutY="72.0" text="Email :" />
-                                <Button layoutX="374.0" layoutY="284.0" mnemonicParsing="false" onAction="#AddS" text="Créer Compte" />
-                                <Button layoutX="37.0" layoutY="284.0" mnemonicParsing="false" onAction="#uploadPhoto" prefHeight="30.0" prefWidth="58.0" text="Upload" />
-                                <Label layoutX="35.0" layoutY="263.0" text="Photo de profil :" />
-                                <TextField fx:id="cinTF" layoutX="32.0" layoutY="167.0" />
-                                <Label layoutX="32.0" layoutY="151.0" text="CIN :" />
-                                <TextField fx:id="niveauTF" layoutX="302.0" layoutY="165.0" prefHeight="26.0" prefWidth="50.0" />
-                                <Label layoutX="304.0" layoutY="146.0" text="Niveau :" />
-                                <TextField fx:id="classeTF" layoutX="370.0" layoutY="165.0" prefHeight="26.0" prefWidth="86.0" />
-                                <Label layoutX="371.0" layoutY="146.0" text="Classe :" />
-                                <DatePicker fx:id="dateNaissanceTF" layoutX="303.0" layoutY="222.0" prefHeight="26.0" prefWidth="157.0" />
-                                <Label layoutX="302.0" layoutY="200.0" text="Date de naissance :" />
-                                <Label layoutX="34.0" layoutY="207.0" text="Genre :" />
-                                <ComboBox fx:id="genreCB" layoutX="34.0" layoutY="229.0" prefWidth="150.0" />
-                                <Label fx:id="errorMail" layoutX="32.0" layoutY="129.0" textFill="red" />
-                                <PasswordField fx:id="pwdTF" layoutX="303.0" layoutY="89.0" />
-                                <Label fx:id="errorPwdTF" layoutX="302.0" layoutY="121.0" textFill="RED" />
+                                <TextField fx:id="nomTF" layoutX="32.0" layoutY="36.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <TextField fx:id="prenomTF" layoutX="302.0" layoutY="36.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <TextField fx:id="emailTF" layoutX="32.0" layoutY="102.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <Label layoutX="32.0" layoutY="16.0" text="Nom : " />
+                                <Label layoutX="303.0" layoutY="13.0" text="Prenom :" />
+                                <Label layoutX="303.0" layoutY="81.0" text="Mot de passe :" />
+                                <Label layoutX="33.0" layoutY="81.0" text="Email :" />
+                                <Button layoutX="406.0" layoutY="280.0" mnemonicParsing="false" onAction="#AddS" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #9f1c00;" text="Créer Compte" textFill="WHITE" />
+                                <Button layoutX="36.0" layoutY="287.0" mnemonicParsing="false" onAction="#uploadPhoto" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #9f1c00;" text="Ajouter" textFill="WHITE" />
+                                <Label layoutX="35.0" layoutY="265.0" text="Photo de profil :" />
+                                <TextField fx:id="cinTF" layoutX="34.0" layoutY="166.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <Label layoutX="34.0" layoutY="146.0" text="CIN :" />
+                                <TextField fx:id="niveauTF" layoutX="303.0" layoutY="165.0" prefHeight="26.0" prefWidth="65.0" styleClass="text-field-style" />
+                                <Label layoutX="304.0" layoutY="145.0" text="Niveau :" />
+                                <TextField fx:id="classeTF" layoutX="378.0" layoutY="165.0" prefHeight="26.0" prefWidth="122.0" styleClass="text-field-style" />
+                                <Label layoutX="378.0" layoutY="145.0" text="Classe :" />
+                                <DatePicker fx:id="dateNaissanceTF" layoutX="305.0" layoutY="228.0" prefHeight="26.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: #9f1c00; -fx-border-radius: 5px;" />
+                                <Label layoutX="305.0" layoutY="209.0" text="Date de naissance :" />
+                                <Label layoutX="34.0" layoutY="208.0" text="Genre :" />
+                                <ComboBox fx:id="genreCB" layoutX="34.0" layoutY="229.0" prefHeight="26.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: #9f1c00; -fx-border-radius: 5px;" />
+                                <Label fx:id="errorMail" layoutX="35.0" layoutY="130.0" textFill="red" />
+                                <PasswordField fx:id="pwdTF" layoutX="303.0" layoutY="101.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <Label fx:id="errorPwdTF" layoutX="305.0" layoutY="130.0" textFill="RED" />
+                                <Label fx:id="nomError" layoutX="33.0" layoutY="65.0" textFill="RED" />
+                                <Label fx:id="prenomError" layoutX="304.0" layoutY="65.0" textFill="RED" />
+                                <Label fx:id="cinError" layoutX="36.0" layoutY="196.0" textFill="RED" />
+                                <Label fx:id="niveauError" layoutX="305.0" layoutY="195.0" textFill="RED" />
+                                <Label fx:id="dateError" layoutX="308.0" layoutY="263.0" textFill="RED" />
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
                 <Tab text="Enseignant">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-border-color: #9f1c00; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-width: 1.5;">
                             <children>
-                                <TextField fx:id="nomETF" layoutX="41.0" layoutY="40.0" />
-                                <TextField fx:id="prenomETF" layoutX="288.0" layoutY="40.0" />
-                                <TextField fx:id="emailETF" layoutX="41.0" layoutY="112.0" />
-                                <Label layoutX="40.0" layoutY="21.0" text="Nom :" />
-                                <Label layoutX="288.0" layoutY="20.0" text="Prenom :" />
-                                <Label layoutX="41.0" layoutY="91.0" text="Email :" />
-                                <Label layoutX="288.0" layoutY="87.0" text="Mot de passe :" />
-                                <Button layoutX="370.0" layoutY="294.0" mnemonicParsing="false" onAction="#AddT" text="Créer Compte" />
-                                <TextField fx:id="cinETF" layoutX="41.0" layoutY="188.0" />
-                                <Label layoutX="41.0" layoutY="167.0" text="CIN :" />
-                                <Button layoutX="283.0" layoutY="251.0" mnemonicParsing="false" onAction="#UploadPhotoE" text="Upload" />
-                                <DatePicker fx:id="dateNaissanceETF" layoutX="281.0" layoutY="191.0" />
-                                <Label layoutX="284.0" layoutY="167.0" text="Date Naissance :" />
-                                <ComboBox fx:id="genreECB" layoutX="41.0" layoutY="252.0" prefWidth="150.0" />
-                                <Label layoutX="44.0" layoutY="229.0" text="Genre :" />
-                                <Label layoutX="282.0" layoutY="228.0" text="Photo de profil :" />
+                                <TextField fx:id="nomETF" layoutX="32.0" layoutY="36.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <TextField fx:id="prenomETF" layoutX="302.0" layoutY="36.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <TextField fx:id="emailETF" layoutX="34.0" layoutY="103.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <Label layoutX="32.0" layoutY="16.0" text="Nom :" />
+                                <Label layoutX="303.0" layoutY="13.0" text="Prenom :" />
+                                <Label layoutX="33.0" layoutY="83.0" text="Email :" />
+                                <Label layoutX="304.0" layoutY="83.0" text="Mot de passe :" />
+                                <Button layoutX="409.0" layoutY="293.0" mnemonicParsing="false" onAction="#AddT" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9f1c00;" text="Créer Compte" textFill="WHITE" />
+                                <TextField fx:id="cinETF" layoutX="35.0" layoutY="171.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <Label layoutX="36.0" layoutY="153.0" text="CIN :" />
+                                <Button layoutX="307.0" layoutY="238.0" mnemonicParsing="false" onAction="#UploadPhotoE" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #9f1c00;" text="Ajouter" textFill="WHITE" />
+                                <DatePicker fx:id="dateNaissanceETF" layoutX="305.0" layoutY="171.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <Label layoutX="306.0" layoutY="152.0" text="Date Naissance :" />
+                                <ComboBox fx:id="genreECB" layoutX="37.0" layoutY="237.0" prefHeight="27.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: #9f1c00; -fx-border-radius: 5px;" />
+                                <Label layoutX="36.0" layoutY="218.0" text="Genre :" />
+                                <Label layoutX="307.0" layoutY="218.0" text="Photo de profil :" />
                                 <Label fx:id="errorMailE" layoutX="41.0" layoutY="150.0" textFill="red" />
-                                <PasswordField fx:id="pdwETF" layoutX="288.0" layoutY="110.0" />
+                                <PasswordField fx:id="pdwETF" layoutX="304.0" layoutY="103.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
                                 <Label fx:id="errorPwdETF" layoutX="288.0" layoutY="142.0" textFill="RED" />
                                 <Label fx:id="errorMailETF" layoutX="41.0" layoutY="143.0" textFill="RED" />
                             </children>
@@ -78,21 +84,21 @@
                 </Tab>
                 <Tab text="Entreprise">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="331.0" prefWidth="591.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="351.0" prefWidth="542.0" style="-fx-border-color: #9f1c00; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-width: 1.5;">
                             <children>
-                                <TextField fx:id="websiteEnTF" layoutX="42.0" layoutY="128.0" />
-                                <TextField fx:id="nomEnTF" layoutX="42.0" layoutY="60.0" />
-                                <TextField fx:id="paysEnTF" layoutX="314.0" layoutY="58.0" />
-                                <TextField fx:id="localEnTF" layoutX="314.0" layoutY="125.0" />
-                                <TextField fx:id="emailEnTF" layoutX="42.0" layoutY="187.0" />
-                                <Button layoutX="376.0" layoutY="259.0" mnemonicParsing="false" onAction="#AddE" text="Créer Compte" />
-                                <Label layoutX="42.0" layoutY="38.0" text="Nom :" />
-                                <Label layoutX="314.0" layoutY="37.0" text="Pays :" />
-                                <Label layoutX="42.0" layoutY="102.0" text="Website :" />
-                                <Label layoutX="314.0" layoutY="167.0" text="Mot de passe :" />
-                                <Label layoutX="42.0" layoutY="167.0" text="Email :" />
-                                <Label layoutX="314.0" layoutY="102.0" text="Localisation :" />
-                                <PasswordField fx:id="pwdEnTF" layoutX="313.0" layoutY="186.0" />
+                                <TextField fx:id="websiteEnTF" layoutX="33.0" layoutY="106.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <TextField fx:id="nomEnTF" layoutX="32.0" layoutY="36.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <TextField fx:id="paysEnTF" layoutX="302.0" layoutY="34.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <TextField fx:id="localEnTF" layoutX="301.0" layoutY="106.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <TextField fx:id="emailEnTF" layoutX="32.0" layoutY="173.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
+                                <Button layoutX="406.0" layoutY="228.0" mnemonicParsing="false" onAction="#AddE" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #9f1c00;" text="Créer Compte" textFill="WHITE" />
+                                <Label layoutX="32.0" layoutY="16.0" text="Nom :" />
+                                <Label layoutX="303.0" layoutY="13.0" text="Pays :" />
+                                <Label layoutX="33.0" layoutY="87.0" text="Website :" />
+                                <Label layoutX="303.0" layoutY="155.0" text="Mot de passe :" />
+                                <Label layoutX="34.0" layoutY="155.0" text="Email :" />
+                                <Label layoutX="303.0" layoutY="86.0" text="Localisation :" />
+                                <PasswordField fx:id="pwdEnTF" layoutX="301.0" layoutY="173.0" prefHeight="26.0" prefWidth="195.0" styleClass="text-field-style" />
                                 <Label fx:id="errorMailEnTF" layoutX="42.0" layoutY="224.0" textFill="RED" />
                                 <Label fx:id="errorPwdEnTF" layoutX="315.0" layoutY="225.0" textFill="RED" />
                             </children>
@@ -101,25 +107,28 @@
                 </Tab>
             </tabs>
         </TabPane>
-        <Label layoutX="299.0" layoutY="31.0" text="Créer Votre compte " textFill="#994534">
+        <Label layoutX="582.0" layoutY="106.0" text="Créez Votre compte " textFill="#994534">
             <font>
-                <Font name="Gill Sans Nova Bold Italic" size="24.0" />
+                <Font name="Gill Sans Nova Bold Italic" size="30.0" />
             </font>
         </Label>
-        <ImageView fitHeight="287.0" fitWidth="262.0" layoutX="14.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="446.0" fitWidth="432.0" layoutX="114.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@/images/Profiling_Monochromatic.png" />
             </image>
         </ImageView>
-        <Label layoutX="322.0" layoutY="465.0" text="Vous avez déja un compte ?" textFill="#9f1c00">
+        <Label layoutX="584.0" layoutY="561.0" text="Vous avez déja un compte ?" textFill="#848181">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <Button layoutX="514.0" layoutY="459.0" mnemonicParsing="false" onAction="#goToLogin" style="-fx-background-color: white; -fx-border-color: #9f1c00; -fx-border-radius: 50px;" text="Connexion" textFill="#9f1c00">
+        <Button layoutX="787.0" layoutY="555.0" mnemonicParsing="false" onAction="#goToLogin" style="-fx-background-color: white; -fx-border-color: #9f1c00; -fx-border-radius: 50px;" text="Connexion" textFill="#9f1c00">
             <font>
-                <Font name="System Bold" size="13.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Button>
     </children>
+    <stylesheets>
+        <URL value="@tabPaneStyle.css" />
+    </stylesheets>
 </AnchorPane>

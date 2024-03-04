@@ -1,0 +1,40 @@
+.tab-pane > .tab-header-area > .headers-region > .tab {
+    -fx-background-color: #9f1c00;
+    -fx-padding: 6px 12px;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected {
+    -fx-background-color: white;
+}
+.tab-pane .tab-header-area .tab:selected .focus-indicator {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent; /* Optional: Change for a more subtle effect */
+}
+.scroll-pane {
+    -fx-background-color: white;
+    -fx-background: white;
+}
+
+.tab:selected {
+    -fx-border-color: #9f1c00 #9f1c00 transparent #9f1c00; /* Bottom border is transparent */
+    -fx-border-width: 1 1 0 1;
+    -fx-border-radius : 5px 5px 0 0;
+}
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #9f1c00; /* Change to your desired color */
+}
+.tab-pane .tab-header-background {
+    -fx-background-color: white;
+}
+
+.tab .tab-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.text-field-style {
+    -fx-border-color:  #9f1c00;
+    -fx-border-radius : 5px;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}

@@ -11,6 +11,14 @@ public class Entreprise extends User{
         this.localisation = localisation;
     }
 
+    public Entreprise(int id, String nom, String email, String password, RoleName role, String website, String pays, String localisation,boolean is_enabled) {
+        super(id, nom, email, password, role);
+        this.website = website;
+        this.pays = pays;
+        this.localisation = localisation;
+        this.setIsEnabled(is_enabled);
+    }
+
     public Entreprise(String nom, String email, String password, RoleName role, String website, String pays, String localisation) {
         super(nom, email, password, role);
         this.website = website;

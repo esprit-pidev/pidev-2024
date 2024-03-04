@@ -10,18 +10,18 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userControllers.EditProfilTeacherController">
    <children>
-      <AnchorPane prefHeight="401.0" prefWidth="600.0">
+      <AnchorPane fx:id="ap" prefHeight="401.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: #9f1c00; -fx-border-width: 2px; -fx-background-radius: 5px; -fx-border-radius: 5px;" stylesheets="@tabPaneStyle.css">
          <children>
-            <TextField fx:id="nomTF" layoutX="119.0" layoutY="179.0" prefHeight="26.0" prefWidth="151.0" />
-            <TextField fx:id="prenomTF" layoutX="350.0" layoutY="179.0" prefHeight="26.0" prefWidth="151.0" />
+            <TextField fx:id="nomTF" layoutX="119.0" layoutY="179.0" prefHeight="26.0" prefWidth="170.0" styleClass="text-field-style" />
+            <TextField fx:id="prenomTF" layoutX="350.0" layoutY="179.0" prefHeight="26.0" prefWidth="170.0" styleClass="text-field-style" />
             <ImageView fx:id="profilPhoto" fitHeight="120.0" fitWidth="151.0" layoutX="208.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="388.0" layoutY="61.0" mnemonicParsing="false" onAction="#upload" text="Changer" />
-            <Button layoutX="426.0" layoutY="301.0" mnemonicParsing="false" onAction="#saveChanges" text="Enregistrer" />
+            <Button layoutX="388.0" layoutY="52.0" mnemonicParsing="false" onAction="#upload" style="-fx-background-color: #9f1c00;" text="Changer" textFill="WHITE" />
+            <Button layoutX="426.0" layoutY="301.0" mnemonicParsing="false" onAction="#saveChanges" style="-fx-background-color: #9f1c00;" text="Enregistrer" textFill="WHITE" />
             <Label layoutX="119.0" layoutY="153.0" text="Nom :" />
             <Label layoutX="355.0" layoutY="153.0" text="Prenom :" />
-            <DatePicker fx:id="dateNaissance" layoutX="120.0" layoutY="247.0" prefHeight="26.0" prefWidth="151.0" />
+            <DatePicker fx:id="dateNaissance" layoutX="120.0" layoutY="247.0" prefHeight="26.0" prefWidth="170.0" styleClass="text-field-style" />
             <Label layoutX="119.0" layoutY="224.0" text="Date naissance :" />
-            <Button layoutX="122.0" layoutY="301.0" mnemonicParsing="false" onAction="#cancel" text="Annuler" />
+            <Button layoutX="122.0" layoutY="301.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #9f1c00;" text="Annuler" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

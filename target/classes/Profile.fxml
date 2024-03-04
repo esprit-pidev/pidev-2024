@@ -10,18 +10,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userControllers.ProfileController">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userControllers.ProfileController">
    <left>
-      <VBox prefHeight="400.0" prefWidth="154.0" style="-fx-background-color: #9F1C00;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="768.0" prefWidth="198.0" style="-fx-background-color: #9F1C00;" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER" prefHeight="158.0" prefWidth="154.0" spacing="10.0">
                <children>
-                  <ImageView fx:id="ProfilPhoto" fitHeight="88.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ProfilPhoto" fitHeight="88.0" fitWidth="108.0" onMouseClicked="#goToProfile" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <Label fx:id="nomPrenomLBL" textFill="WHITE">
+                  <Label fx:id="nomPrenomLBL" onMouseClicked="#goToProfile" textFill="WHITE">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -54,7 +54,7 @@
                               <Image url="@/images/icons8-password-50.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="19.0" prefWidth="111.0" text="   Password" textFill="WHITE">
+                        <Label prefHeight="19.0" prefWidth="111.0" text="   Mot de passe" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -81,20 +81,54 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="PhotoDeProfil" fitHeight="123.0" fitWidth="134.0" layoutX="155.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="84.0" layoutY="240.0" text="Email :" />
-            <Label layoutX="158.0" layoutY="275.0" text="Classe :" />
-            <Label layoutX="84.0" layoutY="275.0" text="Niveau :" />
-            <Label layoutX="84.0" layoutY="198.0" text="Date Naissance :" />
-            <Label layoutX="254.0" layoutY="198.0" text="Genre :" />
-            <Label fx:id="dateNaissanceLB" layoutX="183.0" layoutY="198.0" />
-            <Label fx:id="genreLB" layoutX="301.0" layoutY="198.0" />
-            <Label fx:id="emailLB" layoutX="128.0" layoutY="240.0" />
-            <Label fx:id="classeLB" layoutX="203.0" layoutY="275.0" />
-            <Label fx:id="nomPrenomLB" layoutX="183.0" layoutY="145.0" />
-            <Label fx:id="niveauLB" layoutX="132.0" layoutY="276.0" />
+            <ImageView fx:id="PhotoDeProfil" fitHeight="153.0" fitWidth="173.0" layoutX="425.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="387.0" layoutY="354.0" text="Email :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label layoutX="464.0" layoutY="389.0" text="Classe :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label layoutX="388.0" layoutY="389.0" text="Niveau :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label layoutX="387.0" layoutY="312.0" text="Date Naissance :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label layoutX="590.0" layoutY="312.0" text="Genre :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="dateNaissanceLB" layoutX="490.0" layoutY="313.0" />
+            <Label fx:id="genreLB" layoutX="662.0" layoutY="313.0" />
+            <Label fx:id="emailLB" layoutX="432.0" layoutY="355.0" />
+            <Label fx:id="classeLB" layoutX="512.0" layoutY="390.0" />
+            <Label fx:id="nomPrenomLB" layoutX="460.0" layoutY="257.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label fx:id="niveauLB" layoutX="440.0" layoutY="390.0" />
+            <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="365.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons8-birthday-25.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="genreIM" fitHeight="18.0" fitWidth="18.0" layoutX="640.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="365.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons8-email-25.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="366.0" layoutY="388.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons8-level-25.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
    </center>
 </BorderPane>

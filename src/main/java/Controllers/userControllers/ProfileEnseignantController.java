@@ -51,6 +51,9 @@ public class ProfileEnseignantController {
     private HBox password;
 
     @FXML
+    private ImageView genreIM;
+
+    @FXML
     BorderPane bp;
 
     @FXML
@@ -63,15 +66,27 @@ public class ProfileEnseignantController {
     public void initialize() {
         String photoFileName="";
         Enseignant enseignant =(Enseignant) userService.getById(userLoggedIn.getId());
-        photoFileName = "C:\\xampp\\htdocs\\img\\"+enseignant.getProfil_picture();
         nomPrenomLBL.setText(enseignant.getPrenom()+" "+enseignant.getNom());
         nomPrenomLBL.setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
         nomPrenomLB.setText(enseignant.getPrenom()+" "+enseignant.getNom());
         nomPrenomLB.setStyle("-fx-text-fill: #9F1C00; -fx-font-weight: bold;");
-        loadImage(photoFileName);
+
         emailLB.setText(enseignant.getEmail());
         genreLB.setText(enseignant.getGenre());
         dateNaissanceLB.setText(String.valueOf(enseignant.getDate_naissance()));
+        if (enseignant.getProfil_picture()!=null) {
+            photoFileName = "C:\\xampp\\htdocs\\img\\" + enseignant.getProfil_picture();
+            loadImage(photoFileName);
+        }
+        else {
+            ProfilPhoto.setImage(new Image("\\images\\default-profile.png"));
+            PhotoDeProfil.setImage(new Image("\\images\\default-profile.png"));
+        }
+
+        if (enseignant.getGenre().equals("Male"))
+            genreIM.setImage(new Image("\\images\\icons8-male-25.png"));
+        else
+            genreIM.setImage(new Image("\\images\\icons8-female-25.png"));
 
     }
 
@@ -87,11 +102,13 @@ public class ProfileEnseignantController {
         }
     }
 
-
     @FXML
-    void home(MouseEvent event) {
-        bp.setCenter(ap);
+    void goToProfile(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileEnseignant.fxml"));
+        Parent root = loader.load();
+        bp.getScene().setRoot(root);
     }
+
 
     @FXML
     void editProfile(MouseEvent event) throws IOException {

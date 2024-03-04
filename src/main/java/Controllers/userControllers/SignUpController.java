@@ -38,6 +38,23 @@ public class SignUpController {
 
     private String uploadedPhotoName = null;
 
+
+    @FXML
+    private Label cinError;
+
+    @FXML
+    private Label dateError;
+
+    @FXML
+    private Label niveauError;
+
+    @FXML
+    private Label nomError;
+
+    @FXML
+    private Label prenomError;
+
+
     @FXML
     private TextField paysEnTF;
 
@@ -218,7 +235,20 @@ public class SignUpController {
         else if (pwdTF.getText().length()<8) {
             errorPwdTF.setText("Longeur minimum 8");
         }
-        else {
+        else if (cinTF.getText().length() < 8) {
+            cinError.setText("8 chiffre");
+        }
+        else if (Integer.parseInt(niveauTF.getText()) != 1 && Integer.parseInt(niveauTF.getText()) != 2 && Integer.parseInt(niveauTF.getText()) != 3 && Integer.parseInt(niveauTF.getText()) != 4 && Integer.parseInt(niveauTF.getText()) != 5) {
+            niveauError.setText("1,2,3,4 ou 5");
+        }
+        else if (nomTF.getText().length() < 3) {
+            nomError.setText("minimum 2 lettres");
+        }
+        else if (prenomTF.getText().length() < 3) {
+            prenomError.setText("minimum 2 lettres");
+        } else if (dateNaissanceTF.getValue().getYear() > 2006) {
+            dateError.setText("invalid date");
+        } else {
             errorMail.setText("");
             errorPwdTF.setText("");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/EmailVerification.fxml"));
@@ -236,6 +266,10 @@ public class SignUpController {
 
             MailSender.sendEmail(emailTF.getText(), "Vérification Email", "Votre code de vérification est : " + verifCode);
 
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Code envoyé");
+            alert.setContentText("Nous avons envoyé un code de vérification a votre adresse email");
+            alert.showAndWait();
         }
     }
 
@@ -267,6 +301,11 @@ public class SignUpController {
             emailVerificationController.initData(id,enseignant);
 
             MailSender.sendEmail(emailETF.getText(), "Vérification Email", "Votre code de vérification est : " + verifCode);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Code envoyé");
+            alert.setContentText("Nous avons envoyé un code de vérification a votre adresse email");
+            alert.showAndWait();
         }
     }
 
