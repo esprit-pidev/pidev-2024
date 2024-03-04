@@ -8,49 +8,64 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AjouterOffreController">
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AjouterOffreController">
     <children>
-        <ImageView fitHeight="439.0" fitWidth="601.0" layoutY="-5.0" opacity="0.52" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@img/image/esprit.jpg" />
-            </image>
-        </ImageView>
-        <HBox layoutY="1.0" prefHeight="55.0" prefWidth="601.0" style="-fx-background-color: #B5B5B5;" />
-        <TextField fx:id="titre" layoutX="89.0" layoutY="155.0" />
-        <TextField fx:id="description" layoutX="89.0" layoutY="239.0" />
-        <TextField fx:id="competences" layoutX="374.0" layoutY="155.0" />
-        <TextField fx:id="nbr" layoutX="374.0" layoutY="239.0" />
-        <Button layoutX="80.0" layoutY="325.0" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="93.0" text="Ajouter" textAlignment="CENTER" textFill="#4a1111" />
-        <Label layoutX="89.0" layoutY="133.0" text="Titre :" />
-        <Label layoutX="93.0" layoutY="218.0" text="Description :" />
-        <Label layoutX="374.0" layoutY="133.0" text="Competences :" />
-        <Label layoutX="374.0" layoutY="218.0" text="Nombre :" />
-        <Label layoutX="201.0" layoutY="80.0" text="Créer Un Offre De Stage" textAlignment="CENTER" textFill="#d61525" AnchorPane.topAnchor="80.0">
+      <ImageView fitHeight="723.0" fitWidth="1299.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/image/grisclair.png" />
+         </image>
+      </ImageView>
+        <TextField fx:id="titre" layoutX="225.0" layoutY="352.0" prefHeight="45.0" prefWidth="302.0" />
+        <TextField fx:id="description" layoutX="225.0" layoutY="525.0" prefHeight="45.0" prefWidth="302.0" />
+        <TextField fx:id="competences" layoutX="783.0" layoutY="352.0" prefHeight="45.0" prefWidth="302.0" />
+        <TextField fx:id="nbr" layoutX="783.0" layoutY="525.0" prefHeight="45.0" prefWidth="302.0" />
+        <Button id="but" layoutX="225.0" layoutY="661.0" mnemonicParsing="false" onAction="#add" prefHeight="30.0" prefWidth="116.0" stylesheets="@css/stylesheet.css" text="Ajouter" textAlignment="CENTER" />
+        <Label layoutX="225.0" layoutY="321.0" prefHeight="33.0" prefWidth="70.0" text="Titre :">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+        <Label layoutX="225.0" layoutY="498.0" text="Description :">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+        <Label layoutX="783.0" layoutY="323.0" text="Competences :">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+        <Label layoutX="783.0" layoutY="498.0" text="Nombre :">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+        <Label layoutX="470.0" layoutY="147.0" prefHeight="53.0" prefWidth="420.0" text="Créer Un Offre De Stage" textAlignment="CENTER" textFill="#d61525" AnchorPane.topAnchor="147.0">
             <font>
-                <Font name="System Bold" size="18.0" />
+                <Font name="System Bold" size="36.0" />
             </font>
         </Label>
-        <Button fx:id="afficher" layoutX="243.0" layoutY="325.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="25.0" prefWidth="79.0" text="Afficher" textFill="#4a1111" />
-        <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+        <Button id="but" fx:id="afficher" layoutX="596.0" layoutY="661.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="30.0" prefWidth="116.0" stylesheets="@css/stylesheet.css" text="Afficher" />
+        <ImageView fitHeight="79.0" fitWidth="93.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@img/image/logo.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="35.0" fitWidth="42.0" layoutX="550.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="73.0" fitWidth="70.0" layoutX="1185.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@img/image/entre.png" />
             </image>
         </ImageView>
-        <SplitMenuButton layoutX="465.0" layoutY="19.0" mnemonicParsing="false" text="Stage">
+        <SplitMenuButton layoutX="1049.0" layoutY="44.0" mnemonicParsing="false" text="Stage">
             <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
             </items>
         </SplitMenuButton>
-        <Button fx:id="btnAfficherStatistique" layoutX="424.0" layoutY="325.0" onAction="#afficherStatistique" text="Afficher Statistique" />
+        <Button id="but" fx:id="btnAfficherStatistique" layoutX="968.0" layoutY="661.0" onAction="#afficherStatistique" prefHeight="30.0" prefWidth="116.0" stylesheets="@css/stylesheet.css" text="Afficher Statistique" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/image/offreoffre.png" />
+         </image>
+      </ImageView>
 
     </children>
 </AnchorPane>

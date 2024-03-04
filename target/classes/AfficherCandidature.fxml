@@ -16,7 +16,7 @@
             <Image url="@img/image/grisclair.png" />
          </image>
       </ImageView>
-      <ListView fx:id="candidatureListView" layoutX="61.0" layoutY="379.0" onMouseClicked="#fillforum" prefHeight="343.0" prefWidth="1159.0" />
+      <ListView id="glass" fx:id="candidatureListView" layoutX="61.0" layoutY="379.0" onMouseClicked="#fillforum" prefHeight="343.0" prefWidth="1159.0" stylesheets="@css/stylesheet.css" />
       <Label layoutX="449.0" layoutY="90.0" prefHeight="74.0" prefWidth="383.0" text="Afficher Candidature " textFill="#9f1c00" AnchorPane.bottomAnchor="610.0" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="448.0" AnchorPane.topAnchor="90.0">
          <font>
             <Font name="System Bold" size="36.0" />
@@ -36,19 +36,24 @@
             <Image url="@img/image/entre.png" />
          </image>
       </ImageView>
-      <TextField fx:id="competences" layoutX="91.0" layoutY="247.0" prefHeight="87.0" prefWidth="383.0" promptText="Competences" />
-      <TextField fx:id="cv" layoutX="593.0" layoutY="246.0" prefHeight="53.0" prefWidth="335.0" promptText="CV" />
+      <TextField id="glass" fx:id="competences" layoutX="138.0" layoutY="248.0" prefHeight="87.0" prefWidth="383.0" promptText="Competences" stylesheets="@css/stylesheet.css" />
+      <TextField id="glass" fx:id="cv" layoutX="640.0" layoutY="247.0" prefHeight="53.0" prefWidth="335.0" promptText="CV" stylesheets="@css/stylesheet.css" />
       <Button id="but" layoutX="1046.0" layoutY="309.0" mnemonicParsing="false" onAction="#naviguezVersAjouter" stylesheets="@css/stylesheet.css" text="ajouter un autre candidature">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button id="but" layoutX="593.0" layoutY="309.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="335.0" stylesheets="@css/stylesheet.css" text="cliquer pour ajouter votre CV">
+      <Button id="but" layoutX="661.0" layoutY="309.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="296.0" stylesheets="@css/stylesheet.css" text="cliquer pour ajouter votre CV">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <ImageView fitHeight="165.0" fitWidth="199.0" layoutX="8.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="87.0" fitWidth="70.0" layoutX="61.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/image/7-removebg-preview.png" />
+            <Image url="@img/image/competence.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="74.0" fitWidth="110.0" layoutX="567.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/image/cv-removebg-preview.png" />
          </image>
       </ImageView>
    </children>
