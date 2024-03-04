@@ -75,14 +75,14 @@ public class AfficherCandidatureController {
     public void uploadPdf(javafx.event.ActionEvent event) {
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {
-            // Define the destination directory
-            String destinationDirectory = "C:\\xampp\\htdocs\\pdf";
             // Get the name of the selected file
             String originalFileName = file.getName();
             String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
             String safeFileName = originalFileName.replaceAll("[^a-zA-Z0-9.-]", "_");
             String randomFileName = System.currentTimeMillis() + "-" + UUID.randomUUID().toString() + fileExtension;
 
+            // Define the destination directory
+            String destinationDirectory = "C:\\xampp\\htdocs\\pdf";
             // Create a Path for the destination file
             Path destinationPath = new File(destinationDirectory, randomFileName).toPath();
             try {
