@@ -41,6 +41,11 @@ public class ProfilChangePasswordController {
             Parent root = loader.load();
             pwdNew.getScene().setRoot(root);
         }
+        else if (userLoggedIn.getRole().equals(RoleName.ADMIN)) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminPage.fxml"));
+            Parent root = loader.load();
+            pwdNew.getScene().setRoot(root);
+        }
 
     }
 
@@ -71,6 +76,16 @@ public class ProfilChangePasswordController {
             }
             else if (userLoggedIn.getRole().equals(RoleName.TEACHER)) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileEnseignant.fxml"));
+                Parent root = loader.load();
+                pwdNew.getScene().setRoot(root);
+            }
+            else if (userLoggedIn.getRole().equals(RoleName.ENTREPRISE_RH)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileEntreprise.fxml"));
+                Parent root = loader.load();
+                pwdNew.getScene().setRoot(root);
+            }
+            else if (userLoggedIn.getRole().equals(RoleName.ADMIN)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminPage.fxml"));
                 Parent root = loader.load();
                 pwdNew.getScene().setRoot(root);
             }

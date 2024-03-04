@@ -7,7 +7,9 @@ import tn.esprit.tools.MyDB;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserService implements IUserService<User> {
 
@@ -48,7 +50,8 @@ public class UserService implements IUserService<User> {
                             rs.getString("cin"),
                             rs.getString("genre"),
                             rs.getDate("date_naissance").toLocalDate(),
-                            rs.getString("profil_picture"));
+                            rs.getString("profil_picture"),
+                            rs.getBoolean("is_enabled"));
                     return enseignant;
                 }
                 if (rs.getString("role").equals("STUDENT")) {
@@ -64,7 +67,8 @@ public class UserService implements IUserService<User> {
                             rs.getString("cin"),
                             rs.getString("classe"),
                             rs.getString("profil_picture"),
-                            rs.getDate("date_naissance").toLocalDate());
+                            rs.getDate("date_naissance").toLocalDate(),
+                            rs.getBoolean("is_enabled"));
                     return etudiant;
                 }
                 if (rs.getString("role").equals("CLUB_RH")) {
@@ -80,7 +84,8 @@ public class UserService implements IUserService<User> {
                             rs.getString("cin"),
                             rs.getString("classe"),
                             rs.getString("profil_picture"),
-                            rs.getDate("date_naissance").toLocalDate());
+                            rs.getDate("date_naissance").toLocalDate(),
+                            rs.getBoolean("is_enabled"));
                     return responsableClub;
                 }
                 if (rs.getString("role").equals("ENTREPRISE_RH")) {
@@ -92,7 +97,8 @@ public class UserService implements IUserService<User> {
                             RoleName.valueOf(rs.getString("role").toUpperCase()),
                             rs.getString("website"),
                             rs.getString("pays"),
-                            rs.getString("localisation"));
+                            rs.getString("localisation"),
+                            rs.getBoolean("is_enabled"));
                     return entreprise;
                 }
             }
@@ -134,7 +140,8 @@ public class UserService implements IUserService<User> {
                             rs.getString("cin"),
                             rs.getString("genre"),
                             rs.getDate("date_naissance").toLocalDate(),
-                            rs.getString("profil_picture"));
+                            rs.getString("profil_picture"),
+                            rs.getBoolean("is_enabled"));
                     return enseignant;
                 }
                 if (rs.getString("role").equals("STUDENT")) {
@@ -150,7 +157,8 @@ public class UserService implements IUserService<User> {
                             rs.getString("cin"),
                             rs.getString("classe"),
                             rs.getString("profil_picture"),
-                            rs.getDate("date_naissance").toLocalDate());
+                            rs.getDate("date_naissance").toLocalDate(),
+                            rs.getBoolean("is_enabled"));
                     return etudiant;
                 }
                 if (rs.getString("role").equals("CLUB_RH")) {
@@ -166,7 +174,8 @@ public class UserService implements IUserService<User> {
                             rs.getString("cin"),
                             rs.getString("classe"),
                             rs.getString("profil_picture"),
-                            rs.getDate("date_naissance").toLocalDate());
+                            rs.getDate("date_naissance").toLocalDate(),
+                            rs.getBoolean("is_enabled"));
                     return responsableClub;
                 }
                 if (rs.getString("role").equals("ENTREPRISE_RH")) {
@@ -178,7 +187,8 @@ public class UserService implements IUserService<User> {
                             RoleName.valueOf(rs.getString("role").toUpperCase()),
                             rs.getString("website"),
                             rs.getString("pays"),
-                            rs.getString("localisation"));
+                            rs.getString("localisation"),
+                            rs.getBoolean("is_enabled"));
                     return entreprise;
                 }
             }
@@ -466,7 +476,8 @@ public class UserService implements IUserService<User> {
                             rs.getString("cin"),
                             rs.getString("genre"),
                             rs.getDate("date_naissance").toLocalDate(),
-                            rs.getString("profil_picture"));
+                            rs.getString("profil_picture"),
+                            rs.getBoolean("is_enabled"));
                     users.add(enseignant);
                 }
                 if (role.equals(RoleName.STUDENT)) {
@@ -482,7 +493,8 @@ public class UserService implements IUserService<User> {
                             rs.getString("cin"),
                             rs.getString("classe"),
                             rs.getString("profil_picture"),
-                            rs.getDate("date_naissance").toLocalDate());
+                            rs.getDate("date_naissance").toLocalDate(),
+                            rs.getBoolean("is_enabled"));
                     users.add(etudiant);
                 }
                 if (role.equals(RoleName.CLUB_RH)) {
@@ -498,7 +510,8 @@ public class UserService implements IUserService<User> {
                             rs.getString("cin"),
                             rs.getString("classe"),
                             rs.getString("profil_picture"),
-                            rs.getDate("date_naissance").toLocalDate());
+                            rs.getDate("date_naissance").toLocalDate(),
+                            rs.getBoolean("is_enabled"));
                     users.add(responsableClub);
                 }
                 if (role.equals(RoleName.ENTREPRISE_RH)) {
@@ -510,7 +523,8 @@ public class UserService implements IUserService<User> {
                             RoleName.valueOf(rs.getString("role").toUpperCase()),
                             rs.getString("website"),
                             rs.getString("pays"),
-                            rs.getString("localisation"));
+                            rs.getString("localisation"),
+                            rs.getBoolean("is_enabled"));
                     users.add(entreprise);
                 }
 
@@ -690,6 +704,24 @@ public class UserService implements IUserService<User> {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public Map<RoleName, Integer> getUserCountByRole() {
+        Map<RoleName, Integer> userCounts = new HashMap<>();
+        String sql = "SELECT role, COUNT(*) AS count FROM user GROUP BY role";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                RoleName role = RoleName.valueOf(rs.getString("role").toUpperCase());
+                int count = rs.getInt("count");
+                userCounts.put(role, count);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return userCounts;
     }
 
 }

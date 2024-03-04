@@ -13,6 +13,12 @@ import java.time.LocalDate;
 
 public class EnseignantEditFormController {
 
+    private AdminController adminController;
+
+    public void setAdminController(AdminController controller) {
+        this.adminController=controller;
+    }
+
     private final UserService userService = new UserService();
 
     private Enseignant enseignant;
@@ -80,6 +86,7 @@ public class EnseignantEditFormController {
         enseignant.setEmail(emailTF.getText());
         enseignant.setDate_naissance(dateNaissanceTF.getValue());
         userService.adminUpdateEnseignant(enseignant);
+        adminController.reloadLoginScene(0);
         closeStage();
     }
 

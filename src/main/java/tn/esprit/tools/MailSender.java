@@ -7,8 +7,8 @@ import java.util.Properties;
 
 public class MailSender {
     public static void sendEmail(String recipient, String subject, String content) {
-        final String username = "talentlinkk@gmail.com";
-        final String password = "wobl uous hxnq rwqc";
+        final String username = "espritedusmart@gmail.com";
+        final String password = "zzby zdgz upww zrjb";
 
         // Set up the SMTP server properties
         Properties props = new Properties();
@@ -32,7 +32,7 @@ public class MailSender {
             Message message = new MimeMessage(session);
 
             // Set From: header field
-            message.setFrom(new InternetAddress("talentlinkk@gmail.com"));
+            message.setFrom(new InternetAddress("espritedusmart@gmail.com"));
 
             // Set To: header field
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));

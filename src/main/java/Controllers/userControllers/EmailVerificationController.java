@@ -29,6 +29,7 @@ public class EmailVerificationController {
 
     private User user;
 
+
     public void initData(int id,User user) {
         this.id = id;
         this.user = user;

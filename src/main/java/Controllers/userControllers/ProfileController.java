@@ -25,6 +25,10 @@ public class ProfileController {
     AuthResponseDTO userLoggedIn= UserSession.getUser_LoggedIn();
 
 
+
+    @FXML
+    private ImageView genreIM;
+
     @FXML
     private ImageView PhotoDeProfil;
 
@@ -67,17 +71,29 @@ public class ProfileController {
     public void initialize() {
         String photoFileName="";
         Etudiant etudiant =(Etudiant) userService.getById(userLoggedIn.getId());
-        photoFileName = "C:\\xampp\\htdocs\\img\\"+etudiant.getProfil_picture();
         nomPrenomLBL.setText(etudiant.getPrenom()+" "+etudiant.getNom());
         nomPrenomLBL.setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
         nomPrenomLB.setText(etudiant.getPrenom()+" "+etudiant.getNom());
         nomPrenomLB.setStyle("-fx-text-fill: #9F1C00; -fx-font-weight: bold;");
-        loadImage(photoFileName);
         classeLB.setText(etudiant.getClasse());
         niveauLB.setText(String.valueOf(etudiant.getNiveau()));
         emailLB.setText(etudiant.getEmail());
         genreLB.setText(etudiant.getGenre());
         dateNaissanceLB.setText(String.valueOf(etudiant.getDate_naissance()));
+
+        if (etudiant.getProfil_picture()!=null) {
+            photoFileName = "C:\\xampp\\htdocs\\img\\" + etudiant.getProfil_picture();
+            loadImage(photoFileName);
+        }
+        else {
+            ProfilPhoto.setImage(new Image("\\images\\default-profile.png"));
+            PhotoDeProfil.setImage(new Image("\\images\\default-profile.png"));
+        }
+
+        if (etudiant.getGenre().equals("Male"))
+            genreIM.setImage(new Image("\\images\\icons8-male-25.png"));
+        else
+            genreIM.setImage(new Image("\\images\\icons8-female-25.png"));
 
     }
 
@@ -93,11 +109,13 @@ public class ProfileController {
         }
     }
 
-
     @FXML
-    void home(MouseEvent event) {
-        bp.setCenter(ap);
+    void goToProfile(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+        Parent root = loader.load();
+        bp.getScene().setRoot(root);
     }
+
 
     @FXML
     void editProfile(MouseEvent event) throws IOException {

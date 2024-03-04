@@ -2,6 +2,8 @@ package Controllers.userControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -10,9 +12,16 @@ import tn.esprit.entities.User.Etudiant;
 import tn.esprit.entities.User.ResponsableClub;
 import tn.esprit.services.userServices.UserService;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class EtudiantEditFormController {
+
+    private AdminController adminController;
+
+    public void setAdminController(AdminController controller) {
+        this.adminController=controller;
+    }
 
     private final UserService userService = new UserService();
 
@@ -96,7 +105,7 @@ public class EtudiantEditFormController {
     }
 
     @FXML
-    void SaveStudent(ActionEvent event) {
+    void SaveStudent(ActionEvent event) throws IOException {
         if (responsableClub==null) {
             etudiant.setNom(nomTF.getText());
             etudiant.setPrenom(prenomTF.getText());
@@ -107,6 +116,7 @@ public class EtudiantEditFormController {
             etudiant.setEmail(emailTF.getText());
             etudiant.setDate_naissance(dateNaissanceTF.getValue());
             userService.adminUpdateEtudiant(etudiant);
+            adminController.reloadLoginScene(1);
         }
         if (etudiant==null) {
             responsableClub.setNom(nomTF.getText());
@@ -118,6 +128,7 @@ public class EtudiantEditFormController {
             responsableClub.setEmail(emailTF.getText());
             responsableClub.setDate_naissance(dateNaissanceTF.getValue());
             userService.adminUpdateEtudiant(responsableClub);
+            adminController.reloadLoginScene(2);
         }
         closeStage();
 
