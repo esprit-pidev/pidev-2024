@@ -4,6 +4,7 @@ tn\esprit\entities\User\Etudiant.class
 Controllers\userControllers\AddUserFormController.class
 tn\esprit\entities\User\Admin.class
 tn\esprit\entities\extrascolaire\Inscription.class
+Controllers\StageControllers\Captcha.class
 Controllers\userControllers\AdminController$2.class
 tn\esprit\entities\User\Entreprise.class
 tn\esprit\entities\User\RoleName.class
@@ -15,7 +16,6 @@ Controllers\StageControllers\AfficherCandidatureDetailsController.class
 Controllers\userControllers\LoginController.class
 Controllers\EventControllers\EventController.class
 tn\esprit\services\userServices\AuthResponseDTO.class
-Controllers\StageControllers\CaptchaController.class
 tn\esprit\services\stageServices\OffreService.class
 Controllers\userControllers\EntrepriseEditFormController.class
 Controllers\EventControllers\AjouterEventController.class

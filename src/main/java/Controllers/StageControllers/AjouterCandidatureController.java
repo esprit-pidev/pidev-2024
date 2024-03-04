@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
@@ -22,8 +23,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Date;
+import java.util.Optional;
+import java.util.Random;
 import java.util.UUID;
-
 public class AjouterCandidatureController {
     private Offre offre;
     private final UserService us = new UserService();
@@ -43,6 +45,7 @@ public class AjouterCandidatureController {
     @FXML
     private TextField cv;
     private final FileChooser fileChooser = new FileChooser();
+
 
     public void uploadPdf(javafx.event.ActionEvent event) {
         File file = fileChooser.showOpenDialog(new Stage());
@@ -96,6 +99,16 @@ public class AjouterCandidatureController {
             alert.showAndWait();
             return;
         }
+        String captchaResult = Captcha.verifierCaptcha();
+        if (!captchaResult.equals("success")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("La vérification Captcha a échoué. Veuillez réessayer.");
+            alert.showAndWait();
+            return;
+        }
+
         // Récupérer la date actuelle
         Date currentDate = new Date();
         try {
@@ -109,20 +122,62 @@ public class AjouterCandidatureController {
             System.out.println(e.getMessage());
         }
     }
+
     @FXML
-    void naviguerVersCaptcha(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CaptchaController.fxml"));
-            Parent root = loader.load();
+    void verifierCaptcha(ActionEvent event) {
+        // Générer une équation mathématique aléatoire
+        Random random = new Random();
+        int operand1 = random.nextInt(10) + 1;
+        int operand2 = random.nextInt(10) + 1;
+        int result = operand1 + operand2;
 
-            CaptchaController captchaController = loader.getController();
+        // Afficher l'équation à l'utilisateur et lui demander la réponse
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Captcha");
+        dialog.setHeaderText("Résolvez l'équation suivante :");
+        dialog.setContentText(operand1 + " + " + operand2 + " = ");
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+        Optional<String> input = dialog.showAndWait();
+
+        // Vérifier si la réponse de l'utilisateur est correcte
+        if (input.isPresent()) {
+            try {
+                int userResult = Integer.parseInt(input.get());
+                if (userResult == result) {
+                    // Réponse correcte, permettre à l'utilisateur de continuer
+                    if (competences.getText().isEmpty() || cv.getText().isEmpty()) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erreur");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Veuillez remplir tous les champs.");
+                        alert.showAndWait();
+                    } else {
+                        // Ajouter ici le code pour ajouter la candidature
+                        Date currentDate = new Date();
+                        SC.ajouter(offre.getId(), etudiant, new java.sql.Date(currentDate.getTime()), "En attente", competences.getText(), cv.getText());
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Succès");
+                        alert.setHeaderText(null);
+                        alert.setContentText("L'ajout a été effectué avec succès.");
+                        alert.showAndWait();
+                        System.out.println("Captcha résolu avec succès !");
+                    }
+                } else {
+                    // Réponse incorrecte, afficher un message d'erreur
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText(null);
+                    alert.setContentText("La réponse est incorrecte. Veuillez réessayer.");
+                    alert.showAndWait();
+                }
+            } catch (NumberFormatException e) {
+                // La réponse de l'utilisateur n'est pas un nombre
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Veuillez entrer un nombre valide.");
+                alert.showAndWait();
+            }
         }
     }
 

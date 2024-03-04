@@ -42,7 +42,7 @@
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button id="but" layoutX="661.0" layoutY="309.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="296.0" stylesheets="@css/stylesheet.css" text="cliquer pour ajouter votre CV">
+      <Button id="but" layoutX="661.0" layoutY="309.0" mnemonicParsing="false" onAction="#uploadPdf" prefHeight="26.0" prefWidth="296.0" stylesheets="@css/stylesheet.css" text="cliquer pour ajouter votre CV">
          <font>
             <Font size="14.0" />
          </font></Button>
