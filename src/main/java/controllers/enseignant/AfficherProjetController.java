@@ -31,7 +31,7 @@ public class AfficherProjetController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Récupérer la liste des classes et les ajouter à la ComboBox
         List<String> classes = ps.displayClasses();
-        comboBoxClasses.getItems().add("Toutes les classes"); // Ajouter l'option "Toutes les classes"
+        comboBoxClasses.getItems().add("Toutes les classes");
         comboBoxClasses.getItems().addAll(classes);
         comboBoxClasses.setOnAction(event -> {
             String selectedClass = comboBoxClasses.getValue();

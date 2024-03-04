@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Taches {
     private int id;
-    private User user;
+    private ProjectMembers projectMembers;
     private String etat ;
     private String description ;
     private Date date_ajout ;
@@ -16,9 +16,9 @@ public class Taches {
     public Taches() {
     }
 
-    public Taches(int id, User user, String etat, String description, Date date_ajout, Date dedline) {
+    public Taches(int id, ProjectMembers projectMembers, String etat, String description, Date date_ajout, Date dedline) {
         this.id = id;
-        this.user = user;
+        this.projectMembers = projectMembers;
         this.etat = etat;
         this.description = description;
         this.date_ajout = date_ajout;
@@ -33,23 +33,27 @@ public class Taches {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public ProjectMembers getProjectMembers() {
+        return projectMembers;
     }
 
-    public void setUser(User user) {
-            if (user == null){
-                user = new User();
+    public void setProjectMembers(ProjectMembers projectMembers) {
+            if (projectMembers == null){
+                projectMembers = new ProjectMembers();
             }
-            this.user = user;
+            this.projectMembers = projectMembers;
         }
 
-    public int getIdUser (){
-        return user.getId();
-    }
+    public int getIdProjectMembers ()  {  return (projectMembers != null) ? projectMembers.getId() : -1;
 
-    public void setIdUser(int userId){
-        user.setId(userId);
+}
+
+    public void setIdProjectMembers(int projectMembersId){
+        if (projectMembers == null) {
+            projectMembers = new ProjectMembers();
+        }
+        projectMembers.setId(projectMembersId);
+
     }
 
     public String getEtat() {
@@ -88,7 +92,7 @@ public class Taches {
     public String toString() {
         return "Taches{" +
                 "id=" + id +
-                "student id" + (user != null ? user.getId() :"null") +
+                "student id" + (projectMembers != null ? projectMembers.getId() :"null") +
                 ", etat='" + etat + '\'' +
                 ", description='" + description + '\'' +
                 ", date_ajout=" + date_ajout +

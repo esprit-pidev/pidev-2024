@@ -2,10 +2,14 @@ controllers\enseignant\MembreController.class
 controllers\enseignant\ModifierProjetController.class
 controllers\enseignant\ContainerProjectController.class
 controllers\enseignant\ModifierinfoController.class
-controllers\etudiant\AfficherTout.class
+controllers\etudiant\ContainerProjectetController.class
+controllers\etudiant\TacheController.class
 controllers\enseignant\AfficherProjetController.class
+controllers\etudiant\ProjectsBarController.class
 controllers\etudiant\AppBarEtController.class
 tn\esprit\services\projectService\ProjectMemberUserService.class
+controllers\etudiant\ContainerTacheController.class
 controllers\enseignant\AjouterProjetController.class
+controllers\etudiant\AfficherToutController.class
 controllers\enseignant\AjouterMembreController.class
 controllers\enseignant\AppBarController.class

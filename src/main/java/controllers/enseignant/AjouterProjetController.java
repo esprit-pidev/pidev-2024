@@ -29,8 +29,6 @@ public class AjouterProjetController {
     @FXML
     private TextField nom;
 
-    @FXML
-    private TextField textFieldEmail;
 
     @FXML
     void ajouterProjet() {
@@ -66,7 +64,7 @@ public class AjouterProjetController {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/project/enseignant/AjouterMembre.fxml"));
                     Parent ajoutMembresParent = loader.load();
                     AjouterMembreController ajouterMembreController = loader.getController();
-                    ajouterMembreController.setProject(nouveauProjet); // Passer le nouveau projet en paramètre
+                    ajouterMembreController.setProject(nouveauProjet);
                     Scene ajoutMembresScene = new Scene(ajoutMembresParent);
                     Stage stage = (Stage) nom.getScene().getWindow();
                     stage.setScene(ajoutMembresScene);

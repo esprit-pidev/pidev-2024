@@ -25,7 +25,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ComboBox>
-        <javafx.scene.control.ScrollPane style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="165.0">
+        <javafx.scene.control.ScrollPane layoutX="102.4" layoutY="172.8" prefHeight="254.0" prefWidth="519.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="173.0">
             <content>
                 <VBox fx:id="containerVBox" spacing="10" />
             </content>
@@ -33,7 +33,7 @@
             <Insets bottom="10.0" left="200.0" right="10.0" top="10.0" />
          </padding>
         </javafx.scene.control.ScrollPane>
-      <ImageView fitHeight="29.0" fitWidth="27.0" layoutX="652.0" layoutY="128.0" onMouseClicked="#onAdd" pickOnBounds="true" preserveRatio="true" >
+      <ImageView fitHeight="29.0" fitWidth="27.0" layoutX="652.0" layoutY="128.0" onMouseClicked="#onAdd" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/106230_add_icon.png" />
          </image>
@@ -42,7 +42,7 @@
          </cursor>
       </ImageView>
       <Text layoutX="596.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter un nouveau projet" />
-        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="7.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" >
+        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="7.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
             
             <cursor>
                 <Cursor fx:constant="HAND" />

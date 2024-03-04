@@ -57,13 +57,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="31.0" layoutX="735.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/add-user.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
    </children>
 </AnchorPane>

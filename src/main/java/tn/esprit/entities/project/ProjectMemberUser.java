@@ -37,6 +37,10 @@ public class ProjectMemberUser {
     }
 
     public void setIdMember(int idmember){
+        if (projectMembers == null) {
+            // Initialisez un nouvel objet ProjectMembers si projectMembers est null
+            projectMembers = new ProjectMembers();
+        }
         projectMembers.setId(idmember);
     }
     public int getIdMember(){
@@ -48,7 +52,11 @@ public class ProjectMemberUser {
     }
 
     public void setIdUser(int userId){
-        user.setId(userId);
+        if (user == null) {
+            // Initialisez un nouvel objet User si user est null
+            user = new User();
+        }
+        user.setId(userId);;
     }
 
     @Override

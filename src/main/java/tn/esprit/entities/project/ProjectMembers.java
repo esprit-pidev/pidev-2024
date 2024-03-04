@@ -45,6 +45,9 @@ public class ProjectMembers {
 
 
     public  void setProjectId(int idProject){
+        if (project == null) {
+            project = new Project();
+        }
         project.setId(idProject);
     }
 
@@ -67,5 +70,8 @@ public class ProjectMembers {
                 ", joined_at='" + joined_at + '\'' +
                 '}';
     }
+
+
+
 }
 

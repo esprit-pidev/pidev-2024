@@ -8,8 +8,9 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 
 public class ProjectService {
@@ -205,7 +206,7 @@ public class ProjectService {
         }
     }
     public boolean matiereExists(String nomMatiere) {
-        String query = "SELECT COUNT(*) FROM matiere WHERE nom = ?";
+        String query = "SELECT COUNT(*) FROM matiere WHERE matiere = ?";
         try (PreparedStatement statement = cnx.prepareStatement(query)) {
             statement.setString(1, nomMatiere);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -261,5 +262,72 @@ public class ProjectService {
         return idProjet;
     }
 
+    public List<String> getNameProjectsByUserId(int userId) {
+        List<String> projectNames = new ArrayList<>();
+        String sql = "SELECT p.nom FROM project p " +
+                "INNER JOIN project_members pm ON p.id = pm.project_id " +
+                "INNER JOIN project_members_user pmu ON pm.id = pmu.project_members_id " +
+                "WHERE pmu.user_id = ?";
+        try {
+            PreparedStatement statement = this.cnx.prepareStatement(sql);
+            statement.setInt(1, userId);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                String projectName = rs.getString("nom");
+                projectNames.add(projectName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return projectNames;
+    }
+    public int getIdMemberByIdUser(int idUser, int idProjet) {
+        String query = "SELECT pm.id " +
+                "FROM project_members pm " +
+                "INNER JOIN project_members_user pmu ON pm.id = pmu.project_members_id " +
+                "WHERE pm.project_id = ? " +
+                "AND pmu.user_id = ?";
+        int idMembre = 0;
+        try {
+            PreparedStatement statement = this.cnx.prepareStatement(query);
+            statement.setInt(1, idProjet);
+            statement.setInt(2, idUser);
 
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                idMembre = rs.getInt("id");
+            } else {
+                System.out.println("Aucun membre trouvé pour l'utilisateur avec l'ID : " + idUser + " et le projet avec l'ID : " + idProjet);
+            }
+            rs.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return idMembre;
+    }
+
+
+    public int getIdProjectByName(String projectName) {
+        String query = "SELECT id FROM project WHERE nom = ?";
+        int projectId =0;
+        try {
+            PreparedStatement statement = this.cnx.prepareStatement(query);
+            statement.setString(1, projectName);
+
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                projectId = rs.getInt("id");
+            } else {
+                System.out.println("Aucun projet trouvé avec ce nom : " + projectName );
+            }
+            rs.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return projectId;
+    }
 }
