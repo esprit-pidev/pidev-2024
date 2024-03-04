@@ -17,9 +17,11 @@ import java.util.prefs.Preferences;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        UserService userService = new UserService();
-        userService.add(new Admin("Hadded","Taha Yassine","12345", RoleName.ADMIN,"Khalil"));
-
+     UserService us = new UserService();
+      //  userService.add(new Admin("Hadded","Taha Yassine","12345", RoleName.ADMIN,"Khalil"));
+        //Preferences prefs = Preferences.userRoot().node("com/myapp");
+       // prefs.remove("rememberMeToken");
+        us.add(new Admin("Hadded","admin","admin",RoleName.ADMIN,"Khalil"));
 
 
 

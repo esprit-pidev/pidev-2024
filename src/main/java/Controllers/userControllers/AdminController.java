@@ -900,12 +900,28 @@ public class AdminController {
 
     public void Graph() {
         GraphAp.getChildren().clear();
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                new PieChart.Data("Responsable Club", userService.getUserCountByRole().get(RoleName.CLUB_RH)),
-                new PieChart.Data("Entreprise", userService.getUserCountByRole().get(RoleName.ENTREPRISE_RH)),
-                new PieChart.Data("Etudiant", userService.getUserCountByRole().get(RoleName.STUDENT)),
-                new PieChart.Data("Enseignant", userService.getUserCountByRole().get(RoleName.TEACHER))
-        );
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+        Integer responsableClubCount = userService.getUserCountByRole().get(RoleName.CLUB_RH);
+        if (responsableClubCount != null && responsableClubCount != 0) {
+            pieChartData.add(new PieChart.Data("Responsable Club", responsableClubCount));
+        }
+
+        Integer entrepriseCount = userService.getUserCountByRole().get(RoleName.ENTREPRISE_RH);
+        if (entrepriseCount != null && entrepriseCount != 0) {
+            pieChartData.add(new PieChart.Data("Entreprise", entrepriseCount));
+        }
+
+        Integer etudiantCount = userService.getUserCountByRole().get(RoleName.STUDENT);
+        if (etudiantCount != null && etudiantCount != 0) {
+            pieChartData.add(new PieChart.Data("Etudiant", etudiantCount));
+        }
+
+        Integer enseignantCount = userService.getUserCountByRole().get(RoleName.TEACHER);
+        if (enseignantCount != null && enseignantCount != 0) {
+            pieChartData.add(new PieChart.Data("Enseignant", enseignantCount));
+        }
+
 
         final PieChart pieChart = new PieChart(pieChartData);
         pieChart.setTitle("Distribution des utilisateurs par role");
@@ -927,10 +943,18 @@ public class AdminController {
     }
 
     private void UsersNumber() {
-        nbrEntreprise.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.ENTREPRISE_RH)));
-        nbrEtud.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.STUDENT)));
-        nbrTeacher.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.TEACHER)));
-        nbrRH.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.CLUB_RH)));
+        nbrEntreprise.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.ENTREPRISE_RH) != null ?
+                userService.getUserCountByRole().get(RoleName.ENTREPRISE_RH) : 0));
+
+        nbrEtud.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.STUDENT) != null ?
+                userService.getUserCountByRole().get(RoleName.STUDENT) : 0));
+
+        nbrTeacher.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.TEACHER) != null ?
+                userService.getUserCountByRole().get(RoleName.TEACHER) : 0));
+
+        nbrRH.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.CLUB_RH) != null ?
+                userService.getUserCountByRole().get(RoleName.CLUB_RH) : 0));
+
     }
 
 

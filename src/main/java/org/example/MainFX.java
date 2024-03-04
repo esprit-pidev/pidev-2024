@@ -34,7 +34,6 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-
         Preferences prefs = Preferences.userRoot().node("com/myapp");
         String token = prefs.get("rememberMeToken", null);
         if (token != null) {
@@ -73,5 +72,3 @@ public class MainFX extends Application {
         }
     }
 }
-
-
