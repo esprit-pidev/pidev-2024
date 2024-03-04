@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -20,12 +21,13 @@
                   <Font name="Segoe UI Semibold" size="18.0" />
                </font>
             </Label>
+            <ImageView fx:id="expandIcon" fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
       <VBox fx:id="CommentsContainer" prefWidth="380.0" spacing="5.0">
          <children>
-            <TextArea fx:id="messageArea" maxWidth="380.0" minHeight="300.0" minWidth="380.0" prefHeight="300.0" prefWidth="380.0" style="-fx-border-color: #781c60; -fx-background-color: transparent; -fx-background-radius: 5; -fx-border-radius: 5;" stylesheets="@TextFillColor.css" />
-            <TextField fx:id="inputBox" maxWidth="380.0" prefHeight="26.0" prefWidth="380.0" style="-fx-border-color: #781c10; -fx-background-radius: 7; -fx-border-radius: 7;" />
+            <TextArea fx:id="messageArea" maxWidth="380.0" minHeight="0.0" minWidth="380.0" prefHeight="0.0" prefWidth="380.0" style="-fx-border-color: #781c60; -fx-background-color: transparent; -fx-background-radius: 5; -fx-border-radius: 5;" stylesheets="@TextFillColor.css" />
+            <TextField fx:id="inputBox" maxWidth="380.0" minHeight="0.0" minWidth="380.0" prefHeight="0.0" prefWidth="380.0" style="-fx-border-color: #781c10; -fx-background-radius: 7; -fx-border-radius: 7;" />
          </children>
       </VBox>
    </children>

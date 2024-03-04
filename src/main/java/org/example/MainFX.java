@@ -30,7 +30,7 @@ public class MainFX extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 1024, 720);
+        Scene scene = new Scene(root, 1280, 768);
         primaryStage.setScene(scene);
         primaryStage.setTitle("bingo");
         primaryStage.show();

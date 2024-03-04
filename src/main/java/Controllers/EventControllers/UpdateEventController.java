@@ -27,15 +27,14 @@ public class UpdateEventController implements Initializable {
 
     @FXML
     private Button updateEvent;
-    @FXML
-    private Button back;
+
 
 
     @FXML
     private DatePicker datePicker;
 
     @FXML
-    private TextArea description;
+    private TextField description;
 
     @FXML
     private TextField name;
@@ -105,17 +104,7 @@ public class UpdateEventController implements Initializable {
             }
 
         });
-        back.setOnAction(event -> {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterEvent.fxml"));
 
-            try {
-                Parent componentRoot = loader.load();
-                AjouterEventController controller = new AjouterEventController();
-                ((Scene) updateEvent.getScene()).setRoot(componentRoot);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        });
 
     }
 
