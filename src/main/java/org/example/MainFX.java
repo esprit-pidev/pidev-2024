@@ -41,7 +41,7 @@ public class MainFX extends Application {
             if (rememberMeToken.getExpiresAt().isAfter(LocalDateTime.now())) {
                 userLoggedIn = new AuthResponseDTO(rememberMeToken.getUser().getId(), rememberMeToken.getUser().getRole());
                 UserSession.getSameInstance(userLoggedIn);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminPage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 primaryStage.setScene(scene);
