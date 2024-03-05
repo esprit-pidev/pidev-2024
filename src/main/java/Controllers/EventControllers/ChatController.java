@@ -90,6 +90,7 @@ public class ChatController implements Initializable {
         expandIcon.setImage(expand1);
 
         messageArea.setMinHeight(0);
+        messageArea.setStyle("-fx-font-size: 16px; -fx-font-family: 'Arial';");
         inputBox.setMinHeight(0);
         CommentsContainer.setVisible(false);
         CommentsContainer.setMaxHeight(0);
@@ -115,7 +116,7 @@ public class ChatController implements Initializable {
 
             inputBox.setOnKeyPressed(event -> {
                 if (event.getCode() == KeyCode.ENTER) {
-                    String temp =roomId +";"+ identifier + ";" + inputBox.getText(); // message to send
+                    String temp =roomId +";"+ identifier + " > " + inputBox.getText(); // message to send
                     messageArea.setText(messageArea.getText() + inputBox.getText() + "\n"); // update messages on screen
                     byte[] msg = temp.getBytes(); // convert to bytes
                     inputBox.setText(""); // remove text from input box

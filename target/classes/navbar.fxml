@@ -1,41 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<<<<<<< HEAD
-=======
-<?import javafx.scene.control.Button?>
->>>>>>> f8d03c26fd2a6b000c3411fe9e9b3498bb247c23
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
-<<<<<<< HEAD
+
 <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="1297.0" spacing="60.0" styleClass="navbar-container" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.activiteController.NavbarController">
-    <!-- Le reste du contenu de votre fichier FXML reste inchangé -->
     <children>
         <ImageView fitHeight="79.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-=======
-<HBox prefHeight="79" prefWidth="1301" styleClass="navbar-container" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.NavbarController">
-    <!-- Le reste du contenu de votre fichier FXML reste inchangé -->
-    <children>
-        <!-- Espacement pour pousser les options à droite -->
-        <Region HBox.hgrow="ALWAYS" />
-        <ImageView fitHeight="95.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
->>>>>>> f8d03c26fd2a6b000c3411fe9e9b3498bb247c23
             <image>
                 <Image url="@logo.jpg.jpg" />
             </image>
         </ImageView>
-<<<<<<< HEAD
       <HBox fx:id="buttonsContainer" alignment="CENTER_RIGHT" prefHeight="79.0" prefWidth="1098.0" spacing="60.0" />
-=======
-
-        <!-- Options de la barre de navigation -->
-        <Button prefHeight="20.0" prefWidth="98.0" styleClass="navbar-button" text="Accueil" />
-        <Button prefHeight="20.0" prefWidth="86.0" styleClass="navbar-button" text="Cours" />
-        <Button prefHeight="20.0" prefWidth="92.0" styleClass="navbar-button" text="Projets" />
-        <Button prefHeight="20.0" prefWidth="102.0" styleClass="navbar-button" text="Stages" />
-        <Button prefHeight="20.0" prefWidth="146.0" styleClass="navbar-button" text="Événements" />
-        <Button prefHeight="20.0" prefWidth="199.0" styleClass="navbar-button" text="Activités Extra-Scolaires" />
->>>>>>> f8d03c26fd2a6b000c3411fe9e9b3498bb247c23
     </children>
 </HBox>

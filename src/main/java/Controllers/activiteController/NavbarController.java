@@ -170,7 +170,7 @@ public class NavbarController  implements Initializable {
 
             buttonsContainer.getChildren().addAll(cours,logout);
         }
-        if(user != null && user.getRole() == RoleName.TEACHER){
+        if(user != null && user.getRole() == RoleName.ENTREPRISE_RH){
 
             Button offre = new Button("Offre");
             offre.setStyle("-fx-font-size: 18px; " +
