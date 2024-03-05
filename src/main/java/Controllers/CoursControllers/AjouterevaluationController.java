@@ -2,7 +2,6 @@
 package Controllers.CoursControllers;
 
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +14,6 @@ import tn.esprit.entities.Cours.Cours;
 import tn.esprit.entities.Cours.Evaluation;
 import tn.esprit.services.coursServices.CoursService;
 import tn.esprit.services.coursServices.EvaluationService;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -67,15 +65,21 @@ public class AjouterevaluationController implements Initializable {
             } catch (IOException e) {
                 System.err.println(e.getMessage());
             }
-
-
-
-    }
+               }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        System.out.print("Im here ");
         listCours.getItems().addAll(cs.obtenirToutesLesCours());
     }
-
+   @FXML
+    public void navigeuzVersAffichercours(){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Affichercour.fxml"));
+            listCours.getScene().setRoot(root);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 }
+
