@@ -5,10 +5,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #e5e7e6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AjouterOffreController">
     <children>
+<<<<<<< HEAD
+=======
+        <HBox layoutY="-2.0" prefHeight="79.0" prefWidth="1282.0">
+            <fx:include source="navbar.fxml" />
+        </HBox>
+>>>>>>> d6aa8e7e6d26378b21e98d108e4f770a1eed77e0
         <TextField fx:id="titre" layoutX="225.0" layoutY="352.0" prefHeight="67.0" prefWidth="352.0" style="-fx-border-radius: 30;" />
         <TextField fx:id="description" layoutX="225.0" layoutY="525.0" prefHeight="69.0" prefWidth="354.0" />
         <TextField fx:id="competences" layoutX="735.0" layoutY="356.0" prefHeight="62.0" prefWidth="370.0" />
@@ -55,6 +62,10 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
+<<<<<<< HEAD
+=======
+
+>>>>>>> d6aa8e7e6d26378b21e98d108e4f770a1eed77e0
 
     </children>
 </AnchorPane>

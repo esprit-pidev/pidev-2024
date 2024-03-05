@@ -3,11 +3,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="786.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.AfficherevaluationController">
+<AnchorPane prefHeight="786.0" prefWidth="1280.0" style="-fx-background-color: #e5e7e6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.AfficherevaluationController">
    <children>
+      <HBox layoutX="-11.0" layoutY="-6.0" prefHeight="72.0" prefWidth="1291.0">
+         <fx:include source="navbar.fxml" />
+      </HBox>
       <Button fx:id="ajoutereval" layoutX="172.0" layoutY="312.0" mnemonicParsing="false" onAction="#navigate" prefHeight="30.0" prefWidth="122.0" styleClass="login-btn" stylesheets="@style.css" text="Ajouter" />
       <Button fx:id="modifiereval" disable="true" layoutX="876.0" layoutY="311.0" mnemonicParsing="false" onAction="#navigateToEdit" prefHeight="30.0" prefWidth="121.0" styleClass="login-btn" stylesheets="@style.css" text="Modifier" />
       <VBox fx:id="vboxList" layoutX="172.0" layoutY="385.0" prefHeight="320.0" prefWidth="826.0" spacing="20.0" />

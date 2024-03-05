@@ -254,7 +254,7 @@ public class NavbarController  implements Initializable {
                     "-fx-cursor: hand;");
 
             stage.setOnAction(e->{
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LesOffresDEStage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LesOffreSdEstage.fxml"));
                 try {
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
