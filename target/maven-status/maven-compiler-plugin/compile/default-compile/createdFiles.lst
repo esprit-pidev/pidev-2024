@@ -12,7 +12,8 @@ Controllers\CoursControllers\AffichercourController.class
 tn\esprit\entities\User\RoleName.class
 Controllers\EventControllers\UpdateEventController.class
 Controllers\StageControllers\AjouterCandidatureController.class
-Controllers\CoursControllers\AjouterCoursController$1.class
+Controllers\activiteController\HomeController.class
+
 tn\esprit\entities\Cours\Questions.class
 tn\esprit\entities\Cours\Option.class
 Controllers\userControllers\ProfilChangePasswordController.class
