@@ -4,11 +4,15 @@ package Controllers.CoursControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import tn.esprit.entities.Cours.Cours;
 import tn.esprit.entities.Cours.Evaluation;
 import tn.esprit.services.coursServices.CoursService;
 import tn.esprit.services.coursServices.EvaluationService;
+
+import java.io.IOException;
 
 
 public class ModifierevaluationController {
@@ -37,7 +41,16 @@ public class ModifierevaluationController {
     {
         evaluation.setTitre(titre.getText());
         es.modifierevaluation(evaluation);
-       // naviguezVersAffichage(null);
+        naviguezVersAfficherevaluation(event);
+    }
+    @FXML
+    public void naviguezVersAfficherevaluation(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Afficherevaluation.fxml"));
+            titre.getScene().setRoot(root);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 }

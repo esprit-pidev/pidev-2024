@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
+
 <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="1297.0" spacing="60.0" styleClass="navbar-container" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.activiteController.NavbarController">
-    <!-- Le reste du contenu de votre fichier FXML reste inchangé -->
     <children>
         <ImageView fitHeight="79.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@logo.jpg" />
+                <Image url="@logo.jpg.jpg" />
             </image>
         </ImageView>
       <HBox fx:id="buttonsContainer" alignment="CENTER_RIGHT" prefHeight="79.0" prefWidth="1098.0" spacing="60.0" />
