@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="614.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.AfficherevaluationController">
+<AnchorPane prefHeight="786.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.AfficherevaluationController">
    <children>
-      <Button fx:id="ajoutereval" layoutX="30.0" layoutY="47.0" mnemonicParsing="false" onAction="#navigate" prefHeight="26.0" prefWidth="75.0" text="Ajouter" />
-      <Button fx:id="supprimereval" disable="true" layoutX="338.0" layoutY="46.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="75.0" text="Supprimer" />
-      <Button fx:id="modifiereval" disable="true" layoutX="494.0" layoutY="47.0" mnemonicParsing="false" onAction="#navigateToEdit" prefHeight="26.0" prefWidth="75.0" text="Modifier" />
-      <VBox fx:id="vboxList" layoutX="35.0" layoutY="107.0" prefHeight="200.0" prefWidth="529.0" spacing="20.0" />
-      <Button fx:id="AjouterQuestion" layoutX="162.0" layoutY="47.0" mnemonicParsing="false" onAction="#navigatetoajouterQuestion" text="AjouterQuestion" />
+      <Button fx:id="ajoutereval" layoutX="172.0" layoutY="312.0" mnemonicParsing="false" onAction="#navigate" prefHeight="30.0" prefWidth="122.0" styleClass="login-btn" stylesheets="@style.css" text="Ajouter" />
+      <Button fx:id="modifiereval" disable="true" layoutX="876.0" layoutY="311.0" mnemonicParsing="false" onAction="#navigateToEdit" prefHeight="30.0" prefWidth="121.0" styleClass="login-btn" stylesheets="@style.css" text="Modifier" />
+      <VBox fx:id="vboxList" layoutX="172.0" layoutY="385.0" prefHeight="320.0" prefWidth="826.0" spacing="20.0" />
+      <Button fx:id="AjouterQuestion" layoutX="405.0" layoutY="312.0" mnemonicParsing="false" onAction="#navigatetoajouterQuestion" styleClass="login-btn" stylesheets="@style.css" text="AjouterQuestion" />
+      <Button fx:id="supprimereval" disable="true" layoutX="640.0" layoutY="311.0" mnemonicParsing="false" onAction="#delete" prefHeight="30.0" prefWidth="121.0" styleClass="login-btn" stylesheets="@style.css" text="Supprimer" />
+      <Label layoutX="495.0" layoutY="183.0" text="Evaluations" textFill="#9b9b9b">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

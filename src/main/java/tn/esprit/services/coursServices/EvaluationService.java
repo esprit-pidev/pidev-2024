@@ -2,7 +2,6 @@ package tn.esprit.services.coursServices;
 
 import tn.esprit.entities.Cours.Evaluation;
 import tn.esprit.tools.MyDB;
-//import utils.DataSource;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -113,6 +112,7 @@ public class EvaluationService {
         return  false;
 
     }
+
     public Boolean getIfUserAlreadySubmitEvaluation(int evaluation_id, int userid){
         String requete="select *  from evaluation_user where user_id=? and evaluation_id=?";
         try {
@@ -128,6 +128,17 @@ public class EvaluationService {
         }
         return  false;
 
+    }
+    public Evaluation getEvalByCourId(int courId) throws SQLException{
+            final String Query ="SELECT * FROM evaluation WHERE cours_id = ?";
+            try(PreparedStatement stmt = conn.prepareStatement(Query)){
+                stmt.setInt(1,courId);
+                ResultSet rs = stmt.executeQuery();
+                while(rs.next()){
+                    return new Evaluation(rs.getInt("id"),rs.getInt("cours_id"),rs.getString("titre"));
+                }
+            }
+        return null;
     }
 
 

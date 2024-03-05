@@ -51,7 +51,7 @@ public class QuestionUserController {
     }
 
 
-        public void setQuestion(Questions question, EventHandler<PickedValueEvent> optionPickedEventHandler){
+    public void setQuestion(Questions question, EventHandler<PickedValueEvent> optionPickedEventHandler){
         this.optionPickedEventHandler=optionPickedEventHandler;
         this.question = question;
         this.optionList = os.obtenirToutesLesoptionsByQuestion(question.getId());

@@ -1,21 +1,23 @@
 package tn.esprit.entities.Cours;
 
+import tn.esprit.entities.User.User;
+
 public class Cours {
     private int cours_Id;
     private  String nomcours;
     private String nommodule;
-    private int teacher_id;
+    private User teacher;
     private  int niveau;
     private  String coursURLpdf;
 
     public Cours() {
     }
 
-    public Cours( String nomcours, String nommodule, int teacher_id, int niveau, String coursURLpdf) {
+    public Cours( String nomcours, String nommodule, User teacher, int niveau, String coursURLpdf) {
 
         this.nomcours = nomcours;
         this.nommodule = nommodule;
-        this.teacher_id = teacher_id;
+        this.teacher = teacher;
         this.niveau = niveau;
         this.coursURLpdf=coursURLpdf;
     }
@@ -27,20 +29,20 @@ public class Cours {
 
     }
 
-    public Cours(int cours_Id, String nomcours, String nommodule, int teacher_id, int niveau, String coursURLpdf) {
+    public Cours(int cours_Id, String nomcours, String nommodule, User teacher, int niveau, String coursURLpdf) {
         this.cours_Id = cours_Id;
         this.nomcours = nomcours;
         this.nommodule = nommodule;
-        this.teacher_id = teacher_id;
+        this.teacher = teacher;
         this.niveau = niveau;
         this.coursURLpdf = coursURLpdf;
     }
 
-    public Cours(int cours_Id, String nomCours, String nomModule, int teacher_id, int niveau) {
+    public Cours(int cours_Id, String nomCours, String nomModule, User teacher, int niveau) {
         this.cours_Id=cours_Id;
         this.nomcours = nomcours;
         this.nommodule = nommodule;
-        this.teacher_id = teacher_id;
+        this.teacher = teacher;
         this.niveau = niveau;
     }
 
@@ -69,12 +71,12 @@ public class Cours {
         this.nommodule = nommodule;
     }
 
-    public int getTeacher_id() {
-        return teacher_id;
+    public User getTeacher() {
+        return teacher;
     }
 
-    public void setTeacher_id(int teacher_id) {
-        this.teacher_id = teacher_id;
+    public void setTeacher(User teacher) {
+        this.teacher = teacher;
     }
 
     public  int getNiveau() {

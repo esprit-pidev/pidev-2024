@@ -73,7 +73,7 @@
                   <Insets right="210.0" />
                </GridPane.margin>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#modifiercour" text="Modifier" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#modifiercour"  styleClass="login-btn" stylesheets="@style.css" text="Modifier" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <TextField fx:id="niveau" />
