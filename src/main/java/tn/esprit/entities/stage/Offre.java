@@ -1,33 +1,39 @@
 package tn.esprit.entities.stage;
+
+import tn.esprit.entities.User.User;
+
 import java.util.Date;
 import java.util.Objects;
 
 public class Offre {
     private int id;
-    private int entreprise_id;
+    private User entreprise;
     private String titre;
     private String description;
     private String competences;
     private int nbr;
-    private Date date ;
-    public Offre(int id, int entreprise_id, String titre, String description, String competences, int nbr, Date date) {
+    private Date date;
+
+    public Offre(int id, User entreprise, String titre, String description, String competences, int nbr, Date date) {
         this.id = id;
-        this.entreprise_id = entreprise_id;
+        this.entreprise = entreprise;
         this.titre = titre;
         this.description = description;
         this.competences = competences;
         this.nbr = nbr;
         this.date = date;
     }
-    public Offre(int entreprise_id, String titre, String description, String competences, int nbr, Date date) {
-        this.entreprise_id = entreprise_id;
+
+    public Offre(User entreprise, String titre, String description, String competences, int nbr, Date date) {
+        this.entreprise = entreprise;
         this.titre = titre;
         this.description = description;
         this.competences = competences;
         this.nbr = nbr;
         this.date = date;
     }
-    public Offre(){
+
+    public Offre() {
 
     }
 
@@ -35,8 +41,8 @@ public class Offre {
         return id;
     }
 
-    public int getEntreprise_id() {
-        return entreprise_id;
+    public User getEntreprise() {
+        return entreprise;
     }
 
     public String getTitre() {
@@ -63,8 +69,8 @@ public class Offre {
         this.id = id;
     }
 
-    public void setEntreprise_id(int entreprise_id) {
-        this.entreprise_id = entreprise_id;
+    public void setEntreprise(User entreprise) {
+        this.entreprise = entreprise;
     }
 
     public void setTitre(String titre) {
@@ -89,9 +95,7 @@ public class Offre {
 
     @Override
     public String toString() {
-        return "offre{" +
-                "id=" + id +
-                ", entreprise_id=" + entreprise_id +
+        return "Offre{" +
                 ", titre='" + titre + '\'' +
                 ", description='" + description + '\'' +
                 ", competences='" + competences + '\'' +
@@ -99,6 +103,4 @@ public class Offre {
                 ", date=" + date +
                 '}';
     }
-
-
 }
