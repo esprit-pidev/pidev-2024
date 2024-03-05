@@ -5,25 +5,31 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="786.0" prefWidth="1280.0" style="-fx-background-color: b9b9b9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherListeDesCandidaturesController">
+<AnchorPane prefHeight="786.0" prefWidth="1280.0" style="-fx-background-color: #e5e7e6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherListeDesCandidaturesController">
     <children>
-        <ImageView fitHeight="410.0" fitWidth="711.0" layoutX="321.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@image/rougeclair.png" />
-            </image>
-        </ImageView>
-        <ListView id="glass" fx:id="candidatureListView" layoutX="329.0" layoutY="288.0" onMouseClicked="#afficherDetailsCandidature" prefHeight="393.0" prefWidth="695.0" stylesheets="@css/stylesheet.css" />
-        <Label layoutX="436.0" layoutY="183.0" text="La Liste Des Candidatures" textFill="#9f1c00">
+        <HBox layoutY="-2.0" prefHeight="79.0" prefWidth="1282.0">
+            <fx:include source="navbar.fxml" />
+        </HBox>
+
+        <ListView id="glass" fx:id="candidatureListView" layoutX="267.0" layoutY="293.0" onMouseClicked="#afficherDetailsCandidature" prefHeight="393.0" prefWidth="850.0" style="-fx-background-radius: 30;" />
+        <Label layoutX="491.0" layoutY="204.0" text=" Liste des candidatures">
             <font>
-                <Font name="System Bold" size="36.0" />
+                <Font name="Arial Bold" size="36.0" />
             </font>
         </Label>
-        <ImageView fitHeight="65.0" fitWidth="64.0" layoutX="891.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="80.0" fitWidth="83.0" layoutX="908.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@image/list.png" />
+                <Image url="@image/liste-de-taches.png" />
             </image>
         </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="83.0" layoutX="399.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/liste-de-taches.png" />
+         </image>
+      </ImageView>
+
     </children>
 </AnchorPane>
