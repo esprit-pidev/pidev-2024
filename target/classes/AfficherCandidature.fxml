@@ -1,20 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherCandidatureController">
-    <children>
-        <TableView fx:id="candidatureTV" layoutX="56.0" layoutY="32.0" prefHeight="307.0" prefWidth="487.0">
-
-            <columns>
-
-                <TableColumn fx:id="competences" prefWidth="75.0" text="Competences" />
-                <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
-                <TableColumn fx:id="status" prefWidth="75.0" text="Status" />
-                <TableColumn fx:id="cv" prefWidth="261.0" text="CV" />
-            </columns>
-        </TableView>
-    </children>
+<AnchorPane prefHeight="768" prefWidth="1280" style="-fx-background-color: B9B9B9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherCandidatureController">
+   <children>
+      <ListView id="glass" fx:id="candidatureListView" layoutX="61.0" layoutY="379.0" onMouseClicked="#fillforum" prefHeight="343.0" prefWidth="1159.0" stylesheets="@css/stylesheet.css" />
+      <Label layoutX="449.0" layoutY="90.0" prefHeight="74.0" prefWidth="383.0" text="Afficher Candidature " textFill="#781c10" AnchorPane.bottomAnchor="610.0" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="448.0" AnchorPane.topAnchor="90.0">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button id="but" layoutX="1110.0" layoutY="247.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="110.0" stylesheets="@css/stylesheet.css" text="modifier" textFill="#4a1111">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <TextField id="glass" fx:id="competences" layoutX="138.0" layoutY="248.0" prefHeight="87.0" prefWidth="383.0" promptText="Competences" stylesheets="@css/stylesheet.css" />
+      <TextField id="glass" fx:id="cv" layoutX="640.0" layoutY="247.0" prefHeight="53.0" prefWidth="335.0" promptText="CV" stylesheets="@css/stylesheet.css" />
+      <Button id="but" layoutX="1046.0" layoutY="309.0" mnemonicParsing="false" onAction="#naviguezVersAjouter" stylesheets="@css/stylesheet.css" text="ajouter un autre candidature">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button id="but" layoutX="661.0" layoutY="309.0" mnemonicParsing="false" onAction="#uploadPdf" prefHeight="26.0" prefWidth="296.0" stylesheets="@css/stylesheet.css" text="cliquer pour ajouter votre CV">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <ImageView fitHeight="87.0" fitWidth="70.0" layoutX="61.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/competence.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="74.0" fitWidth="110.0" layoutX="567.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/cv-removebg-preview.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

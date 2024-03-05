@@ -71,6 +71,8 @@ public class LoginController {
                             prefs.put("rememberMeToken", token);
                             tokenService.add(new RememberMeToken(user, token, LocalDateTime.now().plusDays(10)));
                         }
+
+
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
 
                         Parent root = loader.load();

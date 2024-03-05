@@ -28,7 +28,10 @@
                                         <TextField fx:id="SearchTTF" layoutX="18.0" layoutY="14.0" promptText="Entrez l'email" style="-fx-border-color: #9f1c00; -fx-border-radius: 3px;" />
                                         <Button layoutX="179.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" style="-fx-border-color: #9f1c00; -fx-border-radius: 10px; -fx-background-color: white;" />
                                         <AnchorPane fx:id="TeacherAP" layoutX="6.0" layoutY="48.0" prefHeight="271.0" prefWidth="1086.0" style="-fx-background-color: white;" />
-                                        <ImageView fx:id="searchTIV" fitHeight="18.0" fitWidth="18.0" layoutX="183.0" layoutY="19.0" onMouseClicked="#searchT" pickOnBounds="true" preserveRatio="true" />
+                                        <ImageView fx:id="searchTIV" fitHeight="18.0" fitWidth="18.0" layoutX="183.0" layoutY="19.0" onMouseClicked="#searchT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/recherche.png" />
+                                 </image></ImageView>
                                     </children>
                                 </AnchorPane>
                             </content>

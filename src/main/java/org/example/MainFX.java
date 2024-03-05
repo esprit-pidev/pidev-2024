@@ -1,6 +1,5 @@
 package org.example;
 
-import atlantafx.base.theme.NordDark;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,7 +33,6 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Application.setUserAgentStylesheet(new NordDark().getUserAgentStylesheet());
 
         Preferences prefs = Preferences.userRoot().node("com/myapp");
         String token = prefs.get("rememberMeToken", null);
@@ -43,9 +41,10 @@ public class MainFX extends Application {
             if (rememberMeToken.getExpiresAt().isAfter(LocalDateTime.now())) {
                 userLoggedIn = new AuthResponseDTO(rememberMeToken.getUser().getId(), rememberMeToken.getUser().getRole());
                 UserSession.getSameInstance(userLoggedIn);
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Affichercour.fxml"));
                 Parent root = loader.load();
-                Scene scene = new Scene(root);
+                Scene scene = new Scene(root,1280,768);
                 primaryStage.setScene(scene);
                 primaryStage.setTitle("Profile");
                 primaryStage.show();
@@ -67,7 +66,7 @@ public class MainFX extends Application {
         } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/home.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,1280,768);
             primaryStage.setScene(scene);
             primaryStage.setTitle("home");
             primaryStage.show();

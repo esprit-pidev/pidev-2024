@@ -24,12 +24,12 @@
             </Label>
             <ImageView fitHeight="426.0" fitWidth="477.0" layoutX="166.0" layoutY="195.0" pickOnBounds="true" smooth="false">
                <image>
-                  <Image url="@/images/Auth3.jpg" />
+                  <Image url="@images/Auth3.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="146.0" fitWidth="169.0" layoutX="794.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@/images/Edu_smart.jpeg" />
+                  <Image url="@images/Edu_smart.jpeg" />
                </image>
             </ImageView>
             <Label layoutX="762.0" layoutY="274.0" text="Esprit Edu-Smart" textFill="#9f1c00">

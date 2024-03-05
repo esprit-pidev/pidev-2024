@@ -2,54 +2,59 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AjouterOffreController">
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #e5e7e6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AjouterOffreController">
     <children>
-        <ImageView fitHeight="344.0" fitWidth="606.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@img/TAKE%20A%20TOUR.png" />
-            </image>
-        </ImageView>
-        <HBox layoutY="1.0" prefHeight="55.0" prefWidth="606.0" style="-fx-background-color: #B5B5B5;" />
-        <TextField fx:id="titre" layoutX="89.0" layoutY="155.0" />
-        <TextField fx:id="description" layoutX="89.0" layoutY="239.0" />
-        <TextField fx:id="competences" layoutX="374.0" layoutY="155.0" />
-        <TextField fx:id="nbr" layoutX="374.0" layoutY="239.0" />
-        <Button layoutX="80.0" layoutY="325.0" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="93.0" text="Ajouter" textAlignment="CENTER" textFill="#4a1111" />
-        <Label layoutX="89.0" layoutY="133.0" text="Titre :" />
-        <Label layoutX="93.0" layoutY="218.0" text="Description :" />
-        <Label layoutX="374.0" layoutY="133.0" text="Competences :" />
-        <Label layoutX="374.0" layoutY="218.0" text="Nombre :" />
-        <Label layoutX="181.0" layoutY="81.0" text="Créer Un Offre De Stage" textAlignment="CENTER" textFill="#d61525" AnchorPane.topAnchor="81.0">
+        <TextField fx:id="titre" layoutX="225.0" layoutY="352.0" prefHeight="67.0" prefWidth="352.0" style="-fx-border-radius: 30;" />
+        <TextField fx:id="description" layoutX="225.0" layoutY="525.0" prefHeight="69.0" prefWidth="354.0" />
+        <TextField fx:id="competences" layoutX="735.0" layoutY="356.0" prefHeight="62.0" prefWidth="370.0" />
+        <TextField fx:id="nbr" layoutX="747.0" layoutY="525.0" prefHeight="65.0" prefWidth="362.0" />
+        <Button id="but" layoutX="157.0" layoutY="647.0" mnemonicParsing="false" onAction="#add" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: #7AA95C; -fx-background-radius: 20;" text="Ajouter" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font></Button>
+        <Label layoutX="229.0" layoutY="295.0" prefHeight="50.0" prefWidth="164.0" text="Titre :">
             <font>
-                <Font name="System Bold" size="18.0" />
+                <Font name="System Bold" size="34.0" />
+            </font></Label>
+        <Label layoutX="404.0" layoutY="193.0" prefHeight="53.0" prefWidth="522.0" text="Créer un offre de stage" textAlignment="CENTER" textFill="#a7001e" AnchorPane.topAnchor="193.0">
+            <font>
+                <Font name="Arial Bold" size="44.0" />
             </font>
         </Label>
-        <Button fx:id="aff" layoutX="243.0" layoutY="325.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="25.0" prefWidth="79.0" text="Afficher" textFill="#4a1111" />
-        <Button fx:id="aff" layoutX="399.0" layoutY="325.0" mnemonicParsing="false" onAction="#naviguezVersModifier" text="déplacer pour modifier" textFill="#4a1111" />
-        <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@img/logo.png" />
-            </image>
+        <Button id="but" fx:id="afficher" layoutX="491.0" layoutY="658.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="37.0" prefWidth="261.0" style="-fx-background-color: #7AA95C; -fx-background-radius: 20;" text="Afficher offres" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font></Button>
+        <ImageView fitHeight="79.0" fitWidth="93.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+
         </ImageView>
-        <ImageView fitHeight="35.0" fitWidth="42.0" layoutX="550.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@img/5343441.png" />
-            </image>
+        <ImageView fitHeight="73.0" fitWidth="70.0" layoutX="1185.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+
         </ImageView>
-        <SplitMenuButton layoutX="465.0" layoutY="19.0" mnemonicParsing="false" text="Stage">
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </SplitMenuButton>
+        <Button id="but" fx:id="btnAfficherStatistique" layoutX="918.0" layoutY="653.0" onAction="#afficherStatistique" prefHeight="54.0" prefWidth="270.0" style="-fx-background-color: #7AA95C; -fx-background-radius: 20;" text="Afficher Statistique" textFill="WHITE">
+         <font>
+            <Font size="27.0" />
+         </font></Button>
+      <Label layoutX="746.0" layoutY="291.0" prefHeight="50.0" prefWidth="252.0" text="Compétences :">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="244.0" layoutY="465.0" prefHeight="50.0" prefWidth="248.0" text="Description : ">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="758.0" layoutY="462.0" prefHeight="50.0" prefWidth="248.0" text="Nombre :">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+
     </children>
 </AnchorPane>
