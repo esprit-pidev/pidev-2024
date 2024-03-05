@@ -50,6 +50,9 @@
             <Image url="@image/recherche-demploi.png" />
          </image>
       </ImageView>
+<<<<<<< HEAD
+=======
 
+>>>>>>> d6aa8e7e6d26378b21e98d108e4f770a1eed77e0
     </children>
 </AnchorPane>
