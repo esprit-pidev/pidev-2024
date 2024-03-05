@@ -41,9 +41,9 @@ public class MainFX extends Application {
             if (rememberMeToken.getExpiresAt().isAfter(LocalDateTime.now())) {
                 userLoggedIn = new AuthResponseDTO(rememberMeToken.getUser().getId(), rememberMeToken.getUser().getRole());
                 UserSession.getSameInstance(userLoggedIn);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Activites.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterOffre.fxml"));
                 Parent root = loader.load();
-                Scene scene = new Scene(root);
+                Scene scene = new Scene(root,1280,768);
                 primaryStage.setScene(scene);
                 primaryStage.setTitle("Profile");
                 primaryStage.show();
@@ -65,7 +65,7 @@ public class MainFX extends Application {
         } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,1280,768);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Login");
             primaryStage.show();

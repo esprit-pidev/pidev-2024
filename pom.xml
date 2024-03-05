@@ -61,6 +61,32 @@
             <artifactId>pdfbox</artifactId>
             <version>2.0.30</version>
         </dependency>
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.32.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>17</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.12.5</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -74,6 +100,16 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>google-api-services</id>
+            <url>https://maven-central.storage.googleapis.com</url>
+        </repository>
+        <repository>
+            <id>google-maven</id>
+            <url>https://maven-central.storage.googleapis.com</url>
+        </repository>
+    </repositories>
 
 
 

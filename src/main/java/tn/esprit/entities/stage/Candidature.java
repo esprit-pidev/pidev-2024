@@ -1,32 +1,38 @@
 package tn.esprit.entities.stage;
 
-import javafx.beans.value.ObservableValue;
+import tn.esprit.entities.User.User;
+import tn.esprit.services.stageServices.OffreService;
 
 import java.util.Date;
-import java.util.Objects;
 
 public class Candidature {
+    private final OffreService OS = new OffreService();
     private int id;
     private int offre_id;
-    private int user_id;
+    private User etudiant;
     private Date date;
     private String status;
     private String competences;
     private String cv;
+    private String cvFilePath;
 
-    public Candidature (int id, int offre_id, int user_id, Date date, String status, String competences, String cv) {
+    public String getCvFilePath() {
+        return cvFilePath;
+    }
+
+    public Candidature(int id, int offre_id, User etudiant, Date date, String status, String competences, String cv) {
         this.id = id;
         this.offre_id = offre_id;
-        this.user_id = user_id;
+        this.etudiant = etudiant;
         this.date = date;
         this.status = status;
         this.competences = competences;
         this.cv = cv;
     }
 
-    public Candidature(int offre_id, int user_id, Date date, String status, String competences, String cv) {
+    public Candidature(int offre_id, User etudiant, Date date, String status, String competences, String cv) {
         this.offre_id = offre_id;
-        this.user_id = user_id;
+        this.etudiant = etudiant;
         this.date = date;
         this.status = status;
         this.competences = competences;
@@ -36,57 +42,56 @@ public class Candidature {
     public Candidature() {
     }
 
+    public User getEtudiant() {
+        return etudiant;
+    }
+
+    public void setEtudiant(User etudiant) {
+        this.etudiant = etudiant;
+    }
 
     public int getId() {
         return id;
     }
 
-    public int getOffre_Id() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOffre_id() {
         return offre_id;
     }
 
-    public int getUser_Id() {
-        return user_id;
+    public void setOffre_id(int offre_id) {
+        this.offre_id = offre_id;
     }
 
     public Date getDate() {
-        return this.date;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public String getCompetences() {
-        return competences;
-    }
-
-    public String getCv() {
-        return cv;
-    }
-
-    public void setId(int id) {
-        id = id;
-    }
-
-    public void setOffre_Id(int offre_Id) {
-        this.offre_id = offre_Id;
-    }
-
-    public void setUser_Id(int user_Id) {
-        this.user_id = user_Id;
+        return date;
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public void setStatus(String status) {
         this.status = status;
     }
 
+    public String getCompetences() {
+        return competences;
+    }
+
     public void setCompetences(String competences) {
         this.competences = competences;
+    }
+
+    public String getCv() {
+        return cv;
     }
 
     public void setCv(String cv) {
@@ -95,20 +100,24 @@ public class Candidature {
 
     @Override
     public String toString() {
-        return "Candidature{" +
-                "Id=" + id +
-                ", offre_Id=" + offre_id +
-                ", user_Id=" + user_id +
-                ", date=" + date +
-                ", status='" + status + '\'' +
-                ", competences='" + competences + '\'' +
-                ", cv='" + cv + '\'' +
-                '}';
-    }
-
-    public Candidature(String competences, String cv) {
-        this.competences = competences;
-        this.cv = cv;
+        Offre offre = OS.getById(offre_id);
+        if (offre != null) {
+            return "Candidature{" +
+                    "offre=" + offre.getTitre() +
+                    ", date=" + date +
+                    ", status='" + status + '\'' +
+                    ", competences='" + competences + '\'' +
+                    ", cv='" + cv + '\'' +
+                    '}';
+        } else {
+            return "Candidature{" +
+                    "offre=" +
+                    ", date=" + date +
+                    ", status='" + status + '\'' +
+                    ", competences='" + competences + '\'' +
+                    ", cv='" + cv + '\'' +
+                    '}';
+        }
     }
 
 }
