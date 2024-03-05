@@ -247,14 +247,14 @@ public class NavbarController  implements Initializable {
                     throw new RuntimeException(ex);
                 }
             });
-            Button stage = new Button("stage");
+            Button stage = new Button("Stage");
             stage.setStyle("-fx-font-size: 18px; " +
                     "-fx-background-color: transparent; " +
                     "-fx-text-fill: white;"+
                     "-fx-cursor: hand;");
 
             stage.setOnAction(e->{
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LesOffreSdEstage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LesOffresDEStage.fxml"));
                 try {
                     Parent root = loader.load();
                     Scene scene = new Scene(root);

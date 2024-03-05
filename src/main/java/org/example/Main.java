@@ -1,9 +1,6 @@
 package org.example;
 
-import tn.esprit.entities.User.Admin;
-import tn.esprit.entities.User.Enseignant;
-import tn.esprit.entities.User.Etudiant;
-import tn.esprit.entities.User.RoleName;
+import tn.esprit.entities.User.*;
 import tn.esprit.entities.events.EventComments;
 import tn.esprit.entities.events.EventReactions;
 import tn.esprit.entities.events.Events;
@@ -20,19 +17,19 @@ import java.util.prefs.Preferences;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-     //UserService us = new UserService();
+     UserService us = new UserService();
       //  userService.add(new Admin("Hadded","Taha Yassine","12345", RoleName.ADMIN,"Khalil"));
         Preferences prefs = Preferences.userRoot().node("com/myapp");
         prefs.remove("rememberMeToken");
         //us.add(new Admin("Hadded","admin","admin",RoleName.ADMIN,"Khalil"));
 
+        us.add(new Entreprise("TEAMDEV","teamdev@gmail.com","0000",RoleName.ENTREPRISE_RH,"teamsyst.com","Tunisie","Tunisie"));
 
 
 
 
         /*try {
             //
-            //us.add(new Entreprise("TEAMDEV","teamdev@gmail.com","0000",RoleName.ENTREPRISE_RH,"teamsyst.com","Tunisie","Tunisie"));
             us.add(new Enseignant("Ahmed","Ahmed@esprit.tn","123456", RoleName.valueOf("TEACHER"),"Tahri","21111111","male", LocalDate.now()));
             us.add(new Etudiant("aymen","aymen@esprit.tn","0000",3,"hadded","male","11448475","3A21","aaa",LocalDate.now()));
         } catch (SQLException e) {
