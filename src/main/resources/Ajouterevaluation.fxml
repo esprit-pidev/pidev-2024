@@ -7,11 +7,15 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.AjouterevaluationController">
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #e5e7e6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.AjouterevaluationController">
    <children>
+      <HBox layoutX="-11.0" layoutY="-6.0" prefHeight="72.0" prefWidth="1291.0">
+         <fx:include source="navbar.fxml" />
+      </HBox>
       <TextField fx:id="titre" layoutX="608.0" layoutY="298.0" prefHeight="26.0" prefWidth="221.0" />
       <Text layoutX="431.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre :" textAlignment="CENTER" wrappingWidth="66.1070556640625">
          <font>

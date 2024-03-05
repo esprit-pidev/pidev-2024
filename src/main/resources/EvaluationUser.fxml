@@ -6,11 +6,15 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="786.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.EvaluationUserController">
+<AnchorPane prefHeight="786.0" prefWidth="1280.0" style="-fx-background-color: #e5e7e6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.EvaluationUserController">
    <children>
+      <HBox layoutX="-11.0" layoutY="-6.0" prefHeight="72.0" prefWidth="1291.0">
+         <fx:include source="navbar.fxml" />
+      </HBox>
       <ScrollPane layoutX="95.0" layoutY="274.0" prefHeight="472.0" prefWidth="772.0">
          <content>
             <VBox fx:id="questionsPaper" prefHeight="111.0" prefWidth="774.0" />
