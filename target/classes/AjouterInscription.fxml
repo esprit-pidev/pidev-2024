@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane focusTraversable="true" prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #262428;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.activiteController.AjouterInscriptionController">
+   <children>
+      <!-- Utilisez la balise fx:include pour inclure la sidebar -->
+      <fx:include source="Navbar.fxml" />
+      <Button layoutX="1168.0" layoutY="720.0" mnemonicParsing="false" onAction="#passerPaiement" style="-fx-background-color: #7AA95C; -fx-border-radius: 20;" text="Passer au paiement" textFill="WHITE" />
+      <AnchorPane layoutX="81.0" layoutY="117.0" prefHeight="570.0" prefWidth="1160.0" style="-fx-background-color: FFFFFF;">
+         <children>
+            <TextField fx:id="nomTF" layoutX="204.0" layoutY="164.0" prefHeight="26.0" prefWidth="240.0" />
+            <Label layoutX="252.0" layoutY="129.0" prefHeight="18.0" prefWidth="63.0" text="Nom">
+               <font>
+                  <Font name="Tahoma Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="276.0" layoutY="383.0" prefHeight="18.0" prefWidth="63.0" text="E-mail">
+               <font>
+                  <Font name="Tahoma Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="emailTF" layoutX="204.0" layoutY="424.0" prefHeight="26.0" prefWidth="240.0" />
+            <Label layoutX="339.0" layoutY="23.0" text="Formulaire d'inscription" textFill="#9f1c00">
+               <font>
+                  <Font name="Tahoma Bold" size="36.0" />
+               </font>
+            </Label>
+            <TextField fx:id="prenomTF" layoutX="774.0" layoutY="164.0" prefHeight="26.0" prefWidth="240.0" />
+            <Label layoutX="818.0" layoutY="129.0" prefHeight="23.0" prefWidth="97.0" text="Prénom">
+               <font>
+                  <Font name="Tahoma Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="818.0" layoutY="374.0" prefHeight="23.0" prefWidth="221.0" text="Numéro de téléphone">
+               <font>
+                  <Font name="Tahoma Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="telTF" layoutX="793.0" layoutY="411.0" prefHeight="26.0" prefWidth="240.0" />
+            <StackPane layoutX="48.0" layoutY="94.0" />
+            <StackPane layoutX="366.0" layoutY="94.0" />
+            <StackPane layoutX="382.0" layoutY="225.0" />
+            <StackPane layoutX="46.0" layoutY="225.0" />
+            <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="205.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@USER.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="774.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@USER.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="39.0" layoutX="224.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@MAIL.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="782.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@PHONE.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

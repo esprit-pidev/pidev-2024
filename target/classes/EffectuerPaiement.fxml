@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.activiteController.EffectuerPaiementController">
+   <children>
+      <!-- Utilisez la balise fx:include pour inclure la sidebar -->
+      <fx:include source="Navbar.fxml" />
+      <AnchorPane layoutY="79.0" prefHeight="694.0" prefWidth="627.0" style="-fx-background-color: #262428;">
+         <children>
+            <Label layoutX="21.0" layoutY="324.0" prefHeight="46.0" prefWidth="470.0" text="      Inscription pour :" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma Bold" size="36.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="PayerUnMois" layoutX="69.0" layoutY="413.0" mnemonicParsing="false" onAction="#PayerUnMoisSelected" text="1 mois" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="24.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="PayerDeuxMois" layoutX="416.0" layoutY="413.0" mnemonicParsing="false" onAction="#PayerDeuxMoisSelected" text="2 mois" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="24.0" />
+               </font>
+            </RadioButton>
+            <SplitPane layoutX="143.0" layoutY="518.0" prefHeight="58.0" prefWidth="315.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;">
+               <items>
+                  <Label fx:id="montantTotalLabel" prefHeight="38.0" prefWidth="325.0" style="-fx-background-color: #FFFFFFF;" text="Montant total à payer :">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </items>
+            </SplitPane>
+
+            <ImageView fitHeight="263.0" fitWidth="265.0" layoutX="182.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@PAY1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="349.0" fitWidth="342.0" layoutX="787.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@carte2.png" />
+         </image>
+      </ImageView>
+
+                  <Label layoutX="699.0" layoutY="300.0" prefHeight="23.0" prefWidth="232.0" text="Le nom du détenteur">
+         <font>
+            <Font name="Tahoma Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nomD" layoutX="684.0" layoutY="356.0" prefHeight="39.0" prefWidth="375.0" />
+      <Label layoutX="710.0" layoutY="437.0" prefHeight="18.0" prefWidth="209.0" text="Numéro de la carte">
+         <font>
+            <Font name="Tahoma Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="numCarte" layoutX="684.0" layoutY="492.0" prefHeight="39.0" prefWidth="375.0" />
+      <Label layoutX="695.0" layoutY="597.0" text="Mois">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <ChoiceBox fx:id="mois" layoutX="680.0" layoutY="635.0" prefHeight="26.0" prefWidth="110.0" />
+      <Label layoutX="903.0" layoutY="597.0" text="Année">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <ChoiceBox fx:id="annee" layoutX="907.0" layoutY="635.0" prefHeight="26.0" prefWidth="109.0" />
+      <TextField fx:id="CVV" layoutX="1116.0" layoutY="635.0" prefHeight="26.0" prefWidth="110.0" />
+      <Label layoutX="1124.0" layoutY="597.0" prefHeight="18.0" prefWidth="52.0" text="CVV">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="paiement" layoutX="684.0" layoutY="711.0" mnemonicParsing="false" onAction="#Payer" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #7AA95C;" text="Payer" textFill="WHITE" />
+      <Button fx:id="buttonImprimerRecu" layoutX="1124.0" layoutY="711.0" mnemonicParsing="false" onAction="#imprimerRecu" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: #384454; -fx-background-radius: 10;" text="Imprimer reçu" textFill="WHITE" />
+
+   </children>
+</AnchorPane>
