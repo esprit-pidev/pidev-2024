@@ -1,7 +1,11 @@
 package tn.esprit.services.coursServices;
+
 import tn.esprit.entities.Cours.Cours;
+import tn.esprit.entities.Cours.Evaluation;
+import tn.esprit.entities.User.Enseignant;
+import tn.esprit.services.userServices.UserService;
 import tn.esprit.tools.MyDB;
-//import utils.DataSource;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +15,7 @@ public class CoursService {
     private Connection conn;
     private Statement ste;
     private PreparedStatement pst;
+    private final UserService us=new UserService();
 
     public CoursService() {
         conn = MyDB.getInstance().getCnx();
@@ -23,7 +28,7 @@ public class CoursService {
 
             pst.setString(1, cours. getNomcours());
             pst.setString(2, cours.getNommodule());
-            pst.setInt(3, cours.getTeacher_id());
+            pst.setInt(3, cours.getTeacher().getId());
             pst.setInt(4, cours. getNiveau());
             pst.setString(5, cours. getcoursURLpdf());
 
@@ -69,7 +74,7 @@ public class CoursService {
             ste = conn.createStatement();
             ResultSet rs = ste.executeQuery(requete);
             while (rs.next()) {
-                list.add(new Cours (rs.getInt("id"),rs.getString("nom_cours"), rs.getString("nom_module") ,rs.getInt("teacher_id"),rs.getInt("niveau"),rs.getString("coursURLpdf")));
+                list.add(new Cours (rs.getInt("id"),rs.getString("nom_cours"), rs.getString("nom_module") ,us.getById(rs.getInt("teacher_id")),rs.getInt("niveau"),rs.getString("coursURLpdf")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -84,13 +89,14 @@ public class CoursService {
             pst.setInt(1, coursId);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                return new Cours(rs.getString("nom_cours"), rs.getString("nom_module") ,rs.getInt("teacher_id"),rs.getInt("niveau"),rs.getString("coursURLpdf"));
+                return new Cours(rs.getString("nom_cours"), rs.getString("nom_module") ,us.getById(rs.getInt("teacher_id")),rs.getInt("niveau"),rs.getString("coursURLpdf"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return null;
     }
+
     public List<Cours> getcourteacher(int id)throws SQLException {
         List<Cours> cours = new ArrayList<>();
 
@@ -102,7 +108,8 @@ public class CoursService {
                 while (rs.next()) {
                     Cours c = new Cours();
                     c.setCours_Id(rs.getInt("id"));
-                    c.setTeacher_id(rs.getInt("Teacher_id"));
+                    Enseignant enseignant=(Enseignant) us.getById(rs.getInt("teacher_id"));
+                    c.setTeacher(enseignant);
                     c.setNiveau(rs.getInt("niveau"));
                     c.setNomcours(rs.getString("nom_cours"));
                     c.setCoursURLpdf(rs.getString("coursURLpdf"));
@@ -112,6 +119,28 @@ public class CoursService {
             }
         }
         return cours;
+    }
+
+    public Evaluation getEvaluationByIdCours(int id)throws SQLException {
+        CoursService cs = new CoursService();
+        List<Evaluation> evals = new ArrayList<>();
+
+        String sql = "SELECT * FROM evaluation WHERE cours_id = ?";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    Evaluation e = new Evaluation();
+                    e.setId(rs.getInt("id"));
+                    e.setCours_Id(rs.getInt("cours_id"));
+                    e.setTitre(rs.getString("titre"));
+                    return e;
+                  //  evals.add(e);
+                }
+            }
+        }
+        return null;
     }
 
 }
