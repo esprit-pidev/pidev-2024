@@ -170,7 +170,7 @@ public class NavbarController  implements Initializable {
 
             buttonsContainer.getChildren().addAll(cours,logout);
         }
-        if(user != null && user.getRole() == RoleName.TEACHER){
+        if(user != null && user.getRole() == RoleName.ENTREPRISE_RH){
 
             Button offre = new Button("Offre");
             offre.setStyle("-fx-font-size: 18px; " +
@@ -254,7 +254,7 @@ public class NavbarController  implements Initializable {
                     "-fx-cursor: hand;");
 
             stage.setOnAction(e->{
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LesOffresDEStage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LesOffreSdEstage.fxml"));
                 try {
                     Parent root = loader.load();
                     Scene scene = new Scene(root);

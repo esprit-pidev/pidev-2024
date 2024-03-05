@@ -1,42 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: b9b9b9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.LesOffresDEStageController">
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #e5e7e6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.LesOffresDEStageController">
    <children>
-      <ImageView fitHeight="439.0" fitWidth="783.0" layoutX="236.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+      <HBox layoutY="-2.0" prefHeight="79.0" prefWidth="1282.0">
+         <fx:include source="navbar.fxml" />
+      </HBox>
+      <ImageView fitHeight="487.0" fitWidth="914.0" layoutX="217.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/rouge.png" />
          </image>
       </ImageView>
-      <ListView id="glass" fx:id="offresListView" layoutX="251.0" layoutY="395.0" prefHeight="349.0" prefWidth="752.0" stylesheets="@css/stylesheet.css" />
-      <TextField id="glass" fx:id="searchField" layoutX="497.0" layoutY="334.0" prefHeight="37.0" prefWidth="287.0" promptText="Rechercher par titre" stylesheets="@css/stylesheet.css" />
-      <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="728.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+      <ListView id="glass" fx:id="offresListView" layoutX="275.0" layoutY="318.0" prefHeight="349.0" prefWidth="752.0" stylesheets="@css/stylesheet.css" />
+      <TextField id="glass" fx:id="searchField" layoutX="460.0" layoutY="253.0" prefHeight="37.0" prefWidth="312.0" promptText="Rechercher par titre" stylesheets="@css/stylesheet.css" />
+      <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="703.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/recherche.png" />
          </image>
       </ImageView>
-      <Label layoutX="481.0" layoutY="169.0" text="Les Offres De Stage " textFill="#9f1c00">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="124.0" fitWidth="117.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
 
       </ImageView>
       <ImageView fitHeight="118.0" fitWidth="163.0" layoutX="1109.0" pickOnBounds="true" preserveRatio="true">
 
       </ImageView>
-      <ImageView fitHeight="209.0" fitWidth="395.0" layoutX="-39.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/alerte%20offre.png" />
-         </image></ImageView>
+
 
    </children>
 </AnchorPane>

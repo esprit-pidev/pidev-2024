@@ -7,39 +7,51 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768" prefWidth="1280" style="-fx-background-color: B9B9B9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherCandidatureController">
+<AnchorPane prefHeight="768" prefWidth="1280" style="-fx-background-color: #e5e7e6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherCandidatureController">
+
    <children>
+      <HBox layoutY="-2.0" prefHeight="79.0" prefWidth="1282.0">
+         <fx:include source="navbar.fxml" />
+      </HBox>
+      
       <ListView id="glass" fx:id="candidatureListView" layoutX="61.0" layoutY="379.0" onMouseClicked="#fillforum" prefHeight="343.0" prefWidth="1159.0" stylesheets="@css/stylesheet.css" />
-      <Label layoutX="449.0" layoutY="90.0" prefHeight="74.0" prefWidth="383.0" text="Afficher Candidature " textFill="#781c10" AnchorPane.bottomAnchor="610.0" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="448.0" AnchorPane.topAnchor="90.0">
+      <Button id="but" layoutX="1107.0" layoutY="246.0" mnemonicParsing="false" onAction="#modifier" prefHeight="40.0" prefWidth="110.0" style="-fx-background-radius: 20; -fx-background-color: #264653;" text="modifier" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font size="14.0" />
+         </font></Button>
+      <TextField id="glass" fx:id="competences" layoutX="138.0" layoutY="248.0" prefHeight="56.0" prefWidth="383.0" promptText="Competences" />
+      <TextField id="glass" fx:id="cv" layoutX="640.0" layoutY="247.0" prefHeight="53.0" prefWidth="335.0" promptText="CV" />
+      <Button id="but" layoutX="1046.0" layoutY="309.0" mnemonicParsing="false" onAction="#naviguezVersAjouter" prefHeight="40.0" prefWidth="213.0" style="-fx-background-radius: 20; -fx-background-color: #7AA95C;" text="ajouter un autre candidature" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button id="but" layoutX="661.0" layoutY="309.0" mnemonicParsing="false" onAction="#uploadPdf" prefHeight="40.0" prefWidth="296.0" style="-fx-background-radius: 20; -fx-background-color: #7AA95C;" text="cliquer pour ajouter votre CV" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <ImageView fitHeight="98.0" fitWidth="83.0" layoutX="69.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/competences.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="81.0" fitWidth="83.0" layoutX="558.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/informations-personnelles.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="181.0" layoutY="211.0" text="Ajouter vos compétences">
+         <font>
+            <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <Button id="but" layoutX="1110.0" layoutY="247.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="110.0" stylesheets="@css/stylesheet.css" text="modifier" textFill="#4a1111">
+      <Label layoutX="670.0" layoutY="208.0" text="Déposer votre CV">
          <font>
-            <Font size="14.0" />
-         </font></Button>
-      <TextField id="glass" fx:id="competences" layoutX="138.0" layoutY="248.0" prefHeight="87.0" prefWidth="383.0" promptText="Competences" stylesheets="@css/stylesheet.css" />
-      <TextField id="glass" fx:id="cv" layoutX="640.0" layoutY="247.0" prefHeight="53.0" prefWidth="335.0" promptText="CV" stylesheets="@css/stylesheet.css" />
-      <Button id="but" layoutX="1046.0" layoutY="309.0" mnemonicParsing="false" onAction="#naviguezVersAjouter" stylesheets="@css/stylesheet.css" text="ajouter un autre candidature">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Button id="but" layoutX="661.0" layoutY="309.0" mnemonicParsing="false" onAction="#uploadPdf" prefHeight="26.0" prefWidth="296.0" stylesheets="@css/stylesheet.css" text="cliquer pour ajouter votre CV">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <ImageView fitHeight="87.0" fitWidth="70.0" layoutX="61.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/competence.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="74.0" fitWidth="110.0" layoutX="567.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/cv-removebg-preview.png" />
-         </image>
-      </ImageView>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+
    </children>
 </AnchorPane>

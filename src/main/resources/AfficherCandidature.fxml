@@ -7,10 +7,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768" prefWidth="1280" style="-fx-background-color: #e5e7e6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StageControllers.AfficherCandidatureController">
+
    <children>
+      <HBox layoutY="-2.0" prefHeight="79.0" prefWidth="1282.0">
+         <fx:include source="navbar.fxml" />
+      </HBox>
+      
       <ListView id="glass" fx:id="candidatureListView" layoutX="61.0" layoutY="379.0" onMouseClicked="#fillforum" prefHeight="343.0" prefWidth="1159.0" stylesheets="@css/stylesheet.css" />
       <Button id="but" layoutX="1107.0" layoutY="246.0" mnemonicParsing="false" onAction="#modifier" prefHeight="40.0" prefWidth="110.0" style="-fx-background-radius: 20; -fx-background-color: #264653;" text="modifier" textFill="WHITE">
          <font>
@@ -46,5 +52,6 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
+
    </children>
 </AnchorPane>
