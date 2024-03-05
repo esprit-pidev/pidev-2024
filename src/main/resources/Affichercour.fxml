@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.AffichercourController">
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #e5e7e6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CoursControllers.AffichercourController">
    <children>
       <fx:include source="navbar.fxml" />
       <Button contentDisplay="TOP" layoutX="919.0" layoutY="285.0" mnemonicParsing="false" onAction="#naviguezVersAjoutercours" prefHeight="30.0" prefWidth="133.0" styleClass="login-btn" stylesheets="@style.css" text="Ajouter" textOverrun="WORD_ELLIPSIS">

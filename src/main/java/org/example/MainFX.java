@@ -34,8 +34,6 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Application.setUserAgentStylesheet(new NordDark().getUserAgentStylesheet());
-
         Preferences prefs = Preferences.userRoot().node("com/myapp");
         String token = prefs.get("rememberMeToken", null);
         if (token != null) {
