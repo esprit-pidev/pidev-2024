@@ -61,6 +61,15 @@
                         </Label>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#goHome" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="19.0" prefWidth="70.0" text="Accueil" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                   <HBox fx:id="logout" alignment="CENTER" onMouseClicked="#logout" prefHeight="50.0" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">

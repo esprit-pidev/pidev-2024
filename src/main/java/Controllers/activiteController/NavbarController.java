@@ -17,6 +17,7 @@ import tn.esprit.entities.User.User;
 import tn.esprit.services.userServices.AuthResponseDTO;
 import tn.esprit.services.userServices.UserSession;
 
+import javax.management.relation.Role;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +25,7 @@ import java.util.ResourceBundle;
 public class NavbarController  implements Initializable {
 
     private final Button logout = new Button("Se Déconnecter");
+    private final Button profile = new Button("Profile");
 
     @FXML
     private HBox buttonsContainer;
@@ -131,6 +133,7 @@ public class NavbarController  implements Initializable {
                 }
             });
 
+
             buttonsContainer.getChildren().addAll(dashbord,ajouterEvent,logout);
         }
         if(user != null && user.getRole() == RoleName.TEACHER){
@@ -155,6 +158,24 @@ public class NavbarController  implements Initializable {
                 }
             });
 
+            profile.setStyle("-fx-font-size: 18px; " +
+                    "-fx-background-color: transparent; " +
+                    "-fx-text-fill: white;"+
+                    "-fx-cursor: hand;");
+
+            profile.setOnAction(e->{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileEnseignant.fxml"));
+                try {
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+
+                    Stage currentStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                    currentStage.setScene(scene);
+
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
 
             logout.setStyle("-fx-font-size: 18px; " +
                     "-fx-background-color: transparent; " +
@@ -168,7 +189,7 @@ public class NavbarController  implements Initializable {
                 }
             });
 
-            buttonsContainer.getChildren().addAll(cours,logout);
+            buttonsContainer.getChildren().addAll(cours,profile,logout);
         }
         if(user != null && user.getRole() == RoleName.ENTREPRISE_RH){
 
@@ -192,7 +213,24 @@ public class NavbarController  implements Initializable {
                 }
             });
 
+            profile.setStyle("-fx-font-size: 18px; " +
+                    "-fx-background-color: transparent; " +
+                    "-fx-text-fill: white;"+
+                    "-fx-cursor: hand;");
 
+            profile.setOnAction(e->{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileEntreprise.fxml"));
+                try {
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+
+                    Stage currentStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                    currentStage.setScene(scene);
+
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
             logout.setStyle("-fx-font-size: 18px; " +
                     "-fx-background-color: transparent; " +
                     "-fx-text-fill: white;"+
@@ -205,9 +243,9 @@ public class NavbarController  implements Initializable {
                 }
             });
 
-            buttonsContainer.getChildren().addAll(offre,logout);
+            buttonsContainer.getChildren().addAll(offre,profile,logout);
         }
-        if(user != null && user.getRole() == RoleName.STUDENT){
+        if(user != null && (user.getRole() == RoleName.STUDENT || user.getRole() == RoleName.CLUB_RH)){
 
             Button eleve = new Button("Cours");
             eleve.setStyle("-fx-font-size: 18px; " +
@@ -247,14 +285,14 @@ public class NavbarController  implements Initializable {
                     throw new RuntimeException(ex);
                 }
             });
-            Button stage = new Button("stage");
+            Button stage = new Button("Stage");
             stage.setStyle("-fx-font-size: 18px; " +
                     "-fx-background-color: transparent; " +
                     "-fx-text-fill: white;"+
                     "-fx-cursor: hand;");
 
             stage.setOnAction(e->{
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LesOffreSdEstage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LesOffresDEStage.fxml"));
                 try {
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
@@ -289,7 +327,24 @@ public class NavbarController  implements Initializable {
 
 
 
+            profile.setStyle("-fx-font-size: 18px; " +
+                    "-fx-background-color: transparent; " +
+                    "-fx-text-fill: white;"+
+                    "-fx-cursor: hand;");
 
+            profile.setOnAction(e->{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+                try {
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+
+                    Stage currentStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                    currentStage.setScene(scene);
+
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
 
             logout.setStyle("-fx-font-size: 18px; " +
                     "-fx-background-color: transparent; " +
@@ -303,7 +358,7 @@ public class NavbarController  implements Initializable {
                 }
             });
 
-            buttonsContainer.getChildren().addAll(eleve,event,stage,activity,logout);
+            buttonsContainer.getChildren().addAll(eleve,event,stage,activity,profile,logout);
         }
 
     }

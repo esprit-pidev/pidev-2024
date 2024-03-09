@@ -10,7 +10,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import tn.esprit.entities.Cours.Cours;
+import tn.esprit.entities.User.User;
 import tn.esprit.services.coursServices.CoursService;
+import tn.esprit.services.userServices.AuthResponseDTO;
+import tn.esprit.services.userServices.UserSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,11 +35,12 @@ public class AffichercourController {
     private Button editButton;
     @FXML
     private Button addEvaluationButton;
-
+    AuthResponseDTO userLoggedIn= UserSession.getUser_LoggedIn();
+    private User user =userLoggedIn;
     @FXML
     void initialize() {
         try {
-            List<Cours> cours = cs.getcourteacher(5);
+            List<Cours> cours = cs.getcourteacher(user.getId());
             observableList = FXCollections.observableList(cours);
             listviewcours.setItems(observableList);
 

@@ -79,7 +79,12 @@ public class ProfileEntrepriseController {
         PhotoDeProfil.setImage(new Image("\\images\\default-entr.jpg"));
 
     }
-
+    @FXML
+    void goHome(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+        Parent root = loader.load();
+        bp.getScene().setRoot(root);
+    }
     @FXML
     void goToProfile(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileEntreprise.fxml"));

@@ -125,7 +125,6 @@ public class EvaluationUserController implements Initializable {
             // Show notification
             // Show notification
             //  showNotification("Survey Submitted", "Survey submitted successfully!");
-            naviguezVersAfficherevaluation(actionEvent);
 
 
         }
@@ -138,13 +137,5 @@ public class EvaluationUserController implements Initializable {
     }*/
 
 
-    @FXML
-    public void naviguezVersAfficherevaluation(ActionEvent actionEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Afficherevaluation.fxml"));
-            questionsPaper.getScene().setRoot(root);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-    }
+
 }

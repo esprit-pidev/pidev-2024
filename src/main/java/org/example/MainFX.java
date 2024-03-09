@@ -41,7 +41,7 @@ public class MainFX extends Application {
                 userLoggedIn = new AuthResponseDTO(rememberMeToken.getUser().getId(), rememberMeToken.getUser().getRole());
                 UserSession.getSameInstance(userLoggedIn);
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Affichercour.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root,1280,768);
                 primaryStage.setScene(scene);

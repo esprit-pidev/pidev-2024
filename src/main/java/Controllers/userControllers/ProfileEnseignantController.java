@@ -89,7 +89,12 @@ public class ProfileEnseignantController {
             genreIM.setImage(new Image("\\images\\icons8-female-25.png"));
 
     }
-
+    @FXML
+    void goHome(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+        Parent root = loader.load();
+        bp.getScene().setRoot(root);
+    }
     private void loadImage(String filePath) {
         File file = new File(filePath);
         if(file.exists()) {

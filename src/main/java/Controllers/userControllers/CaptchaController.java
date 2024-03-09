@@ -38,7 +38,7 @@ public class CaptchaController implements Initializable {
     }
 
     @FXML
-    void verify(ActionEvent event) throws IOException {
+    void verify(ActionEvent event) {
         try {
             int userAnswer = Integer.parseInt(answerField.getText().trim());
             if (userAnswer == expectedAnswer) {
