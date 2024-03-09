@@ -69,7 +69,7 @@ public class LoginController {
                             String token = UUID.randomUUID().toString();
                             Preferences prefs = Preferences.userRoot().node("com/myapp");
                             prefs.put("rememberMeToken", token);
-                            tokenService.add(new RememberMeToken(user, token, LocalDateTime.now().plusDays(10)));
+                            tokenService.add(new RememberMeToken(user, token, LocalDateTime.now().plusSeconds(40)));
                         }
 
 

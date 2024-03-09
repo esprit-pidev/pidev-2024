@@ -47,6 +47,7 @@ public class AjouterCandidatureController {
     private final FileChooser fileChooser = new FileChooser();
 
 
+    @FXML
     public void uploadPdf(javafx.event.ActionEvent event) {
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {

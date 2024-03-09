@@ -110,6 +110,13 @@ public class ProfileController {
     }
 
     @FXML
+    void goHome(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+        Parent root = loader.load();
+        bp.getScene().setRoot(root);
+    }
+
+    @FXML
     void goToProfile(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
         Parent root = loader.load();

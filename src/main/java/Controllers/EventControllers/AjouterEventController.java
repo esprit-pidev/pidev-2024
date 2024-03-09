@@ -62,7 +62,7 @@ public class AjouterEventController implements Initializable {
     AuthResponseDTO userLoggedIn= UserSession.getUser_LoggedIn();
     private User admin =userLoggedIn;
 
-    private static final String OPENAI_API_KEY = "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";
+    private static final String OPENAI_API_KEY = "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";
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
      EventCommentService eventCommentService = new EventCommentService();
 
@@ -79,7 +79,7 @@ public class AjouterEventController implements Initializable {
         for (String comment : comments) {
             concatenatedText.append(comment).append(" ");
         }
-
+        System.out.println("comments are :::"+comments);
         String prompt = "Perform sentiment analysis on these comments to gauge public opinion " +
                 "about an event in one or two phrases ,give suggestions for improvement based on negative comments only , dont suggest anything from your own, if the list of comments is empty just tell 'there is no comments': " + concatenatedText.toString();
 

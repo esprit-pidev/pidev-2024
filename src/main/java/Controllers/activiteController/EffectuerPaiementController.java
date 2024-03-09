@@ -29,9 +29,9 @@ import java.util.ResourceBundle;
 
 public class EffectuerPaiementController implements Initializable {
     AuthResponseDTO userLoggedIn = UserSession.getUser_LoggedIn();
-    private final String ACCOUNT_SID = "AC3e08dfad3a4610724efd1ca1e38b47b1";
-    private final String AUTH_TOKEN = "460e90ea4d3afea6351a10ae237de96c";
-    private final String NUMERO_TWILIO = "+13852066665";
+    private final String ACCOUNT_SID = "AC3bf71521e18901e40a33fb46ae15775b";
+    private final String AUTH_TOKEN = "d72d790c73f5da8b9bde96419500557b";
+    private final String NUMERO_TWILIO = "+14842827429";
     @FXML
     private TextField nomD;
 
