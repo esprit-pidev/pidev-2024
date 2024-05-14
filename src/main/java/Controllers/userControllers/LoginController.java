@@ -1,21 +1,18 @@
 package Controllers.userControllers;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.entities.User.RememberMeToken;
 import tn.esprit.entities.User.User;
 import tn.esprit.services.userServices.*;
 
-import java.awt.desktop.AboutEvent;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -60,7 +57,7 @@ public class LoginController {
 
         if (user != null) {
             if (user.getIsEnabled()) {
-                if (BCrypt.checkpw(pwdTF.getText(), user.getPassword())) {
+                if (BCrypt.verifyer().verify(pwdTF.getText().toCharArray(), user.getPassword()).verified) {
                     if (CaptchaService.isCaptchaCorrect()) {
                         attempts = 0;
                         userLoggedIn = new AuthResponseDTO(user.getId(), user.getRole());

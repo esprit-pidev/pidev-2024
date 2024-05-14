@@ -122,7 +122,6 @@ public class RememberMeTokenService implements IRememberMeToken {
             } else {
                 System.out.println("No remember_me_token was deleted. Check if the provided user ID exists.");
             }
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

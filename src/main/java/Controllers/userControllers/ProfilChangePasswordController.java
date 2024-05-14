@@ -1,12 +1,12 @@
 package Controllers.userControllers;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
-import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.entities.User.RoleName;
 import tn.esprit.services.userServices.AuthResponseDTO;
 import tn.esprit.services.userServices.UserService;
@@ -51,7 +51,8 @@ public class ProfilChangePasswordController {
 
     @FXML
     void save(ActionEvent event) throws IOException {
-        if (!BCrypt.checkpw(pwdActuel.getText(), userService.getById(userLoggedIn.getId()).getPassword())) {
+
+        if (!BCrypt.verifyer().verify(pwdActuel.getText().toCharArray(), userService.getById(userLoggedIn.getId()).getPassword()).verified) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setContentText("Mot de passe actuel erroné !");
@@ -75,7 +76,7 @@ public class ProfilChangePasswordController {
                 Parent root = loader.load();
                 pwdNew.getScene().setRoot(root);
             }
-            else if (userLoggedIn.getRole().equals(RoleName.ENTREPRISE_RH)) {
+            else if (userLoggedIn.getRole().equals(RoleName.ENTREPRISE)) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileEntreprise.fxml"));
                 Parent root = loader.load();
                 pwdNew.getScene().setRoot(root);

@@ -126,9 +126,9 @@ public class AdminController {
         Graph();
         TabPan.getSelectionModel().select(selectedTabIndex);
         this.etudiantList = userService.getByRole(RoleName.STUDENT);
-        this.clubRhList = userService.getByRole(RoleName.CLUB_RH);
+        this.clubRhList = userService.getByRole(RoleName.CLUB);
         this.enseignantList = userService.getByRole(RoleName.TEACHER);
-        this.entrepriseList = userService.getByRole(RoleName.ENTREPRISE_RH);
+        this.entrepriseList = userService.getByRole(RoleName.ENTREPRISE);
         setupEnseignantTable(enseignantList);
         setupEntrepriseTable(entrepriseList);
         setupClubTable(clubRhList);
@@ -857,7 +857,7 @@ public class AdminController {
     void searchClub(MouseEvent event) {
         String searchText = SearchClubTF.getText().toLowerCase();
         this.clubRhList = new ArrayList<>();
-        this.clubRhList = userService.getByRole(RoleName.CLUB_RH).stream()
+        this.clubRhList = userService.getByRole(RoleName.CLUB).stream()
                 .filter(user -> user.getEmail().toLowerCase().contains(searchText))
                 .collect(Collectors.toList());
         setupClubTable(this.clubRhList);
@@ -877,7 +877,7 @@ public class AdminController {
     void searchEn(MouseEvent event) {
         String searchText = SearchEnTF.getText().toLowerCase();
         this.entrepriseList = new ArrayList<>();
-        this.entrepriseList = userService.getByRole(RoleName.ENTREPRISE_RH).stream()
+        this.entrepriseList = userService.getByRole(RoleName.ENTREPRISE).stream()
                 .filter(user -> user.getEmail().toLowerCase().contains(searchText))
                 .collect(Collectors.toList());
         setupEntrepriseTable(this.entrepriseList);
@@ -902,12 +902,12 @@ public class AdminController {
         GraphAp.getChildren().clear();
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
-        Integer responsableClubCount = userService.getUserCountByRole().get(RoleName.CLUB_RH);
+        Integer responsableClubCount = userService.getUserCountByRole().get(RoleName.CLUB);
         if (responsableClubCount != null && responsableClubCount != 0) {
             pieChartData.add(new PieChart.Data("Responsable Club", responsableClubCount));
         }
 
-        Integer entrepriseCount = userService.getUserCountByRole().get(RoleName.ENTREPRISE_RH);
+        Integer entrepriseCount = userService.getUserCountByRole().get(RoleName.ENTREPRISE);
         if (entrepriseCount != null && entrepriseCount != 0) {
             pieChartData.add(new PieChart.Data("Entreprise", entrepriseCount));
         }
@@ -943,8 +943,8 @@ public class AdminController {
     }
 
     private void UsersNumber() {
-        nbrEntreprise.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.ENTREPRISE_RH) != null ?
-                userService.getUserCountByRole().get(RoleName.ENTREPRISE_RH) : 0));
+        nbrEntreprise.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.ENTREPRISE) != null ?
+                userService.getUserCountByRole().get(RoleName.ENTREPRISE) : 0));
 
         nbrEtud.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.STUDENT) != null ?
                 userService.getUserCountByRole().get(RoleName.STUDENT) : 0));
@@ -952,8 +952,8 @@ public class AdminController {
         nbrTeacher.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.TEACHER) != null ?
                 userService.getUserCountByRole().get(RoleName.TEACHER) : 0));
 
-        nbrRH.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.CLUB_RH) != null ?
-                userService.getUserCountByRole().get(RoleName.CLUB_RH) : 0));
+        nbrRH.setText(String.valueOf(userService.getUserCountByRole().get(RoleName.CLUB) != null ?
+                userService.getUserCountByRole().get(RoleName.CLUB) : 0));
 
     }
 

@@ -191,7 +191,7 @@ public class NavbarController  implements Initializable {
 
             buttonsContainer.getChildren().addAll(cours,profile,logout);
         }
-        if(user != null && user.getRole() == RoleName.ENTREPRISE_RH){
+        if(user != null && user.getRole() == RoleName.ENTREPRISE){
 
             Button offre = new Button("Offre");
             offre.setStyle("-fx-font-size: 18px; " +
@@ -245,7 +245,7 @@ public class NavbarController  implements Initializable {
 
             buttonsContainer.getChildren().addAll(offre,profile,logout);
         }
-        if(user != null && (user.getRole() == RoleName.STUDENT || user.getRole() == RoleName.CLUB_RH)){
+        if(user != null && (user.getRole() == RoleName.STUDENT || user.getRole() == RoleName.CLUB)){
 
             Button eleve = new Button("Cours");
             eleve.setStyle("-fx-font-size: 18px; " +

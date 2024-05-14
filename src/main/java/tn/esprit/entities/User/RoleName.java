@@ -4,6 +4,6 @@ public enum RoleName {
     ADMIN,
     TEACHER,
     STUDENT,
-    CLUB_RH,
-    ENTREPRISE_RH
+    CLUB,
+    ENTREPRISE
 }

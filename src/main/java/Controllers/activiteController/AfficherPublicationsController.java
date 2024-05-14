@@ -164,7 +164,7 @@ public class AfficherPublicationsController {
                 int idUtilisateurPublication = PublicationService.obtenirIdUtilisateurParPublication(obtenirIdDeLaPublication(contenu));
 
                 // Vérifier si l'utilisateur connecté est l'auteur de la publication ou a le rôle CLUB_RH
-                if ((idUtilisateurConnecte == idUtilisateurPublication) || RoleName.CLUB_RH.equals(roleUtilisateurConnecte)) {
+                if ((idUtilisateurConnecte == idUtilisateurPublication) || RoleName.CLUB.equals(roleUtilisateurConnecte)) {
                     // Effacer les enfants existants avant d'ajouter de nouveaux enfants
                     buttonsContainer.getChildren().clear();
 

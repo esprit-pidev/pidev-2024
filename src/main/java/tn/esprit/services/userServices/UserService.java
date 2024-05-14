@@ -1,7 +1,7 @@
 package tn.esprit.services.userServices;
 
 
-import org.mindrot.jbcrypt.BCrypt;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import tn.esprit.entities.User.*;
 import tn.esprit.tools.MyDB;
 
@@ -71,7 +71,7 @@ public class UserService implements IUserService<User> {
                             rs.getBoolean("is_enabled"));
                     return etudiant;
                 }
-                if (rs.getString("role").equals("CLUB_RH")) {
+                if (rs.getString("role").equals("CLUB")) {
                     ResponsableClub responsableClub = new ResponsableClub(
                             rs.getInt("id"),
                             rs.getString("nom"),
@@ -88,7 +88,7 @@ public class UserService implements IUserService<User> {
                             rs.getBoolean("is_enabled"));
                     return responsableClub;
                 }
-                if (rs.getString("role").equals("ENTREPRISE_RH")) {
+                if (rs.getString("role").equals("ENTREPRISE")) {
                     Entreprise entreprise = new Entreprise(
                             rs.getInt("id"),
                             rs.getString("nom"),
@@ -161,7 +161,7 @@ public class UserService implements IUserService<User> {
                             rs.getBoolean("is_enabled"));
                     return etudiant;
                 }
-                if (rs.getString("role").equals("CLUB_RH")) {
+                if (rs.getString("role").equals("CLUB")) {
                     ResponsableClub responsableClub = new ResponsableClub(
                             rs.getInt("id"),
                             rs.getString("nom"),
@@ -178,7 +178,7 @@ public class UserService implements IUserService<User> {
                             rs.getBoolean("is_enabled"));
                     return responsableClub;
                 }
-                if (rs.getString("role").equals("ENTREPRISE_RH")) {
+                if (rs.getString("role").equals("ENTREPRISE")) {
                     Entreprise entreprise = new Entreprise(
                             rs.getInt("id"),
                             rs.getString("nom"),
@@ -211,7 +211,7 @@ public class UserService implements IUserService<User> {
             ps.setString(1, admin.getNom());
             ps.setString(2, admin.getPrenom());
             ps.setString(3, admin.getEmail());
-            ps.setString(4, BCrypt.hashpw(admin.getPassword(), BCrypt.gensalt()));
+            ps.setString(4, BCrypt.with(BCrypt.Version.VERSION_2Y).hashToString(6, admin.getPassword().toCharArray()));
             ps.setString(5, String.valueOf(RoleName.ADMIN));
             ps.setBoolean(6, admin.getIsEnabled());
 
@@ -224,7 +224,7 @@ public class UserService implements IUserService<User> {
             ps.setString(1, enseignant.getNom());
             ps.setString(2, enseignant.getPrenom());
             ps.setString(3, enseignant.getEmail());
-            ps.setString(4, BCrypt.hashpw(enseignant.getPassword(), BCrypt.gensalt()));
+            ps.setString(4, BCrypt.with(BCrypt.Version.VERSION_2Y).hashToString(6, enseignant.getPassword().toCharArray()));
             ps.setString(5, enseignant.getCin());
             ps.setString(6, enseignant.getGenre());
             ps.setDate(7, Date.valueOf(enseignant.getDate_naissance()));
@@ -247,7 +247,7 @@ public class UserService implements IUserService<User> {
             ps.setString(7, etudiant.getClasse());
             ps.setString(8, etudiant.getProfil_picture());
             ps.setString(9, etudiant.getEmail());
-            ps.setString(10, BCrypt.hashpw(etudiant.getPassword(), BCrypt.gensalt()));
+            ps.setString(10, BCrypt.with(BCrypt.Version.VERSION_2Y).hashToString(6, etudiant.getPassword().toCharArray()));
             ps.setString(11, String.valueOf(RoleName.STUDENT));
             ps.setBoolean(12, etudiant.getIsEnabled());
 
@@ -262,8 +262,8 @@ public class UserService implements IUserService<User> {
             ps.setString(3, entreprise.getPays());
             ps.setString(4, entreprise.getLocalisation());
             ps.setString(5, entreprise.getEmail());
-            ps.setString(6, BCrypt.hashpw(entreprise.getPassword(), BCrypt.gensalt()));
-            ps.setString(7, String.valueOf(RoleName.ENTREPRISE_RH));
+            ps.setString(6, BCrypt.with(BCrypt.Version.VERSION_2Y).hashToString(6, entreprise.getPassword().toCharArray()));
+            ps.setString(7, String.valueOf(RoleName.ENTREPRISE));
             ps.setBoolean(8, entreprise.getIsEnabled());
 
             ps.executeUpdate();
@@ -283,7 +283,7 @@ public class UserService implements IUserService<User> {
             ps.setString(1, admin.getNom());
             ps.setString(2, admin.getPrenom());
             ps.setString(3, admin.getEmail());
-            ps.setString(4, BCrypt.hashpw(admin.getPassword(), BCrypt.gensalt()));
+            ps.setString(4, BCrypt.with(BCrypt.Version.VERSION_2Y).hashToString(6, admin.getPassword().toCharArray()));
             ps.setString(5, String.valueOf(RoleName.ADMIN));
             ps.setInt(6, admin.getId());
 
@@ -296,7 +296,7 @@ public class UserService implements IUserService<User> {
             ps.setString(1, enseignant.getNom());
             ps.setString(2, enseignant.getPrenom());
             ps.setString(3, enseignant.getEmail());
-            ps.setString(4, BCrypt.hashpw(enseignant.getPassword(), BCrypt.gensalt()));
+            ps.setString(4, BCrypt.with(BCrypt.Version.VERSION_2Y).hashToString(6, enseignant.getPassword().toCharArray()));
             ps.setString(5, enseignant.getCin());
             ps.setString(6, enseignant.getGenre());
             ps.setDate(7, Date.valueOf(enseignant.getDate_naissance()));
@@ -319,7 +319,7 @@ public class UserService implements IUserService<User> {
             ps.setString(7, etudiant.getClasse());
             ps.setString(8, etudiant.getProfil_picture());
             ps.setString(9, etudiant.getEmail());
-            ps.setString(10, BCrypt.hashpw(etudiant.getPassword(), BCrypt.gensalt()));
+            ps.setString(10, BCrypt.with(BCrypt.Version.VERSION_2Y).hashToString(6, etudiant.getPassword().toCharArray()));
             ps.setString(11, String.valueOf(RoleName.STUDENT));
             ps.setInt(12, etudiant.getId());
 
@@ -334,8 +334,8 @@ public class UserService implements IUserService<User> {
             ps.setString(3, entreprise.getPays());
             ps.setString(4, entreprise.getLocalisation());
             ps.setString(5, entreprise.getEmail());
-            ps.setString(6, BCrypt.hashpw(entreprise.getPassword(), BCrypt.gensalt()));
-            ps.setString(7, String.valueOf(RoleName.ENTREPRISE_RH));
+            ps.setString(6, BCrypt.with(BCrypt.Version.VERSION_2Y).hashToString(6, entreprise.getPassword().toCharArray()));
+            ps.setString(7, String.valueOf(RoleName.ENTREPRISE));
             ps.setInt(8, entreprise.getId());
 
             ps.executeUpdate();
@@ -410,7 +410,7 @@ public class UserService implements IUserService<User> {
                             rs.getDate("date_naissance").toLocalDate());
                     users.add(etudiant);
                 }
-                if (rs.getString("role").equals("CLUB_RH")) {
+                if (rs.getString("role").equals("CLUB")) {
                     ResponsableClub responsableClub = new ResponsableClub(
                             rs.getInt("id"),
                             rs.getString("nom"),
@@ -426,7 +426,7 @@ public class UserService implements IUserService<User> {
                             rs.getDate("date_naissance").toLocalDate());
                     users.add(responsableClub);
                 }
-                if (rs.getString("role").equals("ENTREPRISE_RH")) {
+                if (rs.getString("role").equals("ENTREPRISE")) {
                     Entreprise entreprise = new Entreprise(
                             rs.getInt("id"),
                             rs.getString("nom"),
@@ -497,7 +497,7 @@ public class UserService implements IUserService<User> {
                             rs.getBoolean("is_enabled"));
                     users.add(etudiant);
                 }
-                if (role.equals(RoleName.CLUB_RH)) {
+                if (role.equals(RoleName.CLUB)) {
                     ResponsableClub responsableClub = new ResponsableClub(
                             rs.getInt("id"),
                             rs.getString("nom"),
@@ -514,7 +514,7 @@ public class UserService implements IUserService<User> {
                             rs.getBoolean("is_enabled"));
                     users.add(responsableClub);
                 }
-                if (role.equals(RoleName.ENTREPRISE_RH)) {
+                if (role.equals(RoleName.ENTREPRISE)) {
                     Entreprise entreprise = new Entreprise(
                             rs.getInt("id"),
                             rs.getString("nom"),
@@ -568,7 +568,7 @@ public class UserService implements IUserService<User> {
             String sql = "update user set role=? where id = ?";
             try {
                 PreparedStatement ps = cnx.prepareStatement(sql);
-                ps.setString(1,String.valueOf(RoleName.CLUB_RH));
+                ps.setString(1,String.valueOf(RoleName.CLUB));
                 ps.setInt(2,id);
                 ps.executeUpdate();
                 System.out.println("Changed role to club RH");
@@ -698,7 +698,7 @@ public class UserService implements IUserService<User> {
         String req= "update user set password=? where id = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(1, BCrypt.hashpw(password, BCrypt.gensalt()));
+            ps.setString(1, BCrypt.with(BCrypt.Version.VERSION_2Y).hashToString(6, password.toCharArray()));
             ps.setInt(2,user.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
