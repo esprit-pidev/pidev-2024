@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.etudiant.ContainerTacheController">
+    <Pane fx:id="containertache" layoutX="176.0" layoutY="54.0" prefHeight="298.0" prefWidth="179.0" style="-fx-background-color: #e5e7e6; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: #9F1C00;">
+        <children>
+            <fx:include source="tache.fxml">
+            </fx:include>
+        </children>
+    </Pane>
+</AnchorPane>

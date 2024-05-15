@@ -1,0 +1,9 @@
+.notification-box {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+    -fx-alignment: top-left;
+    -fx-margin: 20px;
+}
