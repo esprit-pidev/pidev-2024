@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="46.0" prefWidth="45.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.etudiant.HomePageController">
+   <children>
+      <ImageView fx:id="notification" fitHeight="40.0" fitWidth="40.0" layoutX="21.0" layoutY="27.0" onMouseClicked="#noti" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/notification-bell.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
