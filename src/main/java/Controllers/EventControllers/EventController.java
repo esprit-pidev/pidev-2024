@@ -57,7 +57,7 @@ public class EventController implements Initializable {
     Button participation;
     private long startTime = 0;
     Boolean isParticiped ;
-    private final String  path  = "file:///C:/xampp/htdocs/img/";
+    private final String  path  = "file:///C:/Users/Gaming/Desktop/pidevSymfony/PiSymfony/public/uploads/";
     private EventReactionService eventReactionService =new EventReactionService();
     EventCommentService eventCommentService = new EventCommentService();
     EventParticipantService eventParticipantService = new EventParticipantService();
@@ -110,11 +110,6 @@ public class EventController implements Initializable {
                 reactionType = "Love";
                 Image imageLove = new Image("/img/ic_love_.png");
                 imgReaction.setImage(imageLove);
-                break;
-            case "imgCare":
-                reactionType = "Care";
-                Image imageCare = new Image("/img/ic_care.png");
-                imgReaction.setImage(imageCare);
                 break;
             case "imgHaha":
                 reactionType = "Haha";
@@ -296,10 +291,6 @@ public class EventController implements Initializable {
             if (eventReactions.getReactionType().equals("Love")) {
                 Image imageLove = new Image("/img/ic_love_.png");
                 imgReaction.setImage(imageLove);
-            }
-            if (eventReactions.getReactionType().equals("Care")) {
-                Image imageCare = new Image("/img/ic_care.png");
-                imgReaction.setImage(imageCare);
             }
             if (eventReactions.getReactionType().equals("haha")) {
                 Image imageHaha = new Image("/img/ic_haha.png");

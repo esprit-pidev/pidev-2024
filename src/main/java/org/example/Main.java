@@ -5,6 +5,7 @@ import tn.esprit.services.userServices.UserService;
 
 import java.sql.SQLException;
 
+import java.time.LocalDate;
 import java.util.prefs.Preferences;
 
 public class Main {
@@ -16,7 +17,8 @@ public class Main {
         prefs.remove("rememberMeToken");
         //us.add(new Admin("Hadded","admin","admin",RoleName.ADMIN,"Khalil"));
 
-        us.add(new Entreprise("TEAMDEV","teamdev@gmail.com","0000",RoleName.ENTREPRISE,"teamsyst.com","Tunisie","Tunisie"));
+        //us.add(new Entreprise("TEAMDEV","teamdev@gmail.com","0000",RoleName.ENTREPRISE,"teamsyst.com","Tunisie","Tunisie"));
+        //us.add(new Etudiant("aymen","aymen@esprit.tn","0000",3,"hadded","male","11448475","3A21","aaa", LocalDate.now()));
 
 
 

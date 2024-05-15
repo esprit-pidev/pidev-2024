@@ -15,22 +15,22 @@ public class EventParticipantService {
     }
 
     public void ajouter(EventParticipants participant) {
-        String sql = "INSERT INTO event_participants (user_id, event_id, name_participant) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO events_user (events_id,user_id) VALUES (?, ?)";
 
         try {
             // Retrieve the name of the participant from the users table based on user_id
             String nameParticipant = getNameParticipant(participant.getUserId().getId());
 
             PreparedStatement statement = this.cnx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, participant.getUserId().getId());
-            statement.setInt(2, participant.getEventId());
-            statement.setString(3, nameParticipant);
+            statement.setInt(1, participant.getEventId());
+            statement.setInt(2, participant.getUserId().getId());
+
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
                 participant.setParticipantId(generatedKeys.getInt(1));
             }
-            System.out.println("Participant added!");
+            System.out.println("Participant added!" + participant.getEventId() + "****"+participant.getUserId().getId());
         } catch (SQLException var4) {
             System.out.println(var4.getMessage());
         }
@@ -50,22 +50,10 @@ public class EventParticipantService {
     }
 
 
-    public void modifier(EventParticipants participant) {
-        String sql = "UPDATE event_participants SET , participation_date = ? WHERE participant_id = ?";
 
-        try {
-            PreparedStatement statement = this.cnx.prepareStatement(sql);
-            statement.setTimestamp(2, new Timestamp(participant.getParticipationDate().getTime()));
-            statement.setInt(3, participant.getParticipantId());
-            statement.executeUpdate();
-            System.out.println("Participant updated!");
-        } catch (SQLException var4) {
-            System.out.println(var4.getMessage());
-        }
-    }
 
     public void supprimer(EventParticipants participant) {
-        String sql = "DELETE FROM event_participants WHERE participant_id = ?";
+        String sql = "DELETE FROM events_user WHERE user_id = ?";
 
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
@@ -79,7 +67,7 @@ public class EventParticipantService {
 
     public List<EventParticipants> display() {
         List<EventParticipants> participants = new ArrayList<>();
-        String sql = "SELECT * FROM event_participants";
+        String sql = "SELECT * FROM events_user";
 
         try {
             Statement statement = this.cnx.createStatement();
@@ -87,14 +75,11 @@ public class EventParticipantService {
 
             while (rs.next()) {
                 EventParticipants participant = new EventParticipants();
-                participant.setParticipantId(rs.getInt("participant_id"));
+                participant.setParticipantId(rs.getInt("user_id"));
                 int userId = rs.getInt("user_id");
                 participant.setUserId(userService.getAll().stream().filter(e->e.getId() ==userId ).findFirst().orElse(null));
 
-                participant.setEventId(rs.getInt("event_id"));
-                participant.setParticipationDate(rs.getTimestamp("participation_date"));
-                participant.setParticipant_name(rs.getString("name_participant"));
-
+                participant.setEventId(rs.getInt("events_id"));
                 participants.add(participant);
             }
         } catch (SQLException var6) {

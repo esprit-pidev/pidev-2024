@@ -122,7 +122,7 @@ public class AjouterEventController implements Initializable {
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {
             // Define the destination directory
-            String destinationDirectory = "C:\\xampp\\htdocs\\img";
+            String destinationDirectory = "C:\\Users\\Gaming\\Desktop\\pidevSymfony\\PiSymfony\\public\\uploads";
             // Get the name of the selected file
             String fileName = file.getName();
             // Create a Path for the destination file
