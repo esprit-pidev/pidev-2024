@@ -21,11 +21,10 @@ public class Main {
         //us.add(new Etudiant("aymen","aymen@esprit.tn","0000",3,"hadded","male","11448475","3A21","aaa", LocalDate.now()));
 
 
-
+        //us.add(new Enseignant("Ahmed","Ahmed@esprit.tn","123456", RoleName.valueOf("TEACHER"),"Tahri","21111111","male", LocalDate.now()));
 
         /*try {
             //
-            us.add(new Enseignant("Ahmed","Ahmed@esprit.tn","123456", RoleName.valueOf("TEACHER"),"Tahri","21111111","male", LocalDate.now()));
             us.add(new Etudiant("aymen","aymen@esprit.tn","0000",3,"hadded","male","11448475","3A21","aaa",LocalDate.now()));
         } catch (SQLException e) {
             System.out.println(e.getMessage());

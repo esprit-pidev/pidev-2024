@@ -35,16 +35,16 @@ public class CandidatureService {
         }
     }
     public void modifier(Candidature C) {
-        String sql = "update candidature set offre_id=?, user_id=?, date=?, status=?, competences=?, cv=? where id=?";
+        String sql = "update candidature set offre_id=?, date=?, status=?, competences=?, cv=? where id=?";
         try {
             PreparedStatement statement = this.cnx.prepareStatement(sql);
             statement.setInt(1, C.getOffre_id());
-            statement.setInt(2, C.getEtudiant().getId());
-            statement.setDate(3, new java.sql.Date(C.getDate().getTime()));
-            statement.setString(4, C.getStatus());
-            statement.setString(5, C.getCompetences());
-            statement.setString(6, C.getCv());
-            statement.setInt(7, C.getId());
+
+            statement.setDate(2, new java.sql.Date(C.getDate().getTime()));
+            statement.setString(3, C.getStatus());
+            statement.setString(4, C.getCompetences());
+            statement.setString(5, C.getCv());
+            statement.setInt(6, C.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

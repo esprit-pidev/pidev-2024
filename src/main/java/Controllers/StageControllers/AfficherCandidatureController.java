@@ -82,15 +82,15 @@ public class AfficherCandidatureController {
             String randomFileName = System.currentTimeMillis() + "-" + UUID.randomUUID().toString() + fileExtension;
 
             // Define the destination directory
-            String destinationDirectory = "C:\\xampp\\htdocs\\pdf";
+            String destinationDirectory = "C:\\Users\\Gaming\\Desktop\\pidevSymfony\\PiSymfony\\public\\uploads\\cv";
             // Create a Path for the destination file
             Path destinationPath = new File(destinationDirectory, randomFileName).toPath();
             try {
                 // Copy the selected file to the destination directory
                 Files.copy(file.toPath(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("File uploaded successfully to: " + destinationPath);
+                System.out.println("File uploaded successfully to +++++ : " + destinationPath);
                 // Update the TextField with the file path
-                cv.setText(destinationPath.toString());
+                cv.setText(randomFileName);
             } catch (IOException e) {
                 System.out.println("Error uploading file: " + e.getMessage());
             }
@@ -98,6 +98,7 @@ public class AfficherCandidatureController {
             System.out.println("No file selected.");
         }
     }
+
 
     @FXML
     void modifier(ActionEvent event) {

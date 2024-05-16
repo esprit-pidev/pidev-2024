@@ -22,7 +22,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.Properties;
 
 public class AjouterCoursController {
@@ -161,7 +163,7 @@ public class AjouterCoursController {
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {
             // Define the destination directory
-            String destinationDirectory = "C:\\xampp\\htdocs\\img";
+            String destinationDirectory = "C:\\Users\\GAMING\\Desktop\\pidevSymfony\\PiSymfony\\public\\uploads\\cours";
             // Get the name of the selected file
             String originalFileName = file.getName();
             String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
@@ -169,16 +171,26 @@ public class AjouterCoursController {
 
             // Create a Path for the destination file
             Path destinationPath = new File(destinationDirectory, randomFileName).toPath();
-            setGlobalFile(file);
-            setGlobalDestinationPath(destinationPath);
-            // Copy the selected file to the destination directory
-            this.coursUrl = randomFileName;
 
+            // Set globalFile and globalDestinationPath
+            this.globalFile = file;
+            this.globalDestinationPath = destinationPath;
+
+            try {
+                // Copy the selected file to the destination directory
+                Files.copy(file.toPath(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("File uploaded successfully to: " + destinationPath);
+                // Update any necessary variables or UI components with the file path
+                this.coursUrl = randomFileName; // Assuming coursUrl is a global variable
+
+            } catch (IOException e) {
+                System.out.println("Error uploading file: " + e.getMessage());
+            }
         } else {
             System.out.println("No file selected.");
         }
-
     }
+
 
     public void sendEmail(String to, String subject, String text) throws MessagingException {
         final String from = "Barhoumi.balkis@esprit.tn"; // Change to your email

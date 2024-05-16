@@ -131,7 +131,7 @@ public class AjouterEventController implements Initializable {
             try {
                 // Copy the selected file to the destination directory
                 Files.copy(file.toPath(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("File uploaded successfully to: " + destinationPath);
+                System.out.println("File uploaded successfully to ++++++ : " + destinationPath);
                 imgName = fileName;
                 uploadImg.setText("ready");
             } catch (IOException e) {
